@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N5 単語 — Flashcard SRS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>N5 単語<span>Flashcard SRS</span></h1>
+    <div class="stats">
+      <div class="stat"><span id="statDue">0</span><label>Jatuh tempo</label></div>
+      <div class="stat"><span id="statLearning">0</span><label>Dipelajari</label></div>
+      <div class="stat"><span id="statMastered">0</span><label>Dikuasai</label></div>
+      <div class="stat"><span id="statTotal">0</span><label>Total</label></div>
+    </div>
+  </header>
+
+  <main>
+    <div id="progressWrap">
+      <div id="progressBar"></div>
+    </div>
+
+    <section id="cardStage">
+      <div id="emptyState" class="hidden">
+        <h2>🎉 Semua kartu jatuh-tempo sudah selesai!</h2>
+        <p>Kembali lagi nanti, atau pelajari lebih banyak kartu baru sekarang.</p>
+        <button id="studyMoreBtn" class="primary">Pelajari kartu baru</button>
+      </div>
+
+      <div id="card" class="card">
+        <div class="card-box" id="cardBox">
+          <div class="card-face card-front">
+            <span class="badge" id="cardType"></span>
+            <button id="hintBtn" class="hint-btn" title="Tampilkan hiragana/katakana (H)">💡 Hint</button>
+            <div class="kanji" id="cardKanji"></div>
+            <div class="kana-hint" id="cardKanaHint"></div>
+            <div class="hint">Klik kartu atau tekan Spasi untuk membuka</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="kanji small" id="cardKanjiBack"></div>
+            <div class="kana" id="cardKana"></div>
+            <div class="romaji" id="cardRomaji"></div>
+            <div class="meaning" id="cardMeaning"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="rateButtons" class="rate-buttons hidden">
+        <button data-rate="belum" class="rate belum">Belum Hafal<small>2x lebih sering</small></button>
+        <button data-rate="hafal" class="rate hafal">Hafal Arti<small>normal</small></button>
+        <button data-rate="sudah" class="rate sudah">Sudah Hafal<small>0,5x lebih sering</small></button>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <button id="resetProgressBtn" class="ghost">Reset progres</button>
+      <span id="toast"></span>
+    </div>
+  </main>
+
+<script src="app.js"></script>
+</body>
+</html>
