@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>N5 単語 — Flashcard SRS</title>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <div class="app-shell">
@@ -104,14 +104,21 @@
 
         <section id="view-kanji" class="view hidden">
           <div class="kq-header">
-            <div class="fmt-toggle" id="kqQuestionFormatToggle">
-              <button data-fmt="kanji" class="fmt-btn">Kanji</button>
-              <button data-fmt="kana" class="fmt-btn">Kana</button>
-              <button data-fmt="english" class="fmt-btn">English</button>
+            <div class="fmt-toggle" id="kqLevelToggle">
+              <button data-level="N5" class="fmt-btn">N5</button>
+              <button data-level="N4" class="fmt-btn">N4</button>
             </div>
             <div class="kq-score">
               <span class="kq-score-correct">✓ <b id="kqCorrect">0</b></span>
               <span class="kq-score-wrong">✘ <b id="kqWrong">0</b></span>
+            </div>
+          </div>
+
+          <div class="kq-header">
+            <div class="fmt-toggle" id="kqQuestionFormatToggle">
+              <button data-fmt="kanji" class="fmt-btn">Kanji</button>
+              <button data-fmt="kana" class="fmt-btn">Kana</button>
+              <button data-fmt="english" class="fmt-btn">English</button>
             </div>
           </div>
 
@@ -136,6 +143,6 @@
     </div>
   </div>
 
-<script src="app.js?v=4"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>

@@ -13,7 +13,9 @@ let flipped = false;
 let hintShown = false;
 
 // Kanji Quizzer state
-let kanjiList = [];
+let kanjiListN5 = [];
+let kanjiListN4 = [];
+let kqLevel = "N5";
 let kqQueue = [];
 let kqIndex = 0;
 let kqCorrect = 0;
@@ -23,6 +25,10 @@ let kqAnswerFormat = "kana";
 let kqCurrentEntry = null;
 let kqAnswered = false;
 const KQ_FORMATS = ["kanji", "kana", "english"];
+
+function kqActiveList() {
+  return kqLevel === "N4" ? kanjiListN4 : kanjiListN5;
+}
 
 const el = {
   cardBox: document.getElementById("cardBox"),
@@ -55,6 +61,7 @@ const el = {
   listCount: document.getElementById("listCount"),
   vocabTableBody: document.getElementById("vocabTableBody"),
   viewKanji: document.getElementById("view-kanji"),
+  kqLevelToggle: document.getElementById("kqLevelToggle"),
   kqQuestionFormatToggle: document.getElementById("kqQuestionFormatToggle"),
   kqAnswerFormatToggle: document.getElementById("kqAnswerFormatToggle"),
   kqQuestion: document.getElementById("kqQuestion"),
@@ -282,7 +289,7 @@ function switchView(view) {
 
   if (view === "list") {
     renderVocabList(el.vocabSearch.value);
-  } else if (view === "kanji" && kqQueue.length === 0 && kanjiList.length > 0) {
+  } else if (view === "kanji" && kqQueue.length === 0 && kqActiveList().length > 0) {
     kqBuildQueue();
   }
 
@@ -296,15 +303,30 @@ function kqDisplayValue(entry, format) {
 }
 
 function kqBuildQueue() {
-  kqQueue = kanjiList.map(k => k.id);
+  kqQueue = kqActiveList().map(k => k.id);
   shuffle(kqQueue);
   kqIndex = 0;
   kqCorrect = 0;
   kqWrong = 0;
   el.kqCorrect.textContent = "0";
   el.kqWrong.textContent = "0";
+  kqRenderLevelToggle();
   kqRenderFormatToggles();
   kqShowQuestion();
+}
+
+function kqRenderLevelToggle() {
+  el.kqLevelToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.level === kqLevel);
+  });
+}
+
+function kqSetLevel(level) {
+  if (level === kqLevel) return;
+  if ((level === "N4" ? kanjiListN4 : kanjiListN5).length === 0) return;
+  kqLevel = level;
+  kqQueue = [];
+  kqBuildQueue();
 }
 
 function kqRenderFormatToggles() {
@@ -342,7 +364,7 @@ function kqSetAnswerFormat(fmt) {
 
 function kqShowQuestion() {
   if (kqIndex >= kqQueue.length) {
-    document.querySelector(".kq-header").classList.add("hidden");
+    document.querySelectorAll(".kq-header").forEach(el2 => el2.classList.add("hidden"));
     document.querySelector(".kq-meta").classList.add("hidden");
     el.kqQuestion.classList.add("hidden");
     el.kqChoices.classList.add("hidden");
@@ -352,7 +374,7 @@ function kqShowQuestion() {
     return;
   }
 
-  document.querySelector(".kq-header").classList.remove("hidden");
+  document.querySelectorAll(".kq-header").forEach(el2 => el2.classList.remove("hidden"));
   document.querySelector(".kq-meta").classList.remove("hidden");
   el.kqQuestion.classList.remove("hidden");
   el.kqChoices.classList.remove("hidden");
@@ -361,15 +383,15 @@ function kqShowQuestion() {
 
   kqAnswered = false;
   const id = kqQueue[kqIndex];
-  kqCurrentEntry = kanjiList.find(k => k.id === id);
+  kqCurrentEntry = kqActiveList().find(k => k.id === id);
 
   el.kqQuestion.className = `kq-question fmt-${kqQuestionFormat}`;
   el.kqQuestion.textContent = kqDisplayValue(kqCurrentEntry, kqQuestionFormat);
-  el.kqGroupLabel.textContent = `JLPT N5 Group ${kqCurrentEntry.group}`;
+  el.kqGroupLabel.textContent = `JLPT ${kqLevel} Group ${kqCurrentEntry.group}`;
   el.kqPositionLabel.textContent = `${kqIndex + 1} of ${kqQueue.length}`;
 
   const correctValue = kqDisplayValue(kqCurrentEntry, kqAnswerFormat);
-  const pool = kanjiList.filter(k => k.id !== kqCurrentEntry.id);
+  const pool = kqActiveList().filter(k => k.id !== kqCurrentEntry.id);
   shuffle(pool);
 
   const distractors = [];
@@ -458,12 +480,22 @@ function init() {
   fetch("data/kanji-n5.json")
     .then(r => r.json())
     .then(data => {
-      kanjiList = data;
+      kanjiListN5 = data;
       if (!el.viewKanji.classList.contains("hidden") && kqQueue.length === 0) {
         kqBuildQueue();
       }
     })
     .catch(err => console.error("Gagal memuat kanji-n5.json:", err));
+
+  fetch("data/kanji-n4.json")
+    .then(r => r.json())
+    .then(data => {
+      kanjiListN4 = data;
+      if (kqLevel === "N4" && !el.viewKanji.classList.contains("hidden") && kqQueue.length === 0) {
+        kqBuildQueue();
+      }
+    })
+    .catch(err => console.error("Gagal memuat kanji-n4.json:", err));
 
   el.card.addEventListener("click", flipCard);
   document.addEventListener("keydown", e => {
@@ -512,6 +544,10 @@ function init() {
 
   el.kqQuestionFormatToggle.querySelectorAll(".fmt-btn").forEach(btn => {
     btn.addEventListener("click", () => kqSetQuestionFormat(btn.dataset.fmt));
+  });
+
+  el.kqLevelToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.addEventListener("click", () => kqSetLevel(btn.dataset.level));
   });
 
   el.kqRestartBtn.addEventListener("click", () => {

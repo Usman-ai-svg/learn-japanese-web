@@ -1,0 +1,2026 @@
+[
+ {
+  "id": 1,
+  "kanji": "会",
+  "onyomi": [
+   "かい"
+  ],
+  "kunyomi": [
+   "あ（う）"
+  ],
+  "meaning": "meeting; meet",
+  "group": 1
+ },
+ {
+  "id": 2,
+  "kanji": "同",
+  "onyomi": [
+   "どう"
+  ],
+  "kunyomi": [
+   "おなじ"
+  ],
+  "meaning": "same; agree; equal",
+  "group": 1
+ },
+ {
+  "id": 3,
+  "kanji": "事",
+  "onyomi": [
+   "じ"
+  ],
+  "kunyomi": [
+   "こと"
+  ],
+  "meaning": "matter; thing; fact; business",
+  "group": 1
+ },
+ {
+  "id": 4,
+  "kanji": "自",
+  "onyomi": [
+   "じ",
+   "し"
+  ],
+  "kunyomi": [
+   "みずか（ら）"
+  ],
+  "meaning": "oneself",
+  "group": 1
+ },
+ {
+  "id": 5,
+  "kanji": "社",
+  "onyomi": [
+   "しゃ"
+  ],
+  "kunyomi": [
+   "やしろ"
+  ],
+  "meaning": "company; firm; office; shrine",
+  "group": 1
+ },
+ {
+  "id": 6,
+  "kanji": "発",
+  "onyomi": [
+   "はつ",
+   "ほつ"
+  ],
+  "kunyomi": [],
+  "meaning": "departure; discharge; emit",
+  "group": 1
+ },
+ {
+  "id": 7,
+  "kanji": "者",
+  "onyomi": [
+   "しゃ"
+  ],
+  "kunyomi": [
+   "もの"
+  ],
+  "meaning": "someone; person",
+  "group": 1
+ },
+ {
+  "id": 8,
+  "kanji": "地",
+  "onyomi": [
+   "ち",
+   "じ"
+  ],
+  "kunyomi": [],
+  "meaning": "ground; earth",
+  "group": 1
+ },
+ {
+  "id": 9,
+  "kanji": "業",
+  "onyomi": [
+   "ぎょう"
+  ],
+  "kunyomi": [
+   "わざ"
+  ],
+  "meaning": "business; vocation; arts; performance",
+  "group": 1
+ },
+ {
+  "id": 10,
+  "kanji": "方",
+  "onyomi": [
+   "ほう"
+  ],
+  "kunyomi": [
+   "かた"
+  ],
+  "meaning": "direction; person; alternative",
+  "group": 1
+ },
+ {
+  "id": 11,
+  "kanji": "新",
+  "onyomi": [
+   "しん"
+  ],
+  "kunyomi": [
+   "あたら（しい）",
+   "あら（た）"
+  ],
+  "meaning": "new",
+  "group": 2
+ },
+ {
+  "id": 12,
+  "kanji": "場",
+  "onyomi": [
+   "じょう"
+  ],
+  "kunyomi": [
+   "ば"
+  ],
+  "meaning": "location; place",
+  "group": 2
+ },
+ {
+  "id": 13,
+  "kanji": "員",
+  "onyomi": [
+   "いん"
+  ],
+  "kunyomi": [],
+  "meaning": "employee; member; number",
+  "group": 2
+ },
+ {
+  "id": 14,
+  "kanji": "立",
+  "onyomi": [
+   "りつ"
+  ],
+  "kunyomi": [
+   "た（つ）"
+  ],
+  "meaning": "stand up; rise",
+  "group": 2
+ },
+ {
+  "id": 15,
+  "kanji": "開",
+  "onyomi": [
+   "かい"
+  ],
+  "kunyomi": [
+   "ひら（く）",
+   "あ（ける）"
+  ],
+  "meaning": "open; unfold; unseal",
+  "group": 2
+ },
+ {
+  "id": 16,
+  "kanji": "手",
+  "onyomi": [
+   "しゅ"
+  ],
+  "kunyomi": [
+   "て"
+  ],
+  "meaning": "hand",
+  "group": 2
+ },
+ {
+  "id": 17,
+  "kanji": "力",
+  "onyomi": [
+   "りょく",
+   "りき"
+  ],
+  "kunyomi": [
+   "ちから"
+  ],
+  "meaning": "power; strength; strong; strain",
+  "group": 2
+ },
+ {
+  "id": 18,
+  "kanji": "問",
+  "onyomi": [
+   "もん"
+  ],
+  "kunyomi": [
+   "と（う）"
+  ],
+  "meaning": "question; ask; problem",
+  "group": 2
+ },
+ {
+  "id": 19,
+  "kanji": "代",
+  "onyomi": [
+   "だい"
+  ],
+  "kunyomi": [
+   "か（わり）"
+  ],
+  "meaning": "substitute; change; convert; replace",
+  "group": 2
+ },
+ {
+  "id": 20,
+  "kanji": "明",
+  "onyomi": [
+   "めい",
+   "みょう"
+  ],
+  "kunyomi": [
+   "あか（るい）"
+  ],
+  "meaning": "bright; light",
+  "group": 2
+ },
+ {
+  "id": 21,
+  "kanji": "動",
+  "onyomi": [
+   "どう"
+  ],
+  "kunyomi": [
+   "うご（く）"
+  ],
+  "meaning": "move; motion; change",
+  "group": 3
+ },
+ {
+  "id": 22,
+  "kanji": "京",
+  "onyomi": [
+   "きょう",
+   "けい",
+   "きん"
+  ],
+  "kunyomi": [
+   "みやこ"
+  ],
+  "meaning": "capital",
+  "group": 3
+ },
+ {
+  "id": 23,
+  "kanji": "目",
+  "onyomi": [
+   "もく",
+   "ぼく"
+  ],
+  "kunyomi": [
+   "め"
+  ],
+  "meaning": "eye; class; look; insight",
+  "group": 3
+ },
+ {
+  "id": 24,
+  "kanji": "通",
+  "onyomi": [
+   "つう"
+  ],
+  "kunyomi": [
+   "とお（る）",
+   "かよ（う）"
+  ],
+  "meaning": "traffic; pass through; commute",
+  "group": 3
+ },
+ {
+  "id": 25,
+  "kanji": "言",
+  "onyomi": [
+   "げん",
+   "ごん"
+  ],
+  "kunyomi": [
+   "い（う）",
+   "こと"
+  ],
+  "meaning": "say; word",
+  "group": 3
+ },
+ {
+  "id": 26,
+  "kanji": "理",
+  "onyomi": [
+   "り"
+  ],
+  "kunyomi": [],
+  "meaning": "logic; arrangement; reason; justice",
+  "group": 3
+ },
+ {
+  "id": 27,
+  "kanji": "体",
+  "onyomi": [
+   "たい"
+  ],
+  "kunyomi": [
+   "からだ"
+  ],
+  "meaning": "body; substance; object; reality",
+  "group": 3
+ },
+ {
+  "id": 28,
+  "kanji": "田",
+  "onyomi": [
+   "でん"
+  ],
+  "kunyomi": [
+   "た"
+  ],
+  "meaning": "rice field; rice paddy",
+  "group": 3
+ },
+ {
+  "id": 29,
+  "kanji": "主",
+  "onyomi": [
+   "しゅ"
+  ],
+  "kunyomi": [
+   "ぬし",
+   "おも"
+  ],
+  "meaning": "lord; chief; master; principal",
+  "group": 3
+ },
+ {
+  "id": 30,
+  "kanji": "題",
+  "onyomi": [
+   "だい"
+  ],
+  "kunyomi": [],
+  "meaning": "topic; subject",
+  "group": 3
+ },
+ {
+  "id": 31,
+  "kanji": "意",
+  "onyomi": [
+   "い"
+  ],
+  "kunyomi": [],
+  "meaning": "idea; mind; heart; taste; thought",
+  "group": 4
+ },
+ {
+  "id": 32,
+  "kanji": "不",
+  "onyomi": [
+   "ふ",
+   "ぶ"
+  ],
+  "kunyomi": [],
+  "meaning": "negative; non-; bad",
+  "group": 4
+ },
+ {
+  "id": 33,
+  "kanji": "作",
+  "onyomi": [
+   "さく",
+   "さ"
+  ],
+  "kunyomi": [
+   "つく（る）"
+  ],
+  "meaning": "make; production; prepare; build",
+  "group": 4
+ },
+ {
+  "id": 34,
+  "kanji": "用",
+  "onyomi": [
+   "よう"
+  ],
+  "kunyomi": [
+   "もち（いる）"
+  ],
+  "meaning": "utilize; business; service; use",
+  "group": 4
+ },
+ {
+  "id": 35,
+  "kanji": "度",
+  "onyomi": [
+   "ど",
+   "たく"
+  ],
+  "kunyomi": [
+   "たび",
+   "た（い）"
+  ],
+  "meaning": "degrees; occurrence; time; counter",
+  "group": 4
+ },
+ {
+  "id": 36,
+  "kanji": "強",
+  "onyomi": [
+   "きょう",
+   "ごう"
+  ],
+  "kunyomi": [
+   "つよ（い）"
+  ],
+  "meaning": "strong",
+  "group": 4
+ },
+ {
+  "id": 37,
+  "kanji": "公",
+  "onyomi": [
+   "こう"
+  ],
+  "kunyomi": [],
+  "meaning": "public; prince; official; governmental",
+  "group": 4
+ },
+ {
+  "id": 38,
+  "kanji": "持",
+  "onyomi": [
+   "じ"
+  ],
+  "kunyomi": [
+   "も（つ）"
+  ],
+  "meaning": "hold; have",
+  "group": 4
+ },
+ {
+  "id": 39,
+  "kanji": "野",
+  "onyomi": [
+   "や"
+  ],
+  "kunyomi": [
+   "の"
+  ],
+  "meaning": "plains; field; rustic; civilian life",
+  "group": 4
+ },
+ {
+  "id": 40,
+  "kanji": "以",
+  "onyomi": [
+   "い"
+  ],
+  "kunyomi": [
+   "も（って）"
+  ],
+  "meaning": "by means of; because; compared with",
+  "group": 4
+ },
+ {
+  "id": 41,
+  "kanji": "思",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "おも（う）"
+  ],
+  "meaning": "think",
+  "group": 5
+ },
+ {
+  "id": 42,
+  "kanji": "家",
+  "onyomi": [
+   "か"
+  ],
+  "kunyomi": [
+   "いえ",
+   "や",
+   "うち"
+  ],
+  "meaning": "house; home; family; professional",
+  "group": 5
+ },
+ {
+  "id": 43,
+  "kanji": "世",
+  "onyomi": [
+   "せい",
+   "せ"
+  ],
+  "kunyomi": [
+   "よ"
+  ],
+  "meaning": "generation; world; society; public",
+  "group": 5
+ },
+ {
+  "id": 44,
+  "kanji": "多",
+  "onyomi": [
+   "た"
+  ],
+  "kunyomi": [
+   "おお（い）"
+  ],
+  "meaning": "many; frequent; much",
+  "group": 5
+ },
+ {
+  "id": 45,
+  "kanji": "正",
+  "onyomi": [
+   "せい",
+   "しょう"
+  ],
+  "kunyomi": [
+   "ただ（しい）",
+   "まさ（に）"
+  ],
+  "meaning": "correct; justice; righteous",
+  "group": 5
+ },
+ {
+  "id": 46,
+  "kanji": "安",
+  "onyomi": [
+   "あん"
+  ],
+  "kunyomi": [
+   "やす（い）"
+  ],
+  "meaning": "safe; peaceful; cheap",
+  "group": 5
+ },
+ {
+  "id": 47,
+  "kanji": "院",
+  "onyomi": [
+   "いん"
+  ],
+  "kunyomi": [],
+  "meaning": "institution; temple; mansion; school",
+  "group": 5
+ },
+ {
+  "id": 48,
+  "kanji": "心",
+  "onyomi": [
+   "しん"
+  ],
+  "kunyomi": [
+   "こころ"
+  ],
+  "meaning": "heart; mind; spirit",
+  "group": 5
+ },
+ {
+  "id": 49,
+  "kanji": "界",
+  "onyomi": [
+   "かい"
+  ],
+  "kunyomi": [],
+  "meaning": "world; boundary",
+  "group": 5
+ },
+ {
+  "id": 50,
+  "kanji": "教",
+  "onyomi": [
+   "きょう"
+  ],
+  "kunyomi": [
+   "おし（える）",
+   "おそ（わる）"
+  ],
+  "meaning": "teach; faith; doctrine",
+  "group": 5
+ },
+ {
+  "id": 51,
+  "kanji": "文",
+  "onyomi": [
+   "ぶん",
+   "もん"
+  ],
+  "kunyomi": [
+   "ふみ"
+  ],
+  "meaning": "sentence; literature; style; art",
+  "group": 6
+ },
+ {
+  "id": 52,
+  "kanji": "元",
+  "onyomi": [
+   "げん",
+   "がん"
+  ],
+  "kunyomi": [
+   "もと"
+  ],
+  "meaning": "beginning; former time; origin",
+  "group": 6
+ },
+ {
+  "id": 53,
+  "kanji": "重",
+  "onyomi": [
+   "じゅう",
+   "ちょう"
+  ],
+  "kunyomi": [
+   "おも（い）",
+   "かさ（ねる）"
+  ],
+  "meaning": "heavy; important; respect",
+  "group": 6
+ },
+ {
+  "id": 54,
+  "kanji": "近",
+  "onyomi": [
+   "きん"
+  ],
+  "kunyomi": [
+   "ちか（い）"
+  ],
+  "meaning": "near; early; akin; tantamount",
+  "group": 6
+ },
+ {
+  "id": 55,
+  "kanji": "考",
+  "onyomi": [
+   "こう"
+  ],
+  "kunyomi": [
+   "かんが（える）"
+  ],
+  "meaning": "consider; think over",
+  "group": 6
+ },
+ {
+  "id": 56,
+  "kanji": "画",
+  "onyomi": [
+   "が",
+   "かく"
+  ],
+  "kunyomi": [
+   "かく（する）"
+  ],
+  "meaning": "brush-stroke; picture",
+  "group": 6
+ },
+ {
+  "id": 57,
+  "kanji": "海",
+  "onyomi": [
+   "かい"
+  ],
+  "kunyomi": [
+   "うみ"
+  ],
+  "meaning": "sea; ocean",
+  "group": 6
+ },
+ {
+  "id": 58,
+  "kanji": "売",
+  "onyomi": [
+   "ばい"
+  ],
+  "kunyomi": [
+   "う（る）"
+  ],
+  "meaning": "sell",
+  "group": 6
+ },
+ {
+  "id": 59,
+  "kanji": "知",
+  "onyomi": [
+   "ち"
+  ],
+  "kunyomi": [
+   "し（る）"
+  ],
+  "meaning": "know; wisdom",
+  "group": 6
+ },
+ {
+  "id": 60,
+  "kanji": "道",
+  "onyomi": [
+   "どう"
+  ],
+  "kunyomi": [
+   "みち"
+  ],
+  "meaning": "road-way; street; journey; course",
+  "group": 6
+ },
+ {
+  "id": 61,
+  "kanji": "集",
+  "onyomi": [
+   "しゅう"
+  ],
+  "kunyomi": [
+   "あつ（める）"
+  ],
+  "meaning": "gather; meet",
+  "group": 7
+ },
+ {
+  "id": 62,
+  "kanji": "別",
+  "onyomi": [
+   "べつ"
+  ],
+  "kunyomi": [
+   "わか（れる）",
+   "わ（ける）"
+  ],
+  "meaning": "separate; branch off; diverge",
+  "group": 7
+ },
+ {
+  "id": 63,
+  "kanji": "物",
+  "onyomi": [
+   "ぶつ",
+   "もつ"
+  ],
+  "kunyomi": [
+   "もの"
+  ],
+  "meaning": "thing; object; matter",
+  "group": 7
+ },
+ {
+  "id": 64,
+  "kanji": "使",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "つか（う）"
+  ],
+  "meaning": "use; order; messenger; ambassador",
+  "group": 7
+ },
+ {
+  "id": 65,
+  "kanji": "品",
+  "onyomi": [
+   "ひん"
+  ],
+  "kunyomi": [
+   "しな"
+  ],
+  "meaning": "goods; refinement; dignity; article",
+  "group": 7
+ },
+ {
+  "id": 66,
+  "kanji": "計",
+  "onyomi": [
+   "けい"
+  ],
+  "kunyomi": [
+   "はか（る）"
+  ],
+  "meaning": "plot; plan; scheme; measure",
+  "group": 7
+ },
+ {
+  "id": 67,
+  "kanji": "死",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "し（ぬ）"
+  ],
+  "meaning": "death; die",
+  "group": 7
+ },
+ {
+  "id": 68,
+  "kanji": "特",
+  "onyomi": [
+   "とく"
+  ],
+  "kunyomi": [],
+  "meaning": "special",
+  "group": 7
+ },
+ {
+  "id": 69,
+  "kanji": "私",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "わたくし",
+   "わたし"
+  ],
+  "meaning": "private; I; me",
+  "group": 7
+ },
+ {
+  "id": 70,
+  "kanji": "始",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "はじ（める）"
+  ],
+  "meaning": "commence; begin",
+  "group": 7
+ },
+ {
+  "id": 71,
+  "kanji": "朝",
+  "onyomi": [
+   "ちょう"
+  ],
+  "kunyomi": [
+   "あさ"
+  ],
+  "meaning": "morning",
+  "group": 8
+ },
+ {
+  "id": 72,
+  "kanji": "運",
+  "onyomi": [
+   "うん"
+  ],
+  "kunyomi": [
+   "はこ（ぶ）"
+  ],
+  "meaning": "carry; luck; destiny; fate; transport",
+  "group": 8
+ },
+ {
+  "id": 73,
+  "kanji": "終",
+  "onyomi": [
+   "しゅう"
+  ],
+  "kunyomi": [
+   "お（わる）"
+  ],
+  "meaning": "end; finish",
+  "group": 8
+ },
+ {
+  "id": 74,
+  "kanji": "台",
+  "onyomi": [
+   "だい",
+   "たい"
+  ],
+  "kunyomi": [
+   "うてな"
+  ],
+  "meaning": "pedestal; stand; counter for machines",
+  "group": 8
+ },
+ {
+  "id": 75,
+  "kanji": "広",
+  "onyomi": [
+   "こう"
+  ],
+  "kunyomi": [
+   "ひろ（い）"
+  ],
+  "meaning": "wide; broad; spacious",
+  "group": 8
+ },
+ {
+  "id": 76,
+  "kanji": "住",
+  "onyomi": [
+   "じゅう",
+   "ちゅう"
+  ],
+  "kunyomi": [
+   "す（む）"
+  ],
+  "meaning": "dwell; reside; live; inhabit",
+  "group": 8
+ },
+ {
+  "id": 77,
+  "kanji": "無",
+  "onyomi": [
+   "む",
+   "ぶ"
+  ],
+  "kunyomi": [
+   "な（い）"
+  ],
+  "meaning": "nothingness; none; nothing; nil; not",
+  "group": 8
+ },
+ {
+  "id": 78,
+  "kanji": "真",
+  "onyomi": [
+   "しん"
+  ],
+  "kunyomi": [
+   "ま",
+   "まこと"
+  ],
+  "meaning": "true; reality; Buddhist sect",
+  "group": 8
+ },
+ {
+  "id": 79,
+  "kanji": "有",
+  "onyomi": [
+   "ゆう",
+   "う"
+  ],
+  "kunyomi": [
+   "あ（る）"
+  ],
+  "meaning": "possess; have; exist; happen",
+  "group": 8
+ },
+ {
+  "id": 80,
+  "kanji": "口",
+  "onyomi": [
+   "こう"
+  ],
+  "kunyomi": [
+   "くち"
+  ],
+  "meaning": "mouth",
+  "group": 8
+ },
+ {
+  "id": 81,
+  "kanji": "少",
+  "onyomi": [
+   "しょう"
+  ],
+  "kunyomi": [
+   "すく（ない）",
+   "すこ（し）"
+  ],
+  "meaning": "few; little",
+  "group": 9
+ },
+ {
+  "id": 82,
+  "kanji": "町",
+  "onyomi": [
+   "ちょう"
+  ],
+  "kunyomi": [
+   "まち"
+  ],
+  "meaning": "town; village; block; street",
+  "group": 9
+ },
+ {
+  "id": 83,
+  "kanji": "料",
+  "onyomi": [
+   "りょう"
+  ],
+  "kunyomi": [],
+  "meaning": "fee; materials",
+  "group": 9
+ },
+ {
+  "id": 84,
+  "kanji": "工",
+  "onyomi": [
+   "こう",
+   "く",
+   "ぐ"
+  ],
+  "kunyomi": [],
+  "meaning": "craft; construction",
+  "group": 9
+ },
+ {
+  "id": 85,
+  "kanji": "建",
+  "onyomi": [
+   "けん",
+   "こん"
+  ],
+  "kunyomi": [
+   "た（てる）"
+  ],
+  "meaning": "build",
+  "group": 9
+ },
+ {
+  "id": 86,
+  "kanji": "空",
+  "onyomi": [
+   "くう"
+  ],
+  "kunyomi": [
+   "そら",
+   "から",
+   "あ（く）",
+   "す（く）",
+   "むな（しい）"
+  ],
+  "meaning": "empty; sky; void; vacant",
+  "group": 9
+ },
+ {
+  "id": 87,
+  "kanji": "急",
+  "onyomi": [
+   "きゅう"
+  ],
+  "kunyomi": [
+   "いそ（ぐ）"
+  ],
+  "meaning": "hurry; emergency; sudden; steep",
+  "group": 9
+ },
+ {
+  "id": 88,
+  "kanji": "止",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "と（まる）",
+   "とど（まる）",
+   "や（める）",
+   "よ（す）"
+  ],
+  "meaning": "stop; halt",
+  "group": 9
+ },
+ {
+  "id": 89,
+  "kanji": "送",
+  "onyomi": [
+   "そう"
+  ],
+  "kunyomi": [
+   "おく（る）"
+  ],
+  "meaning": "escort; send",
+  "group": 9
+ },
+ {
+  "id": 90,
+  "kanji": "切",
+  "onyomi": [
+   "せつ",
+   "さい"
+  ],
+  "kunyomi": [
+   "き（る）"
+  ],
+  "meaning": "cut; cutoff; be sharp",
+  "group": 9
+ },
+ {
+  "id": 91,
+  "kanji": "転",
+  "onyomi": [
+   "てん"
+  ],
+  "kunyomi": [
+   "ころ（がる）"
+  ],
+  "meaning": "revolve; turn around; change",
+  "group": 10
+ },
+ {
+  "id": 92,
+  "kanji": "研",
+  "onyomi": [
+   "けん"
+  ],
+  "kunyomi": [
+   "と（ぐ）"
+  ],
+  "meaning": "polish; study of; sharpen",
+  "group": 10
+ },
+ {
+  "id": 93,
+  "kanji": "足",
+  "onyomi": [
+   "そく"
+  ],
+  "kunyomi": [
+   "あし",
+   "た（りる）"
+  ],
+  "meaning": "leg; foot; be sufficient",
+  "group": 10
+ },
+ {
+  "id": 94,
+  "kanji": "究",
+  "onyomi": [
+   "きゅう"
+  ],
+  "kunyomi": [],
+  "meaning": "research; study",
+  "group": 10
+ },
+ {
+  "id": 95,
+  "kanji": "楽",
+  "onyomi": [
+   "がく",
+   "らく"
+  ],
+  "kunyomi": [
+   "たの（しい）"
+  ],
+  "meaning": "music; comfort; ease",
+  "group": 10
+ },
+ {
+  "id": 96,
+  "kanji": "起",
+  "onyomi": [
+   "き"
+  ],
+  "kunyomi": [
+   "お（きる）",
+   "おこ（す）"
+  ],
+  "meaning": "wake up; get up; rouse",
+  "group": 10
+ },
+ {
+  "id": 97,
+  "kanji": "着",
+  "onyomi": [
+   "ちゃく"
+  ],
+  "kunyomi": [
+   "き（る）",
+   "つ（く）"
+  ],
+  "meaning": "arrive; wear; counter for suits",
+  "group": 10
+ },
+ {
+  "id": 98,
+  "kanji": "店",
+  "onyomi": [
+   "てん"
+  ],
+  "kunyomi": [
+   "みせ"
+  ],
+  "meaning": "store; shop",
+  "group": 10
+ },
+ {
+  "id": 99,
+  "kanji": "病",
+  "onyomi": [
+   "びょう"
+  ],
+  "kunyomi": [
+   "や（む）"
+  ],
+  "meaning": "ill; sick",
+  "group": 10
+ },
+ {
+  "id": 100,
+  "kanji": "質",
+  "onyomi": [
+   "しつ",
+   "しち"
+  ],
+  "kunyomi": [
+   "たち",
+   "ただ（す）"
+  ],
+  "meaning": "substance; quality; matter",
+  "group": 10
+ },
+ {
+  "id": 101,
+  "kanji": "待",
+  "onyomi": [
+   "たい"
+  ],
+  "kunyomi": [
+   "ま（つ）"
+  ],
+  "meaning": "wait; depend on",
+  "group": 11
+ },
+ {
+  "id": 102,
+  "kanji": "試",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "こころ（みる）",
+   "ため（す）"
+  ],
+  "meaning": "test; try; attempt; experiment",
+  "group": 11
+ },
+ {
+  "id": 103,
+  "kanji": "族",
+  "onyomi": [
+   "ぞく"
+  ],
+  "kunyomi": [],
+  "meaning": "tribe; family",
+  "group": 11
+ },
+ {
+  "id": 104,
+  "kanji": "銀",
+  "onyomi": [
+   "ぎん"
+  ],
+  "kunyomi": [],
+  "meaning": "silver",
+  "group": 11
+ },
+ {
+  "id": 105,
+  "kanji": "早",
+  "onyomi": [
+   "そう",
+   "さ"
+  ],
+  "kunyomi": [
+   "はや（い）"
+  ],
+  "meaning": "early; fast",
+  "group": 11
+ },
+ {
+  "id": 106,
+  "kanji": "映",
+  "onyomi": [
+   "えい"
+  ],
+  "kunyomi": [
+   "うつ（る）",
+   "は（える）"
+  ],
+  "meaning": "reflect; reflection; projection",
+  "group": 11
+ },
+ {
+  "id": 107,
+  "kanji": "親",
+  "onyomi": [
+   "しん"
+  ],
+  "kunyomi": [
+   "おや",
+   "した（しい）"
+  ],
+  "meaning": "parent; intimacy; relative; familiarity",
+  "group": 11
+ },
+ {
+  "id": 108,
+  "kanji": "験",
+  "onyomi": [
+   "けん"
+  ],
+  "kunyomi": [],
+  "meaning": "verification; effect; testing",
+  "group": 11
+ },
+ {
+  "id": 109,
+  "kanji": "英",
+  "onyomi": [
+   "えい"
+  ],
+  "kunyomi": [],
+  "meaning": "England; English; hero; outstanding",
+  "group": 11
+ },
+ {
+  "id": 110,
+  "kanji": "医",
+  "onyomi": [
+   "い"
+  ],
+  "kunyomi": [],
+  "meaning": "doctor; medicine",
+  "group": 11
+ },
+ {
+  "id": 111,
+  "kanji": "仕",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [],
+  "meaning": "attend; doing; official; serve",
+  "group": 12
+ },
+ {
+  "id": 112,
+  "kanji": "去",
+  "onyomi": [
+   "きょ",
+   "こ"
+  ],
+  "kunyomi": [
+   "さ（る）"
+  ],
+  "meaning": "gone; past; quit; leave; elapse; eliminate",
+  "group": 12
+ },
+ {
+  "id": 113,
+  "kanji": "味",
+  "onyomi": [
+   "み"
+  ],
+  "kunyomi": [
+   "あじ"
+  ],
+  "meaning": "flavor; taste",
+  "group": 12
+ },
+ {
+  "id": 114,
+  "kanji": "写",
+  "onyomi": [
+   "しゃ"
+  ],
+  "kunyomi": [
+   "うつ（る）"
+  ],
+  "meaning": "copy; be photographed; describe",
+  "group": 12
+ },
+ {
+  "id": 115,
+  "kanji": "字",
+  "onyomi": [
+   "じ"
+  ],
+  "kunyomi": [],
+  "meaning": "character; letter; word",
+  "group": 12
+ },
+ {
+  "id": 116,
+  "kanji": "答",
+  "onyomi": [
+   "とう"
+  ],
+  "kunyomi": [
+   "こた（える）"
+  ],
+  "meaning": "solution; answer",
+  "group": 12
+ },
+ {
+  "id": 117,
+  "kanji": "夜",
+  "onyomi": [
+   "や"
+  ],
+  "kunyomi": [
+   "よ",
+   "よる"
+  ],
+  "meaning": "night; evening",
+  "group": 12
+ },
+ {
+  "id": 118,
+  "kanji": "音",
+  "onyomi": [
+   "おん"
+  ],
+  "kunyomi": [
+   "おと",
+   "ね"
+  ],
+  "meaning": "sound; noise",
+  "group": 12
+ },
+ {
+  "id": 119,
+  "kanji": "注",
+  "onyomi": [
+   "ちゅう"
+  ],
+  "kunyomi": [
+   "そそ（ぐ）",
+   "さ（す）",
+   "つ（ぐ）"
+  ],
+  "meaning": "pour; irrigate; shed; flow into; concentrate on",
+  "group": 12
+ },
+ {
+  "id": 120,
+  "kanji": "帰",
+  "onyomi": [
+   "き"
+  ],
+  "kunyomi": [
+   "かえ（る）",
+   "かえ（す）"
+  ],
+  "meaning": "homecoming; arrive at; lead to; result in",
+  "group": 12
+ },
+ {
+  "id": 121,
+  "kanji": "古",
+  "onyomi": [
+   "こ"
+  ],
+  "kunyomi": [
+   "ふる（い）"
+  ],
+  "meaning": "old",
+  "group": 13
+ },
+ {
+  "id": 122,
+  "kanji": "歌",
+  "onyomi": [
+   "か"
+  ],
+  "kunyomi": [
+   "うた",
+   "うた（う）"
+  ],
+  "meaning": "song; sing",
+  "group": 13
+ },
+ {
+  "id": 123,
+  "kanji": "買",
+  "onyomi": [
+   "ばい"
+  ],
+  "kunyomi": [
+   "か（う）"
+  ],
+  "meaning": "buy",
+  "group": 13
+ },
+ {
+  "id": 124,
+  "kanji": "悪",
+  "onyomi": [
+   "あく"
+  ],
+  "kunyomi": [
+   "わる（い）"
+  ],
+  "meaning": "bad; evil; wrong",
+  "group": 13
+ },
+ {
+  "id": 125,
+  "kanji": "図",
+  "onyomi": [
+   "ず",
+   "と"
+  ],
+  "kunyomi": [
+   "はか（る）"
+  ],
+  "meaning": "map; drawing; plan; extraordinary",
+  "group": 13
+ },
+ {
+  "id": 126,
+  "kanji": "週",
+  "onyomi": [
+   "しゅう"
+  ],
+  "kunyomi": [],
+  "meaning": "week",
+  "group": 13
+ },
+ {
+  "id": 127,
+  "kanji": "室",
+  "onyomi": [
+   "しつ"
+  ],
+  "kunyomi": [
+   "むろ"
+  ],
+  "meaning": "room; apartment; chamber; greenhouse; cellar",
+  "group": 13
+ },
+ {
+  "id": 128,
+  "kanji": "歩",
+  "onyomi": [
+   "ほ",
+   "ぶ"
+  ],
+  "kunyomi": [
+   "ある（く）",
+   "あゆ（む）"
+  ],
+  "meaning": "walk; counter for steps",
+  "group": 13
+ },
+ {
+  "id": 129,
+  "kanji": "風",
+  "onyomi": [
+   "ふう",
+   "ふ"
+  ],
+  "kunyomi": [
+   "かぜ",
+   "かざ"
+  ],
+  "meaning": "wind; air; style; manner",
+  "group": 13
+ },
+ {
+  "id": 130,
+  "kanji": "紙",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "かみ"
+  ],
+  "meaning": "paper",
+  "group": 13
+ },
+ {
+  "id": 131,
+  "kanji": "黒",
+  "onyomi": [
+   "こく"
+  ],
+  "kunyomi": [
+   "くろ"
+  ],
+  "meaning": "black",
+  "group": 14
+ },
+ {
+  "id": 132,
+  "kanji": "花",
+  "onyomi": [
+   "か",
+   "け"
+  ],
+  "kunyomi": [
+   "はな"
+  ],
+  "meaning": "flower",
+  "group": 14
+ },
+ {
+  "id": 133,
+  "kanji": "春",
+  "onyomi": [
+   "しゅん"
+  ],
+  "kunyomi": [
+   "はる"
+  ],
+  "meaning": "spring",
+  "group": 14
+ },
+ {
+  "id": 134,
+  "kanji": "赤",
+  "onyomi": [
+   "せき",
+   "しゃく"
+  ],
+  "kunyomi": [
+   "あか（い）"
+  ],
+  "meaning": "red",
+  "group": 14
+ },
+ {
+  "id": 135,
+  "kanji": "青",
+  "onyomi": [
+   "せい",
+   "しょう"
+  ],
+  "kunyomi": [
+   "あお（い）"
+  ],
+  "meaning": "blue",
+  "group": 14
+ },
+ {
+  "id": 136,
+  "kanji": "館",
+  "onyomi": [
+   "かん"
+  ],
+  "kunyomi": [
+   "やかた"
+  ],
+  "meaning": "building; mansion; large building; palace",
+  "group": 14
+ },
+ {
+  "id": 137,
+  "kanji": "屋",
+  "onyomi": [
+   "おく"
+  ],
+  "kunyomi": [
+   "や"
+  ],
+  "meaning": "roof; house; shop; dealer; seller",
+  "group": 14
+ },
+ {
+  "id": 138,
+  "kanji": "色",
+  "onyomi": [
+   "しょく",
+   "しき"
+  ],
+  "kunyomi": [
+   "いろ"
+  ],
+  "meaning": "color",
+  "group": 14
+ },
+ {
+  "id": 139,
+  "kanji": "走",
+  "onyomi": [
+   "そう"
+  ],
+  "kunyomi": [
+   "はし（る）"
+  ],
+  "meaning": "run",
+  "group": 14
+ },
+ {
+  "id": 140,
+  "kanji": "秋",
+  "onyomi": [
+   "しゅう"
+  ],
+  "kunyomi": [
+   "あき"
+  ],
+  "meaning": "autumn; fall",
+  "group": 14
+ },
+ {
+  "id": 141,
+  "kanji": "夏",
+  "onyomi": [
+   "か",
+   "げ"
+  ],
+  "kunyomi": [
+   "なつ"
+  ],
+  "meaning": "summer",
+  "group": 15
+ },
+ {
+  "id": 142,
+  "kanji": "習",
+  "onyomi": [
+   "しゅう"
+  ],
+  "kunyomi": [
+   "なら（う）"
+  ],
+  "meaning": "learn",
+  "group": 15
+ },
+ {
+  "id": 143,
+  "kanji": "駅",
+  "onyomi": [
+   "えき"
+  ],
+  "kunyomi": [],
+  "meaning": "station",
+  "group": 15
+ },
+ {
+  "id": 144,
+  "kanji": "洋",
+  "onyomi": [
+   "よう"
+  ],
+  "kunyomi": [],
+  "meaning": "ocean; sea; foreign; Western style",
+  "group": 15
+ },
+ {
+  "id": 145,
+  "kanji": "旅",
+  "onyomi": [
+   "りょ"
+  ],
+  "kunyomi": [
+   "たび"
+  ],
+  "meaning": "trip; travel",
+  "group": 15
+ },
+ {
+  "id": 146,
+  "kanji": "服",
+  "onyomi": [
+   "ふく"
+  ],
+  "kunyomi": [],
+  "meaning": "clothing; admit; obey",
+  "group": 15
+ },
+ {
+  "id": 147,
+  "kanji": "夕",
+  "onyomi": [
+   "ゆう"
+  ],
+  "kunyomi": [],
+  "meaning": "evening",
+  "group": 15
+ },
+ {
+  "id": 148,
+  "kanji": "借",
+  "onyomi": [
+   "しゃく"
+  ],
+  "kunyomi": [
+   "か（りる）"
+  ],
+  "meaning": "borrow; rent",
+  "group": 15
+ },
+ {
+  "id": 149,
+  "kanji": "曜",
+  "onyomi": [
+   "よう"
+  ],
+  "kunyomi": [],
+  "meaning": "weekday",
+  "group": 15
+ },
+ {
+  "id": 150,
+  "kanji": "飲",
+  "onyomi": [
+   "いん"
+  ],
+  "kunyomi": [
+   "の（む）"
+  ],
+  "meaning": "drink",
+  "group": 15
+ },
+ {
+  "id": 151,
+  "kanji": "肉",
+  "onyomi": [
+   "にく"
+  ],
+  "kunyomi": [],
+  "meaning": "meat",
+  "group": 16
+ },
+ {
+  "id": 152,
+  "kanji": "貸",
+  "onyomi": [
+   "たい"
+  ],
+  "kunyomi": [
+   "か（す）"
+  ],
+  "meaning": "lend",
+  "group": 16
+ },
+ {
+  "id": 153,
+  "kanji": "堂",
+  "onyomi": [
+   "どう"
+  ],
+  "kunyomi": [],
+  "meaning": "public chamber; hall",
+  "group": 16
+ },
+ {
+  "id": 154,
+  "kanji": "鳥",
+  "onyomi": [
+   "ちょう"
+  ],
+  "kunyomi": [
+   "とり"
+  ],
+  "meaning": "bird; chicken",
+  "group": 16
+ },
+ {
+  "id": 155,
+  "kanji": "飯",
+  "onyomi": [
+   "はん"
+  ],
+  "kunyomi": [
+   "めし"
+  ],
+  "meaning": "meal; rice",
+  "group": 16
+ },
+ {
+  "id": 156,
+  "kanji": "勉",
+  "onyomi": [
+   "べん"
+  ],
+  "kunyomi": [
+   "つと（める）"
+  ],
+  "meaning": "exertion; endeavor; effort",
+  "group": 16
+ },
+ {
+  "id": 157,
+  "kanji": "冬",
+  "onyomi": [
+   "とう"
+  ],
+  "kunyomi": [
+   "ふゆ"
+  ],
+  "meaning": "winter",
+  "group": 16
+ },
+ {
+  "id": 158,
+  "kanji": "昼",
+  "onyomi": [
+   "ちゅう"
+  ],
+  "kunyomi": [
+   "ひる"
+  ],
+  "meaning": "daytime; noon",
+  "group": 16
+ },
+ {
+  "id": 159,
+  "kanji": "茶",
+  "onyomi": [
+   "ちゃ",
+   "さ"
+  ],
+  "kunyomi": [],
+  "meaning": "tea",
+  "group": 16
+ },
+ {
+  "id": 160,
+  "kanji": "弟",
+  "onyomi": [
+   "てい",
+   "だい",
+   "で"
+  ],
+  "kunyomi": [
+   "おとうと"
+  ],
+  "meaning": "younger brother",
+  "group": 16
+ },
+ {
+  "id": 161,
+  "kanji": "牛",
+  "onyomi": [
+   "ぎゅう"
+  ],
+  "kunyomi": [
+   "うし"
+  ],
+  "meaning": "cow",
+  "group": 17
+ },
+ {
+  "id": 162,
+  "kanji": "魚",
+  "onyomi": [
+   "ぎょ"
+  ],
+  "kunyomi": [
+   "うお",
+   "さかな"
+  ],
+  "meaning": "fish",
+  "group": 17
+ },
+ {
+  "id": 163,
+  "kanji": "兄",
+  "onyomi": [
+   "きょう",
+   "けい"
+  ],
+  "kunyomi": [
+   "あに"
+  ],
+  "meaning": "elder brother",
+  "group": 17
+ },
+ {
+  "id": 164,
+  "kanji": "犬",
+  "onyomi": [
+   "けん"
+  ],
+  "kunyomi": [
+   "いぬ"
+  ],
+  "meaning": "dog",
+  "group": 17
+ },
+ {
+  "id": 165,
+  "kanji": "妹",
+  "onyomi": [
+   "まい"
+  ],
+  "kunyomi": [
+   "いもうと"
+  ],
+  "meaning": "younger sister",
+  "group": 17
+ },
+ {
+  "id": 166,
+  "kanji": "姉",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "あね"
+  ],
+  "meaning": "elder sister",
+  "group": 17
+ },
+ {
+  "id": 167,
+  "kanji": "漢",
+  "onyomi": [
+   "かん"
+  ],
+  "kunyomi": [],
+  "meaning": "China; Chinese character",
+  "group": 17
+ }
+]
