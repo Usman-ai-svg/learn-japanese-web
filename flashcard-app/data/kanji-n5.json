@@ -1,0 +1,1050 @@
+[
+ {
+  "id": 1,
+  "kanji": "日",
+  "onyomi": [
+   "にち",
+   "じつ"
+  ],
+  "kunyomi": [
+   "ひ",
+   "び",
+   "か"
+  ],
+  "meaning": "day; sun; Japan; counter for days",
+  "group": 1
+ },
+ {
+  "id": 2,
+  "kanji": "一",
+  "onyomi": [
+   "いち"
+  ],
+  "kunyomi": [
+   "ひと（つ）"
+  ],
+  "meaning": "one",
+  "group": 1
+ },
+ {
+  "id": 3,
+  "kanji": "国",
+  "onyomi": [
+   "こく"
+  ],
+  "kunyomi": [
+   "くに"
+  ],
+  "meaning": "country",
+  "group": 1
+ },
+ {
+  "id": 4,
+  "kanji": "人",
+  "onyomi": [
+   "じん",
+   "にん"
+  ],
+  "kunyomi": [
+   "ひと"
+  ],
+  "meaning": "person",
+  "group": 1
+ },
+ {
+  "id": 5,
+  "kanji": "年",
+  "onyomi": [
+   "ねん"
+  ],
+  "kunyomi": [
+   "とし"
+  ],
+  "meaning": "year; counter for years",
+  "group": 1
+ },
+ {
+  "id": 6,
+  "kanji": "大",
+  "onyomi": [
+   "だい",
+   "たい"
+  ],
+  "kunyomi": [
+   "おお（きい）"
+  ],
+  "meaning": "large; big",
+  "group": 1
+ },
+ {
+  "id": 7,
+  "kanji": "十",
+  "onyomi": [
+   "じゅう"
+  ],
+  "kunyomi": [
+   "とお",
+   "と"
+  ],
+  "meaning": "ten; 10",
+  "group": 1
+ },
+ {
+  "id": 8,
+  "kanji": "二",
+  "onyomi": [
+   "に",
+   "じ"
+  ],
+  "kunyomi": [
+   "ふた（つ）"
+  ],
+  "meaning": "two; 2",
+  "group": 1
+ },
+ {
+  "id": 9,
+  "kanji": "本",
+  "onyomi": [
+   "ほん"
+  ],
+  "kunyomi": [
+   "もと"
+  ],
+  "meaning": "book; present; true; counter for long cylindrical things",
+  "group": 1
+ },
+ {
+  "id": 10,
+  "kanji": "中",
+  "onyomi": [
+   "ちゅう"
+  ],
+  "kunyomi": [
+   "なか",
+   "うち",
+   "あた（る）"
+  ],
+  "meaning": "in; inside; middle; mean; center",
+  "group": 1
+ },
+ {
+  "id": 11,
+  "kanji": "長",
+  "onyomi": [
+   "ちょう"
+  ],
+  "kunyomi": [
+   "なが（い）",
+   "おさ"
+  ],
+  "meaning": "long; leader; superior; senior",
+  "group": 2
+ },
+ {
+  "id": 12,
+  "kanji": "出",
+  "onyomi": [
+   "しゅつ",
+   "すい"
+  ],
+  "kunyomi": [
+   "で（る）",
+   "だ（す）",
+   "い（でる）"
+  ],
+  "meaning": "exit; leave; go out",
+  "group": 2
+ },
+ {
+  "id": 13,
+  "kanji": "三",
+  "onyomi": [
+   "さん"
+  ],
+  "kunyomi": [
+   "み（つ）"
+  ],
+  "meaning": "three; 3",
+  "group": 2
+ },
+ {
+  "id": 14,
+  "kanji": "時",
+  "onyomi": [
+   "じ"
+  ],
+  "kunyomi": [
+   "とき",
+   "どき"
+  ],
+  "meaning": "time; hour",
+  "group": 2
+ },
+ {
+  "id": 15,
+  "kanji": "行",
+  "onyomi": [
+   "こう",
+   "ぎょう",
+   "あん"
+  ],
+  "kunyomi": [
+   "い（く）",
+   "ゆ（く）",
+   "おこな（う）"
+  ],
+  "meaning": "going; journey; carry out; line; row",
+  "group": 2
+ },
+ {
+  "id": 16,
+  "kanji": "見",
+  "onyomi": [
+   "けん"
+  ],
+  "kunyomi": [
+   "み（る）",
+   "み（せる）"
+  ],
+  "meaning": "see; hopes; chances; idea; opinion; look at; visible",
+  "group": 2
+ },
+ {
+  "id": 17,
+  "kanji": "月",
+  "onyomi": [
+   "げつ",
+   "がつ"
+  ],
+  "kunyomi": [
+   "つき"
+  ],
+  "meaning": "month; moon",
+  "group": 2
+ },
+ {
+  "id": 18,
+  "kanji": "分",
+  "onyomi": [
+   "ぶん",
+   "ふん",
+   "ぶ"
+  ],
+  "kunyomi": [
+   "わ（ける）"
+  ],
+  "meaning": "part; minute of time; understand",
+  "group": 2
+ },
+ {
+  "id": 19,
+  "kanji": "後",
+  "onyomi": [
+   "ご",
+   "こう"
+  ],
+  "kunyomi": [
+   "のち",
+   "うし（ろ）",
+   "あと"
+  ],
+  "meaning": "behind; back; later",
+  "group": 2
+ },
+ {
+  "id": 20,
+  "kanji": "前",
+  "onyomi": [
+   "ぜん"
+  ],
+  "kunyomi": [
+   "まえ"
+  ],
+  "meaning": "in front; before",
+  "group": 2
+ },
+ {
+  "id": 21,
+  "kanji": "生",
+  "onyomi": [
+   "せい",
+   "しょう"
+  ],
+  "kunyomi": [
+   "い（きる）",
+   "う（む）",
+   "お（う）",
+   "は（える）",
+   "なま"
+  ],
+  "meaning": "life; genuine; birth",
+  "group": 3
+ },
+ {
+  "id": 22,
+  "kanji": "五",
+  "onyomi": [
+   "ご"
+  ],
+  "kunyomi": [
+   "いつ（つ）"
+  ],
+  "meaning": "five; 5",
+  "group": 3
+ },
+ {
+  "id": 23,
+  "kanji": "間",
+  "onyomi": [
+   "かん",
+   "けん"
+  ],
+  "kunyomi": [
+   "あいだ",
+   "ま",
+   "あい"
+  ],
+  "meaning": "interval; space",
+  "group": 3
+ },
+ {
+  "id": 24,
+  "kanji": "上",
+  "onyomi": [
+   "じょう",
+   "しょう"
+  ],
+  "kunyomi": [
+   "うえ",
+   "うわ",
+   "かみ",
+   "あ（げる）",
+   "のぼ（る）",
+   "たてまつ（る）"
+  ],
+  "meaning": "above; up",
+  "group": 3
+ },
+ {
+  "id": 25,
+  "kanji": "東",
+  "onyomi": [
+   "とう"
+  ],
+  "kunyomi": [
+   "ひがし"
+  ],
+  "meaning": "east",
+  "group": 3
+ },
+ {
+  "id": 26,
+  "kanji": "四",
+  "onyomi": [
+   "し"
+  ],
+  "kunyomi": [
+   "よ（つ）",
+   "よん"
+  ],
+  "meaning": "four; 4",
+  "group": 3
+ },
+ {
+  "id": 27,
+  "kanji": "今",
+  "onyomi": [
+   "こん",
+   "きん"
+  ],
+  "kunyomi": [
+   "いま"
+  ],
+  "meaning": "now; the present",
+  "group": 3
+ },
+ {
+  "id": 28,
+  "kanji": "金",
+  "onyomi": [
+   "きん",
+   "こん",
+   "ごん"
+  ],
+  "kunyomi": [
+   "かね",
+   "かな"
+  ],
+  "meaning": "gold",
+  "group": 3
+ },
+ {
+  "id": 29,
+  "kanji": "九",
+  "onyomi": [
+   "きゅう",
+   "く"
+  ],
+  "kunyomi": [
+   "ここの（つ）"
+  ],
+  "meaning": "nine; 9",
+  "group": 3
+ },
+ {
+  "id": 30,
+  "kanji": "入",
+  "onyomi": [
+   "にゅう"
+  ],
+  "kunyomi": [
+   "い（る）",
+   "はい（る）"
+  ],
+  "meaning": "enter; insert",
+  "group": 3
+ },
+ {
+  "id": 31,
+  "kanji": "学",
+  "onyomi": [
+   "がく"
+  ],
+  "kunyomi": [
+   "まな（ぶ）"
+  ],
+  "meaning": "study; learning; science",
+  "group": 4
+ },
+ {
+  "id": 32,
+  "kanji": "高",
+  "onyomi": [
+   "こう"
+  ],
+  "kunyomi": [
+   "たか（い）"
+  ],
+  "meaning": "tall; high; expensive",
+  "group": 4
+ },
+ {
+  "id": 33,
+  "kanji": "円",
+  "onyomi": [
+   "えん"
+  ],
+  "kunyomi": [
+   "まる（い）"
+  ],
+  "meaning": "circle; yen; round",
+  "group": 4
+ },
+ {
+  "id": 34,
+  "kanji": "子",
+  "onyomi": [
+   "し",
+   "す"
+  ],
+  "kunyomi": [
+   "こ",
+   "ね"
+  ],
+  "meaning": "child",
+  "group": 4
+ },
+ {
+  "id": 35,
+  "kanji": "外",
+  "onyomi": [
+   "がい",
+   "げ"
+  ],
+  "kunyomi": [
+   "そと",
+   "ほか",
+   "はず（す）"
+  ],
+  "meaning": "outside",
+  "group": 4
+ },
+ {
+  "id": 36,
+  "kanji": "八",
+  "onyomi": [
+   "はち"
+  ],
+  "kunyomi": [
+   "や（つ）",
+   "よう"
+  ],
+  "meaning": "eight; 8",
+  "group": 4
+ },
+ {
+  "id": 37,
+  "kanji": "六",
+  "onyomi": [
+   "ろく"
+  ],
+  "kunyomi": [
+   "む（つ）",
+   "むい"
+  ],
+  "meaning": "six; 6",
+  "group": 4
+ },
+ {
+  "id": 38,
+  "kanji": "下",
+  "onyomi": [
+   "か",
+   "げ"
+  ],
+  "kunyomi": [
+   "した",
+   "しも",
+   "もと",
+   "さ（げる）",
+   "くだ（る）",
+   "お（ろす）"
+  ],
+  "meaning": "below; down; descend; give; low; inferior",
+  "group": 4
+ },
+ {
+  "id": 39,
+  "kanji": "来",
+  "onyomi": [
+   "らい",
+   "たい"
+  ],
+  "kunyomi": [
+   "くる",
+   "きたる",
+   "き",
+   "こ"
+  ],
+  "meaning": "come; due; next; cause; become",
+  "group": 4
+ },
+ {
+  "id": 40,
+  "kanji": "気",
+  "onyomi": [
+   "き",
+   "け"
+  ],
+  "kunyomi": [
+   "いき"
+  ],
+  "meaning": "spirit; mind; air; atmosphere; mood",
+  "group": 4
+ },
+ {
+  "id": 41,
+  "kanji": "小",
+  "onyomi": [
+   "しょう"
+  ],
+  "kunyomi": [
+   "ちい（さい）"
+  ],
+  "meaning": "little; small",
+  "group": 5
+ },
+ {
+  "id": 42,
+  "kanji": "七",
+  "onyomi": [
+   "しち"
+  ],
+  "kunyomi": [
+   "なな（つ）",
+   "なの"
+  ],
+  "meaning": "seven; 7",
+  "group": 5
+ },
+ {
+  "id": 43,
+  "kanji": "山",
+  "onyomi": [
+   "さん",
+   "せん"
+  ],
+  "kunyomi": [
+   "やま"
+  ],
+  "meaning": "mountain",
+  "group": 5
+ },
+ {
+  "id": 44,
+  "kanji": "話",
+  "onyomi": [
+   "わ"
+  ],
+  "kunyomi": [
+   "はな（す）",
+   "はなし"
+  ],
+  "meaning": "tale; talk",
+  "group": 5
+ },
+ {
+  "id": 45,
+  "kanji": "女",
+  "onyomi": [
+   "じょ"
+  ],
+  "kunyomi": [
+   "おんな",
+   "め"
+  ],
+  "meaning": "woman; female",
+  "group": 5
+ },
+ {
+  "id": 46,
+  "kanji": "北",
+  "onyomi": [
+   "ほく"
+  ],
+  "kunyomi": [
+   "きた"
+  ],
+  "meaning": "north",
+  "group": 5
+ },
+ {
+  "id": 47,
+  "kanji": "午",
+  "onyomi": [
+   "ご"
+  ],
+  "kunyomi": [
+   "うま"
+  ],
+  "meaning": "noon; sign of the horse",
+  "group": 5
+ },
+ {
+  "id": 48,
+  "kanji": "百",
+  "onyomi": [
+   "ひゃく",
+   "びゃく"
+  ],
+  "kunyomi": [
+   "もも"
+  ],
+  "meaning": "hundred",
+  "group": 5
+ },
+ {
+  "id": 49,
+  "kanji": "書",
+  "onyomi": [
+   "しょ"
+  ],
+  "kunyomi": [
+   "か（く）"
+  ],
+  "meaning": "write",
+  "group": 5
+ },
+ {
+  "id": 50,
+  "kanji": "先",
+  "onyomi": [
+   "せん"
+  ],
+  "kunyomi": [
+   "さき",
+   "ま（ず）"
+  ],
+  "meaning": "before; ahead; previous; future; precedence",
+  "group": 5
+ },
+ {
+  "id": 51,
+  "kanji": "名",
+  "onyomi": [
+   "めい",
+   "みょう"
+  ],
+  "kunyomi": [
+   "な"
+  ],
+  "meaning": "name; noted; distinguished; reputation",
+  "group": 6
+ },
+ {
+  "id": 52,
+  "kanji": "川",
+  "onyomi": [
+   "せん"
+  ],
+  "kunyomi": [
+   "かわ"
+  ],
+  "meaning": "river; stream",
+  "group": 6
+ },
+ {
+  "id": 53,
+  "kanji": "千",
+  "onyomi": [
+   "せん"
+  ],
+  "kunyomi": [
+   "ち"
+  ],
+  "meaning": "thousand",
+  "group": 6
+ },
+ {
+  "id": 54,
+  "kanji": "水",
+  "onyomi": [
+   "すい"
+  ],
+  "kunyomi": [
+   "みず"
+  ],
+  "meaning": "water",
+  "group": 6
+ },
+ {
+  "id": 55,
+  "kanji": "半",
+  "onyomi": [
+   "はん"
+  ],
+  "kunyomi": [
+   "なか（ば）"
+  ],
+  "meaning": "half; middle; odd number; semi-",
+  "group": 6
+ },
+ {
+  "id": 56,
+  "kanji": "男",
+  "onyomi": [
+   "だん",
+   "なん"
+  ],
+  "kunyomi": [
+   "おとこ",
+   "お"
+  ],
+  "meaning": "male; man",
+  "group": 6
+ },
+ {
+  "id": 57,
+  "kanji": "西",
+  "onyomi": [
+   "せい",
+   "さい"
+  ],
+  "kunyomi": [
+   "にし"
+  ],
+  "meaning": "west",
+  "group": 6
+ },
+ {
+  "id": 58,
+  "kanji": "電",
+  "onyomi": [
+   "でん"
+  ],
+  "kunyomi": [],
+  "meaning": "electricity; electric powered",
+  "group": 6
+ },
+ {
+  "id": 59,
+  "kanji": "校",
+  "onyomi": [
+   "こう"
+  ],
+  "kunyomi": [],
+  "meaning": "school; exam",
+  "group": 6
+ },
+ {
+  "id": 60,
+  "kanji": "語",
+  "onyomi": [
+   "ご"
+  ],
+  "kunyomi": [
+   "かた（る）"
+  ],
+  "meaning": "word; speech; language",
+  "group": 6
+ },
+ {
+  "id": 61,
+  "kanji": "土",
+  "onyomi": [
+   "ど",
+   "と"
+  ],
+  "kunyomi": [
+   "つち"
+  ],
+  "meaning": "soil; earth; ground",
+  "group": 7
+ },
+ {
+  "id": 62,
+  "kanji": "木",
+  "onyomi": [
+   "ぼく",
+   "もく"
+  ],
+  "kunyomi": [
+   "き",
+   "こ"
+  ],
+  "meaning": "tree; wood",
+  "group": 7
+ },
+ {
+  "id": 63,
+  "kanji": "聞",
+  "onyomi": [
+   "ぶん",
+   "もん"
+  ],
+  "kunyomi": [
+   "き（く）"
+  ],
+  "meaning": "to hear; to listen; to ask",
+  "group": 7
+ },
+ {
+  "id": 64,
+  "kanji": "食",
+  "onyomi": [
+   "しょく",
+   "じき"
+  ],
+  "kunyomi": [
+   "く（う）",
+   "た（べる）",
+   "は（む）"
+  ],
+  "meaning": "eat; food",
+  "group": 7
+ },
+ {
+  "id": 65,
+  "kanji": "車",
+  "onyomi": [
+   "しゃ"
+  ],
+  "kunyomi": [
+   "くるま"
+  ],
+  "meaning": "car; wheel",
+  "group": 7
+ },
+ {
+  "id": 66,
+  "kanji": "何",
+  "onyomi": [
+   "か"
+  ],
+  "kunyomi": [
+   "なに",
+   "なん"
+  ],
+  "meaning": "what",
+  "group": 7
+ },
+ {
+  "id": 67,
+  "kanji": "南",
+  "onyomi": [
+   "なん",
+   "な"
+  ],
+  "kunyomi": [
+   "みなみ"
+  ],
+  "meaning": "south",
+  "group": 7
+ },
+ {
+  "id": 68,
+  "kanji": "万",
+  "onyomi": [
+   "まん",
+   "ばん"
+  ],
+  "kunyomi": [],
+  "meaning": "ten thousand; 10,000",
+  "group": 7
+ },
+ {
+  "id": 69,
+  "kanji": "毎",
+  "onyomi": [
+   "まい"
+  ],
+  "kunyomi": [
+   "ごと（に）"
+  ],
+  "meaning": "every",
+  "group": 7
+ },
+ {
+  "id": 70,
+  "kanji": "白",
+  "onyomi": [
+   "はく",
+   "びゃく"
+  ],
+  "kunyomi": [
+   "しろ（い）"
+  ],
+  "meaning": "white",
+  "group": 7
+ },
+ {
+  "id": 71,
+  "kanji": "天",
+  "onyomi": [
+   "てん"
+  ],
+  "kunyomi": [
+   "あま"
+  ],
+  "meaning": "heavens; sky; imperial",
+  "group": 8
+ },
+ {
+  "id": 72,
+  "kanji": "母",
+  "onyomi": [
+   "ぼ"
+  ],
+  "kunyomi": [
+   "はは",
+   "かあ"
+  ],
+  "meaning": "mother",
+  "group": 8
+ },
+ {
+  "id": 73,
+  "kanji": "火",
+  "onyomi": [
+   "か"
+  ],
+  "kunyomi": [
+   "ひ",
+   "び",
+   "ほ"
+  ],
+  "meaning": "fire",
+  "group": 8
+ },
+ {
+  "id": 74,
+  "kanji": "右",
+  "onyomi": [
+   "う",
+   "ゆう"
+  ],
+  "kunyomi": [
+   "みぎ"
+  ],
+  "meaning": "right (direction)",
+  "group": 8
+ },
+ {
+  "id": 75,
+  "kanji": "読",
+  "onyomi": [
+   "どく",
+   "とく",
+   "とう"
+  ],
+  "kunyomi": [
+   "よ（む）"
+  ],
+  "meaning": "to read",
+  "group": 8
+ },
+ {
+  "id": 76,
+  "kanji": "友",
+  "onyomi": [
+   "ゆう"
+  ],
+  "kunyomi": [
+   "とも"
+  ],
+  "meaning": "friend",
+  "group": 8
+ },
+ {
+  "id": 77,
+  "kanji": "左",
+  "onyomi": [
+   "さ",
+   "しゃ"
+  ],
+  "kunyomi": [
+   "ひだり"
+  ],
+  "meaning": "left",
+  "group": 8
+ },
+ {
+  "id": 78,
+  "kanji": "休",
+  "onyomi": [
+   "きゅう"
+  ],
+  "kunyomi": [
+   "やす（む）"
+  ],
+  "meaning": "rest; day off; retire; sleep",
+  "group": 8
+ },
+ {
+  "id": 79,
+  "kanji": "父",
+  "onyomi": [
+   "ふ"
+  ],
+  "kunyomi": [
+   "ちち",
+   "とう"
+  ],
+  "meaning": "father",
+  "group": 8
+ },
+ {
+  "id": 80,
+  "kanji": "雨",
+  "onyomi": [
+   "う"
+  ],
+  "kunyomi": [
+   "あめ",
+   "あま"
+  ],
+  "meaning": "rain",
+  "group": 8
+ }
+]

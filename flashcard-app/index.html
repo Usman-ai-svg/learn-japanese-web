@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>N5 単語 — Flashcard SRS</title>
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <div class="app-shell">
@@ -19,6 +19,9 @@
         </button>
         <button class="nav-item" data-view="list">
           <span class="nav-icon">📋</span><span>Daftar Kosakata</span>
+        </button>
+        <button class="nav-item" data-view="kanji">
+          <span class="nav-icon">🀄</span><span>Kanji Quizzer</span>
         </button>
       </nav>
     </aside>
@@ -98,10 +101,41 @@
             </table>
           </div>
         </section>
+
+        <section id="view-kanji" class="view hidden">
+          <div class="kq-header">
+            <div class="fmt-toggle" id="kqQuestionFormatToggle">
+              <button data-fmt="kanji" class="fmt-btn">Kanji</button>
+              <button data-fmt="kana" class="fmt-btn">Kana</button>
+              <button data-fmt="english" class="fmt-btn">English</button>
+            </div>
+            <div class="kq-score">
+              <span class="kq-score-correct">✓ <b id="kqCorrect">0</b></span>
+              <span class="kq-score-wrong">✘ <b id="kqWrong">0</b></span>
+            </div>
+          </div>
+
+          <div class="kq-meta">
+            <span id="kqGroupLabel"></span>
+            <span id="kqPositionLabel"></span>
+          </div>
+
+          <div class="kq-question" id="kqQuestion"></div>
+
+          <div class="kq-choices" id="kqChoices"></div>
+
+          <div class="fmt-toggle kq-answer-toggle" id="kqAnswerFormatToggle"></div>
+
+          <div id="kqDone" class="hidden">
+            <h2>🎉 Kuis selesai!</h2>
+            <p id="kqDoneSummary"></p>
+            <button id="kqRestartBtn" class="primary">Main lagi</button>
+          </div>
+        </section>
       </main>
     </div>
   </div>
 
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
