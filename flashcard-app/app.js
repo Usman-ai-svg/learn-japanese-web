@@ -33,6 +33,15 @@ const el = {
   statMastered: document.getElementById("statMastered"),
   statTotal: document.getElementById("statTotal"),
   toast: document.getElementById("toast"),
+  sidebar: document.getElementById("sidebar"),
+  sidebarToggle: document.getElementById("sidebarToggle"),
+  sidebarOverlay: document.getElementById("sidebarOverlay"),
+  navItems: document.querySelectorAll(".nav-item"),
+  viewFlashcard: document.getElementById("view-flashcard"),
+  viewList: document.getElementById("view-list"),
+  vocabSearch: document.getElementById("vocabSearch"),
+  listCount: document.getElementById("listCount"),
+  vocabTableBody: document.getElementById("vocabTableBody"),
 };
 
 function loadProgress() {
@@ -188,6 +197,83 @@ function updateStats() {
   el.statTotal.textContent = total;
 }
 
+function statusFor(id) {
+  const s = progress[id];
+  if (!s) return { key: "baru", label: "Baru" };
+  if (s.box >= MAX_BOX) return { key: "dikuasai", label: "Dikuasai" };
+  return { key: "belajar", label: "Belajar" };
+}
+
+function renderVocabList(query) {
+  const q = (query || "").trim().toLowerCase();
+  const rows = !q
+    ? vocab
+    : vocab.filter(v =>
+        v.kanji.toLowerCase().includes(q) ||
+        v.kana.toLowerCase().includes(q) ||
+        v.romaji.toLowerCase().includes(q) ||
+        v.meaning.toLowerCase().includes(q)
+      );
+
+  el.vocabTableBody.textContent = "";
+  const frag = document.createDocumentFragment();
+
+  rows.forEach(v => {
+    const status = statusFor(v.id);
+    const tr = document.createElement("tr");
+
+    const cells = [
+      { text: v.kanji, cls: "kanji-cell" },
+      { text: v.kana, cls: "kana-cell" },
+      { text: v.romaji, cls: "romaji-cell" },
+      { text: v.type.split(",")[0].trim(), cls: "type-cell" },
+      { text: v.meaning, cls: "" },
+    ];
+    cells.forEach(c => {
+      const td = document.createElement("td");
+      if (c.cls) td.className = c.cls;
+      td.textContent = c.text;
+      tr.appendChild(td);
+    });
+
+    const statusTd = document.createElement("td");
+    const pill = document.createElement("span");
+    pill.className = `status-pill ${status.key}`;
+    pill.textContent = status.label;
+    statusTd.appendChild(pill);
+    tr.appendChild(statusTd);
+
+    frag.appendChild(tr);
+  });
+
+  el.vocabTableBody.appendChild(frag);
+  el.listCount.textContent = `${rows.length} / ${vocab.length} kata`;
+}
+
+function switchView(view) {
+  el.navItems.forEach(btn => btn.classList.toggle("active", btn.dataset.view === view));
+  el.viewFlashcard.classList.toggle("hidden", view !== "flashcard");
+  el.viewList.classList.toggle("hidden", view !== "list");
+
+  if (view === "list") {
+    renderVocabList(el.vocabSearch.value);
+  }
+
+  closeSidebar();
+}
+
+function openSidebar() {
+  el.sidebar.classList.add("open");
+  el.sidebarOverlay.classList.remove("hidden");
+  el.sidebarOverlay.classList.add("open");
+}
+
+function closeSidebar() {
+  el.sidebar.classList.remove("open");
+  el.sidebarOverlay.classList.remove("open");
+  el.sidebarOverlay.classList.add("hidden");
+}
+
 function showToast(msg) {
   el.toast.textContent = msg;
   el.toast.classList.add("show");
@@ -243,6 +329,15 @@ function init() {
       showToast("Progres direset");
     }
   });
+
+  el.navItems.forEach(btn => {
+    btn.addEventListener("click", () => switchView(btn.dataset.view));
+  });
+
+  el.sidebarToggle.addEventListener("click", openSidebar);
+  el.sidebarOverlay.addEventListener("click", closeSidebar);
+
+  el.vocabSearch.addEventListener("input", () => renderVocabList(el.vocabSearch.value));
 }
 
 init();

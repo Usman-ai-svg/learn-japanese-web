@@ -4,62 +4,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>N5 単語 — Flashcard SRS</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
-  <header class="topbar">
-    <h1>N5 単語<span>Flashcard SRS</span></h1>
-    <div class="stats">
-      <div class="stat"><span id="statDue">0</span><label>Jatuh tempo</label></div>
-      <div class="stat"><span id="statLearning">0</span><label>Dipelajari</label></div>
-      <div class="stat"><span id="statMastered">0</span><label>Dikuasai</label></div>
-      <div class="stat"><span id="statTotal">0</span><label>Total</label></div>
-    </div>
-  </header>
+  <div class="app-shell">
+    <button id="sidebarToggle" class="sidebar-toggle" aria-label="Buka menu">☰</button>
+    <div id="sidebarOverlay" class="sidebar-overlay hidden"></div>
 
-  <main>
-    <div id="progressWrap">
-      <div id="progressBar"></div>
-    </div>
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">N5 単語<span>Flashcard SRS</span></div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="flashcard">
+          <span class="nav-icon">🎴</span><span>Flashcard</span>
+        </button>
+        <button class="nav-item" data-view="list">
+          <span class="nav-icon">📋</span><span>Daftar Kosakata</span>
+        </button>
+      </nav>
+    </aside>
 
-    <section id="cardStage">
-      <div id="emptyState" class="hidden">
-        <h2>🎉 Semua kartu jatuh-tempo sudah selesai!</h2>
-        <p>Kembali lagi nanti, atau pelajari lebih banyak kartu baru sekarang.</p>
-        <button id="studyMoreBtn" class="primary">Pelajari kartu baru</button>
-      </div>
-
-      <div id="card" class="card">
-        <div class="card-box" id="cardBox">
-          <div class="card-face card-front">
-            <span class="badge" id="cardType"></span>
-            <button id="hintBtn" class="hint-btn" title="Tampilkan hiragana/katakana (H)">💡 Hint</button>
-            <div class="kanji" id="cardKanji"></div>
-            <div class="kana-hint" id="cardKanaHint"></div>
-            <div class="hint">Klik kartu atau tekan Spasi untuk membuka</div>
-          </div>
-          <div class="card-face card-back">
-            <div class="kanji small" id="cardKanjiBack"></div>
-            <div class="kana" id="cardKana"></div>
-            <div class="romaji" id="cardRomaji"></div>
-            <div class="meaning" id="cardMeaning"></div>
-          </div>
+    <div class="app-main">
+      <header class="topbar">
+        <div class="stats">
+          <div class="stat"><span id="statDue">0</span><label>Jatuh tempo</label></div>
+          <div class="stat"><span id="statLearning">0</span><label>Dipelajari</label></div>
+          <div class="stat"><span id="statMastered">0</span><label>Dikuasai</label></div>
+          <div class="stat"><span id="statTotal">0</span><label>Total</label></div>
         </div>
-      </div>
+      </header>
 
-      <div id="rateButtons" class="rate-buttons hidden">
-        <button data-rate="belum" class="rate belum">Belum Hafal<small>2x lebih sering</small></button>
-        <button data-rate="hafal" class="rate hafal">Hafal Arti<small>normal</small></button>
-        <button data-rate="sudah" class="rate sudah">Sudah Hafal<small>0,5x lebih sering</small></button>
-      </div>
-    </section>
+      <main>
+        <section id="view-flashcard" class="view">
+          <div id="progressWrap">
+            <div id="progressBar"></div>
+          </div>
 
-    <div class="toolbar">
-      <button id="resetProgressBtn" class="ghost">Reset progres</button>
-      <span id="toast"></span>
+          <section id="cardStage">
+            <div id="emptyState" class="hidden">
+              <h2>🎉 Semua kartu jatuh-tempo sudah selesai!</h2>
+              <p>Kembali lagi nanti, atau pelajari lebih banyak kartu baru sekarang.</p>
+              <button id="studyMoreBtn" class="primary">Pelajari kartu baru</button>
+            </div>
+
+            <div id="card" class="card">
+              <div class="card-box" id="cardBox">
+                <div class="card-face card-front">
+                  <span class="badge" id="cardType"></span>
+                  <button id="hintBtn" class="hint-btn" title="Tampilkan hiragana/katakana (H)">💡 Hint</button>
+                  <div class="kanji" id="cardKanji"></div>
+                  <div class="kana-hint" id="cardKanaHint"></div>
+                  <div class="hint">Klik kartu atau tekan Spasi untuk membuka</div>
+                </div>
+                <div class="card-face card-back">
+                  <div class="kanji small" id="cardKanjiBack"></div>
+                  <div class="kana" id="cardKana"></div>
+                  <div class="romaji" id="cardRomaji"></div>
+                  <div class="meaning" id="cardMeaning"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="rateButtons" class="rate-buttons hidden">
+              <button data-rate="belum" class="rate belum">Belum Hafal<small>2x lebih sering</small></button>
+              <button data-rate="hafal" class="rate hafal">Hafal Arti<small>normal</small></button>
+              <button data-rate="sudah" class="rate sudah">Sudah Hafal<small>0,5x lebih sering</small></button>
+            </div>
+          </section>
+
+          <div class="toolbar">
+            <button id="resetProgressBtn" class="ghost">Reset progres</button>
+            <span id="toast"></span>
+          </div>
+        </section>
+
+        <section id="view-list" class="view hidden">
+          <div class="list-toolbar">
+            <input type="search" id="vocabSearch" placeholder="Cari kanji, kana, romaji, atau arti...">
+            <span id="listCount" class="list-count"></span>
+          </div>
+          <div class="vocab-table-wrap">
+            <table class="vocab-table">
+              <thead>
+                <tr>
+                  <th>Kanji</th>
+                  <th>Kana</th>
+                  <th>Romaji</th>
+                  <th>Jenis</th>
+                  <th>Arti</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="vocabTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
-  </main>
+  </div>
 
-<script src="app.js"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>
