@@ -226,7 +226,7 @@ function renderVocabList(query) {
       { text: v.kanji, cls: "kanji-cell" },
       { text: v.kana, cls: "kana-cell" },
       { text: v.romaji, cls: "romaji-cell" },
-      { text: v.type.split(",")[0].trim(), cls: "type-cell" },
+      { text: v.type.split(",").map(t => t.trim()).join(", "), cls: "type-cell" },
       { text: v.meaning, cls: "" },
     ];
     cells.forEach(c => {
