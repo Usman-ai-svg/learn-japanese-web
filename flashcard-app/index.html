@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn Japanese</title>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
   <div class="app-shell">
@@ -149,7 +149,19 @@
             <span id="kqPositionLabel"></span>
           </div>
 
-          <div class="kq-question" id="kqQuestion"></div>
+          <div class="kq-card-flip" id="kqCardFlip">
+            <div class="kq-card-flip-inner" id="kqCardFlipInner">
+              <div class="kq-question" id="kqQuestion"></div>
+              <div class="kq-answer-back" id="kqAnswerBack">
+                <div class="kanji small" id="kqBackKanji"></div>
+                <div class="reading-block" id="kqBackReadings">
+                  <div class="reading-line"><span class="reading-label">On'yomi</span><span id="kqBackOnyomi"></span></div>
+                  <div class="reading-line"><span class="reading-label">Kun'yomi</span><span id="kqBackKunyomi"></span></div>
+                </div>
+                <div class="meaning" id="kqBackMeaning"></div>
+              </div>
+            </div>
+          </div>
 
           <div class="kq-choices" id="kqChoices"></div>
 
@@ -262,6 +274,10 @@
                 <div class="card-face card-back">
                   <div class="kanji small" id="spCardFrontBack"></div>
                   <div class="kana" id="spCardKana"></div>
+                  <div class="reading-block hidden" id="spCardReadings">
+                    <div class="reading-line"><span class="reading-label">On'yomi</span><span id="spCardOnyomi"></span></div>
+                    <div class="reading-line"><span class="reading-label">Kun'yomi</span><span id="spCardKunyomi"></span></div>
+                  </div>
                   <div class="meaning" id="spCardMeaning"></div>
                 </div>
               </div>
@@ -299,6 +315,6 @@
     </div>
   </div>
 
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>

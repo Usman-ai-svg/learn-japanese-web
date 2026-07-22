@@ -16,10 +16,29 @@ function chunk(arr, size) {
   return out;
 }
 
+// Deterministic shuffle (fixed seed) so level composition stays the same across
+// reloads/days instead of re-randomizing every page load. Used only to decide
+// which words fall into which level -- the original alphabetical vocabByLevel
+// arrays are left untouched for Daftar Kosakata and the "Semua kata" SRS queue.
+function seededShuffle(arr, seed) {
+  const out = [...arr];
+  let s = seed >>> 0;
+  const rand = () => {
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
 let vocabByLevel = { N5: [], N4: [] };
+let vocabLevelOrder = { N5: [], N4: [] }; // seeded-shuffled copies, used only for level chunking
 let progressByLevel = { N5: {}, N4: {} };
 let vocabLevel = "N5";
-let vocabLevelIndex = null; // null = semua kata; else index into chunk(vocabByLevel[vocabLevel], 10)
+let vocabLevelIndex = null; // null = semua kata; else index into chunk(vocabLevelOrder[vocabLevel], 10)
 let vocab = [];       // active scope: vocabByLevel[vocabLevel], or a 10-word level slice of it
 let progress = {};    // points to progressByLevel[vocabLevel]; id -> { box, due (ms) }
 let queue = [];       // ids for current session
@@ -106,6 +125,11 @@ const el = {
   kqQuestionFormatToggle: document.getElementById("kqQuestionFormatToggle"),
   kqAnswerFormatToggle: document.getElementById("kqAnswerFormatToggle"),
   kqQuestion: document.getElementById("kqQuestion"),
+  kqCardFlipInner: document.getElementById("kqCardFlipInner"),
+  kqBackKanji: document.getElementById("kqBackKanji"),
+  kqBackOnyomi: document.getElementById("kqBackOnyomi"),
+  kqBackKunyomi: document.getElementById("kqBackKunyomi"),
+  kqBackMeaning: document.getElementById("kqBackMeaning"),
   kqChoices: document.getElementById("kqChoices"),
   kqGroupLabel: document.getElementById("kqGroupLabel"),
   kqPositionLabel: document.getElementById("kqPositionLabel"),
@@ -146,6 +170,9 @@ const el = {
   spCardFront: document.getElementById("spCardFront"),
   spCardFrontBack: document.getElementById("spCardFrontBack"),
   spCardKana: document.getElementById("spCardKana"),
+  spCardReadings: document.getElementById("spCardReadings"),
+  spCardOnyomi: document.getElementById("spCardOnyomi"),
+  spCardKunyomi: document.getElementById("spCardKunyomi"),
   spCardMeaning: document.getElementById("spCardMeaning"),
   spPrevBtn: document.getElementById("spPrevBtn"),
   spNextBtn: document.getElementById("spNextBtn"),
@@ -187,9 +214,8 @@ function renderVocabLevelToggles() {
 }
 
 function activeVocabList() {
-  const full = vocabByLevel[vocabLevel];
-  if (vocabLevelIndex === null) return full;
-  return chunk(full, 10)[vocabLevelIndex] || full;
+  if (vocabLevelIndex === null) return vocabByLevel[vocabLevel];
+  return chunk(vocabLevelOrder[vocabLevel], 10)[vocabLevelIndex] || vocabByLevel[vocabLevel];
 }
 
 function renderVocabLevelSelect() {
@@ -200,12 +226,10 @@ function renderVocabLevelSelect() {
   allOpt.textContent = "Semua kata";
   sel.appendChild(allOpt);
 
-  chunk(vocabByLevel[vocabLevel], 10).forEach((levelWords, i) => {
-    const start = i * 10 + 1;
-    const end = start + levelWords.length - 1;
+  chunk(vocabLevelOrder[vocabLevel], 10).forEach((levelWords, i) => {
     const opt = document.createElement("option");
     opt.value = String(i);
-    opt.textContent = `Level ${i + 1} (kata ${start}-${end})`;
+    opt.textContent = `Level ${i + 1} (${levelWords.length} kata)`;
     sel.appendChild(opt);
   });
 
@@ -544,6 +568,8 @@ function kqSetAnswerFormat(fmt) {
 }
 
 function kqShowQuestion() {
+  el.kqCardFlipInner.classList.remove("flipped");
+
   if (kqIndex >= kqQueue.length) {
     document.querySelectorAll(".kq-header").forEach(el2 => el2.classList.add("hidden"));
     document.querySelector(".kq-meta").classList.add("hidden");
@@ -570,6 +596,11 @@ function kqShowQuestion() {
   el.kqQuestion.textContent = kqDisplayValue(kqCurrentEntry, kqQuestionFormat);
   el.kqGroupLabel.textContent = `JLPT ${kqLevel} Group ${kqCurrentEntry.group}`;
   el.kqPositionLabel.textContent = `${kqIndex + 1} of ${kqQueue.length}`;
+
+  el.kqBackKanji.textContent = kqCurrentEntry.kanji;
+  el.kqBackOnyomi.textContent = kqCurrentEntry.onyomi.length ? kqCurrentEntry.onyomi.join("、") : "-";
+  el.kqBackKunyomi.textContent = kqCurrentEntry.kunyomi.length ? kqCurrentEntry.kunyomi.join("、") : "-";
+  el.kqBackMeaning.textContent = kqCurrentEntry.meaning;
 
   const correctValue = kqDisplayValue(kqCurrentEntry, kqAnswerFormat);
   const pool = kqActiveList().filter(k => k.id !== kqCurrentEntry.id);
@@ -620,10 +651,12 @@ function kqSelectAnswer(entry, btnEl) {
     }
   });
 
+  el.kqCardFlipInner.classList.add("flipped");
+
   setTimeout(() => {
     kqIndex++;
     kqShowQuestion();
-  }, 900);
+  }, 1700);
 }
 
 function pqBuildQueue() {
@@ -797,7 +830,7 @@ function spSave() {
 }
 
 function spVocabPool() {
-  return [...vocabByLevel.N5, ...vocabByLevel.N4];
+  return [...vocabLevelOrder.N5, ...vocabLevelOrder.N4];
 }
 
 function spKanjiPool() {
@@ -1019,6 +1052,8 @@ function spShowBrowseCard() {
     el.spCardFront.textContent = "-";
     el.spCardFrontBack.textContent = "-";
     el.spCardKana.textContent = "";
+    el.spCardKana.classList.remove("hidden");
+    el.spCardReadings.classList.add("hidden");
     el.spCardMeaning.textContent = "Tidak ada konten baru untuk hari ini.";
     el.spBrowsePos.textContent = "0 of 0";
     return;
@@ -1033,9 +1068,14 @@ function spShowBrowseCard() {
   if (spBrowseKind === "vocab") {
     el.spCardType.textContent = entry.type.split(",")[0].trim();
     el.spCardKana.textContent = entry.kana;
+    el.spCardKana.classList.remove("hidden");
+    el.spCardReadings.classList.add("hidden");
   } else {
     el.spCardType.textContent = "Kanji";
-    el.spCardKana.textContent = entry.kunyomi[0] || entry.onyomi[0] || "";
+    el.spCardKana.classList.add("hidden");
+    el.spCardReadings.classList.remove("hidden");
+    el.spCardOnyomi.textContent = entry.onyomi.length ? entry.onyomi.join("、") : "-";
+    el.spCardKunyomi.textContent = entry.kunyomi.length ? entry.kunyomi.join("、") : "-";
   }
 }
 
@@ -1218,6 +1258,8 @@ function init() {
     .then(([n5, n4]) => {
       vocabByLevel.N5 = n5;
       vocabByLevel.N4 = n4;
+      vocabLevelOrder.N5 = seededShuffle(n5, 20260722);
+      vocabLevelOrder.N4 = seededShuffle(n4, 20260723);
       vocab = activeVocabList();
       renderVocabLevelSelect();
       buildQueue();
