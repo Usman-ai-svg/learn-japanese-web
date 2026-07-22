@@ -39,6 +39,24 @@ function kqActiveList() {
   return kqLevel === "N4" ? kanjiListN4 : kanjiListN5;
 }
 
+// Latihan Soal (JLPT practice quiz) state
+let quizDataN5 = [];
+let quizDataN4 = [];
+let pqLevel = "N5";
+let pqSection = "vocab";
+let pqQueue = [];
+let pqIndex = 0;
+let pqCorrect = 0;
+let pqWrong = 0;
+let pqCurrentQuestion = null;
+let pqAnswered = false;
+const PQ_SECTION_LABELS = { vocab: "Kosakata", grammar: "Tata Bahasa", reading: "Membaca" };
+
+function pqActiveList() {
+  const data = pqLevel === "N4" ? quizDataN4 : quizDataN5;
+  return data.filter(q => q.section === pqSection);
+}
+
 const el = {
   cardBox: document.getElementById("cardBox"),
   cardType: document.getElementById("cardType"),
@@ -82,6 +100,20 @@ const el = {
   kqDone: document.getElementById("kqDone"),
   kqDoneSummary: document.getElementById("kqDoneSummary"),
   kqRestartBtn: document.getElementById("kqRestartBtn"),
+  viewQuiz: document.getElementById("view-quiz"),
+  pqLevelToggle: document.getElementById("pqLevelToggle"),
+  pqSectionToggle: document.getElementById("pqSectionToggle"),
+  pqSectionLabel: document.getElementById("pqSectionLabel"),
+  pqPositionLabel: document.getElementById("pqPositionLabel"),
+  pqPassage: document.getElementById("pqPassage"),
+  pqQuestion: document.getElementById("pqQuestion"),
+  pqNote: document.getElementById("pqNote"),
+  pqChoices: document.getElementById("pqChoices"),
+  pqCorrect: document.getElementById("pqCorrect"),
+  pqWrong: document.getElementById("pqWrong"),
+  pqDone: document.getElementById("pqDone"),
+  pqDoneSummary: document.getElementById("pqDoneSummary"),
+  pqRestartBtn: document.getElementById("pqRestartBtn"),
 };
 
 function loadAllProgress() {
@@ -316,11 +348,14 @@ function switchView(view) {
   el.viewFlashcard.classList.toggle("hidden", view !== "flashcard");
   el.viewList.classList.toggle("hidden", view !== "list");
   el.viewKanji.classList.toggle("hidden", view !== "kanji");
+  el.viewQuiz.classList.toggle("hidden", view !== "quiz");
 
   if (view === "list") {
     renderVocabList(el.vocabSearch.value);
   } else if (view === "kanji" && kqQueue.length === 0 && kqActiveList().length > 0) {
     kqBuildQueue();
+  } else if (view === "quiz" && pqQueue.length === 0 && pqActiveList().length > 0) {
+    pqBuildQueue();
   }
 
   closeSidebar();
@@ -475,6 +510,130 @@ function kqSelectAnswer(entry, btnEl) {
   }, 900);
 }
 
+function pqBuildQueue() {
+  pqQueue = pqActiveList().map(q => q.id);
+  shuffle(pqQueue);
+  pqIndex = 0;
+  pqCorrect = 0;
+  pqWrong = 0;
+  el.pqCorrect.textContent = "0";
+  el.pqWrong.textContent = "0";
+  pqRenderLevelToggle();
+  pqRenderSectionToggle();
+  pqShowQuestion();
+}
+
+function pqRenderLevelToggle() {
+  el.pqLevelToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.level === pqLevel);
+  });
+}
+
+function pqRenderSectionToggle() {
+  el.pqSectionToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.section === pqSection);
+  });
+}
+
+function pqSetLevel(level) {
+  if (level === pqLevel) return;
+  const data = level === "N4" ? quizDataN4 : quizDataN5;
+  if (data.length === 0) return;
+  pqLevel = level;
+  pqQueue = [];
+  pqBuildQueue();
+}
+
+function pqSetSection(section) {
+  if (section === pqSection) return;
+  pqSection = section;
+  pqQueue = [];
+  pqBuildQueue();
+}
+
+function pqShowQuestion() {
+  if (pqQueue.length === 0 || pqIndex >= pqQueue.length) {
+    document.querySelectorAll("#view-quiz .kq-header").forEach(el2 => el2.classList.add("hidden"));
+    document.querySelector("#view-quiz .kq-meta").classList.add("hidden");
+    el.pqPassage.classList.add("hidden");
+    el.pqQuestion.classList.add("hidden");
+    el.pqNote.classList.add("hidden");
+    el.pqChoices.classList.add("hidden");
+    el.pqDone.classList.remove("hidden");
+    const total = pqQueue.length;
+    el.pqDoneSummary.textContent = total
+      ? `Benar ${pqCorrect} dari ${total} (salah ${pqWrong}).`
+      : "Belum ada soal untuk bagian ini.";
+    return;
+  }
+
+  document.querySelectorAll("#view-quiz .kq-header").forEach(el2 => el2.classList.remove("hidden"));
+  document.querySelector("#view-quiz .kq-meta").classList.remove("hidden");
+  el.pqQuestion.classList.remove("hidden");
+  el.pqChoices.classList.remove("hidden");
+  el.pqDone.classList.add("hidden");
+
+  pqAnswered = false;
+  const id = pqQueue[pqIndex];
+  pqCurrentQuestion = pqActiveList().find(q => q.id === id);
+
+  if (pqCurrentQuestion.passage) {
+    el.pqPassage.textContent = pqCurrentQuestion.passage;
+    el.pqPassage.classList.remove("hidden");
+  } else {
+    el.pqPassage.classList.add("hidden");
+  }
+
+  el.pqQuestion.textContent = pqCurrentQuestion.question;
+
+  if (pqCurrentQuestion.note) {
+    el.pqNote.textContent = `⚠️ ${pqCurrentQuestion.note}`;
+    el.pqNote.classList.remove("hidden");
+  } else {
+    el.pqNote.classList.add("hidden");
+  }
+
+  el.pqSectionLabel.textContent = `JLPT ${pqLevel} · ${PQ_SECTION_LABELS[pqSection]}`;
+  el.pqPositionLabel.textContent = `${pqIndex + 1} of ${pqQueue.length}`;
+
+  el.pqChoices.textContent = "";
+  pqCurrentQuestion.choices.forEach((text, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "kq-choice";
+    btn.textContent = text;
+    btn.addEventListener("click", () => pqSelectAnswer(idx, btn));
+    el.pqChoices.appendChild(btn);
+  });
+}
+
+function pqSelectAnswer(idx, btnEl) {
+  if (pqAnswered) return;
+  pqAnswered = true;
+
+  const isCorrect = idx === pqCurrentQuestion.answer;
+  if (isCorrect) {
+    pqCorrect++;
+    el.pqCorrect.textContent = pqCorrect;
+    btnEl.classList.add("correct");
+  } else {
+    pqWrong++;
+    el.pqWrong.textContent = pqWrong;
+    btnEl.classList.add("wrong");
+  }
+
+  el.pqChoices.querySelectorAll(".kq-choice").forEach((b, i) => {
+    b.disabled = true;
+    if (i === pqCurrentQuestion.answer && b !== btnEl) {
+      b.classList.add("correct");
+    }
+  });
+
+  setTimeout(() => {
+    pqIndex++;
+    pqShowQuestion();
+  }, 900);
+}
+
 function openSidebar() {
   el.sidebar.classList.add("open");
   el.sidebarOverlay.classList.remove("hidden");
@@ -533,6 +692,26 @@ function init() {
       }
     })
     .catch(err => console.error("Gagal memuat kanji-n4.json:", err));
+
+  fetch("data/quiz-n5.json")
+    .then(r => r.json())
+    .then(data => {
+      quizDataN5 = data;
+      if (pqLevel === "N5" && !el.viewQuiz.classList.contains("hidden") && pqQueue.length === 0) {
+        pqBuildQueue();
+      }
+    })
+    .catch(err => console.error("Gagal memuat quiz-n5.json:", err));
+
+  fetch("data/quiz-n4.json")
+    .then(r => r.json())
+    .then(data => {
+      quizDataN4 = data;
+      if (pqLevel === "N4" && !el.viewQuiz.classList.contains("hidden") && pqQueue.length === 0) {
+        pqBuildQueue();
+      }
+    })
+    .catch(err => console.error("Gagal memuat quiz-n4.json:", err));
 
   el.card.addEventListener("click", flipCard);
   document.addEventListener("keydown", e => {
@@ -595,6 +774,19 @@ function init() {
   el.kqRestartBtn.addEventListener("click", () => {
     kqQueue = [];
     kqBuildQueue();
+  });
+
+  el.pqLevelToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.addEventListener("click", () => pqSetLevel(btn.dataset.level));
+  });
+
+  el.pqSectionToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.addEventListener("click", () => pqSetSection(btn.dataset.section));
+  });
+
+  el.pqRestartBtn.addEventListener("click", () => {
+    pqQueue = [];
+    pqBuildQueue();
   });
 }
 

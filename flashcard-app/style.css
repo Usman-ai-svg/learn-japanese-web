@@ -561,6 +561,71 @@ main {
 #kqDone h2 { margin-bottom: 8px; }
 #kqDone p { color: var(--muted); margin-bottom: 20px; }
 
+/* Latihan Soal (practice quiz) */
+#view-quiz { max-width: 680px; }
+
+.pq-passage {
+  width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  color: var(--ink);
+}
+
+.pq-question {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  font-weight: 600;
+}
+
+.pq-note {
+  width: 100%;
+  background: var(--paper);
+  border: 1px dashed var(--belum);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 0.75rem;
+  color: var(--belum);
+  line-height: 1.5;
+}
+
+.pq-choices {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.pq-choices .kq-choice {
+  text-align: left;
+  justify-content: flex-start;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  min-height: auto;
+}
+
+#pqDone {
+  text-align: center;
+  padding: 40px 20px;
+  width: 100%;
+}
+#pqDone h2 { margin-bottom: 8px; }
+#pqDone p { color: var(--muted); margin-bottom: 20px; }
+
 /* Responsive: collapse sidebar into a drawer on small screens */
 @media (max-width: 820px) {
   .sidebar-toggle { display: block; }

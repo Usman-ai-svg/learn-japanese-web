@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn Japanese</title>
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <div class="app-shell">
@@ -22,6 +22,9 @@
         </button>
         <button class="nav-item" data-view="kanji">
           <span class="nav-icon">🀄</span><span>Kanji Quizzer</span>
+        </button>
+        <button class="nav-item" data-view="quiz">
+          <span class="nav-icon">📝</span><span>Latihan Soal</span>
         </button>
       </nav>
     </aside>
@@ -149,10 +152,47 @@
             <button id="kqRestartBtn" class="primary">Main lagi</button>
           </div>
         </section>
+
+        <section id="view-quiz" class="view hidden">
+          <div class="kq-header">
+            <div class="fmt-toggle" id="pqLevelToggle">
+              <button data-level="N5" class="fmt-btn">N5</button>
+              <button data-level="N4" class="fmt-btn">N4</button>
+            </div>
+            <div class="kq-score">
+              <span class="kq-score-correct">✓ <b id="pqCorrect">0</b></span>
+              <span class="kq-score-wrong">✘ <b id="pqWrong">0</b></span>
+            </div>
+          </div>
+
+          <div class="kq-header">
+            <div class="fmt-toggle" id="pqSectionToggle">
+              <button data-section="vocab" class="fmt-btn">Kosakata</button>
+              <button data-section="grammar" class="fmt-btn">Tata Bahasa</button>
+              <button data-section="reading" class="fmt-btn">Membaca</button>
+            </div>
+          </div>
+
+          <div class="kq-meta">
+            <span id="pqSectionLabel"></span>
+            <span id="pqPositionLabel"></span>
+          </div>
+
+          <div class="pq-passage hidden" id="pqPassage"></div>
+          <div class="pq-question" id="pqQuestion"></div>
+          <div class="pq-note hidden" id="pqNote"></div>
+          <div class="pq-choices" id="pqChoices"></div>
+
+          <div id="pqDone" class="hidden">
+            <h2>🎉 Latihan selesai!</h2>
+            <p id="pqDoneSummary"></p>
+            <button id="pqRestartBtn" class="primary">Ulangi</button>
+          </div>
+        </section>
       </main>
     </div>
   </div>
 
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>
