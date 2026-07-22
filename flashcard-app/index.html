@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn Japanese</title>
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
   <div class="app-shell">
@@ -26,6 +26,9 @@
         <button class="nav-item" data-view="quiz">
           <span class="nav-icon">📝</span><span>Latihan Soal</span>
         </button>
+        <button class="nav-item" data-view="plan">
+          <span class="nav-icon">📅</span><span>Rencana Belajar</span>
+        </button>
       </nav>
     </aside>
 
@@ -46,6 +49,9 @@
               <button data-vlevel="N5" class="fmt-btn">N5</button>
               <button data-vlevel="N4" class="fmt-btn">N4</button>
             </div>
+            <select id="vocabLevelSelect" class="level-select">
+              <option value="">Semua kata</option>
+            </select>
           </div>
           <div id="progressWrap">
             <div id="progressBar"></div>
@@ -121,6 +127,9 @@
               <button data-level="N5" class="fmt-btn">N5</button>
               <button data-level="N4" class="fmt-btn">N4</button>
             </div>
+            <select id="kqLevelSelect" class="level-select">
+              <option value="">Semua kanji</option>
+            </select>
             <div class="kq-score">
               <span class="kq-score-correct">✓ <b id="kqCorrect">0</b></span>
               <span class="kq-score-wrong">✘ <b id="kqWrong">0</b></span>
@@ -189,10 +198,107 @@
             <button id="pqRestartBtn" class="primary">Ulangi</button>
           </div>
         </section>
+
+        <section id="view-plan" class="view hidden">
+          <div id="spOverview">
+            <div class="sp-daybar">
+              <div class="sp-day-title">Hari ke-<span id="spDayNumber">1</span></div>
+              <div class="sp-day-sub" id="spDaySub"></div>
+            </div>
+
+            <div class="sp-session-grid" id="spSessionList">
+              <div class="sp-session-card">
+                <div class="sp-session-name">Sesi 1 · Pagi</div>
+                <div class="sp-session-desc">Belajar vocab &amp; kanji baru (tidak dinilai)</div>
+                <div class="sp-session-status" id="spStatus_s1">Belum dikerjakan</div>
+                <button class="primary sp-session-btn" data-start="s1">Mulai</button>
+              </div>
+              <div class="sp-session-card">
+                <div class="sp-session-name">Sesi 2 · Siang</div>
+                <div class="sp-session-desc">Tes hafalan pertama</div>
+                <div class="sp-session-status" id="spStatus_s2">Belum dikerjakan</div>
+                <button class="primary sp-session-btn" data-start="s2">Mulai</button>
+              </div>
+              <div class="sp-session-card">
+                <div class="sp-session-name">Sesi 3 · Sore</div>
+                <div class="sp-session-desc">Tes hafalan kedua</div>
+                <div class="sp-session-status" id="spStatus_s3">Belum dikerjakan</div>
+                <button class="primary sp-session-btn" data-start="s3">Mulai</button>
+              </div>
+              <div class="sp-session-card">
+                <div class="sp-session-name">Sesi 4 · Malam</div>
+                <div class="sp-session-desc">Tes hafalan + review kata/kanji lama</div>
+                <div class="sp-session-status" id="spStatus_s4">Belum dikerjakan</div>
+                <button class="primary sp-session-btn" data-start="s4">Mulai</button>
+              </div>
+            </div>
+
+            <div id="spHistoryWrap">
+              <h3 class="sp-history-title">Riwayat</h3>
+              <div class="vocab-table-wrap">
+                <table class="vocab-table">
+                  <thead>
+                    <tr><th>Hari</th><th>Level</th><th>Sesi 2</th><th>Sesi 3</th><th>Sesi 4</th></tr>
+                  </thead>
+                  <tbody id="spHistoryBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="spBrowse" class="hidden">
+            <div class="fmt-toggle" id="spBrowseKindToggle">
+              <button data-kind="vocab" class="fmt-btn">Vocab (10)</button>
+              <button data-kind="kanji" class="fmt-btn">Kanji (5)</button>
+            </div>
+            <div class="kq-meta"><span id="spBrowsePos"></span><span></span></div>
+            <div class="card" id="spCard">
+              <div class="card-box" id="spCardBox">
+                <div class="card-face card-front">
+                  <span class="badge" id="spCardType"></span>
+                  <div class="kanji" id="spCardFront"></div>
+                  <div class="hint">Klik kartu untuk membuka</div>
+                </div>
+                <div class="card-face card-back">
+                  <div class="kanji small" id="spCardFrontBack"></div>
+                  <div class="kana" id="spCardKana"></div>
+                  <div class="meaning" id="spCardMeaning"></div>
+                </div>
+              </div>
+            </div>
+            <div class="sp-browse-nav">
+              <button class="ghost" id="spPrevBtn">← Sebelumnya</button>
+              <button class="ghost" id="spNextBtn">Selanjutnya →</button>
+            </div>
+            <div class="toolbar">
+              <button class="ghost" id="spBackFromBrowseBtn">Kembali</button>
+              <button class="primary" id="spFinishBrowseBtn">Selesai belajar</button>
+            </div>
+          </div>
+
+          <div id="spQuiz" class="hidden">
+            <div class="kq-header">
+              <span id="spPhaseLabel" class="sp-phase-label"></span>
+              <div class="kq-score">
+                <span class="kq-score-correct">✓ <b id="spCorrect">0</b></span>
+                <span class="kq-score-wrong">✘ <b id="spWrong">0</b></span>
+              </div>
+            </div>
+            <div class="kq-meta"><span></span><span id="spPositionLabel"></span></div>
+            <div class="kq-question" id="spQuestion"></div>
+            <div class="kq-choices" id="spChoices"></div>
+
+            <div id="spQuizDone" class="hidden">
+              <h2 id="spQuizDoneTitle">🎉 Sesi selesai!</h2>
+              <p id="spQuizDoneSummary"></p>
+              <button class="primary" id="spBackFromQuizBtn">Kembali</button>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   </div>
 
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>

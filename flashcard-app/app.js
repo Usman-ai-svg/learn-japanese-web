@@ -10,10 +10,17 @@ const NEW_BATCH_SIZE = 20;
 const BOX_INTERVALS = [0, 1, 3, 7, 14, 30, 60];
 const MAX_BOX = BOX_INTERVALS.length - 1;
 
+function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
 let vocabByLevel = { N5: [], N4: [] };
 let progressByLevel = { N5: {}, N4: {} };
 let vocabLevel = "N5";
-let vocab = [];       // points to vocabByLevel[vocabLevel]
+let vocabLevelIndex = null; // null = semua kata; else index into chunk(vocabByLevel[vocabLevel], 10)
+let vocab = [];       // active scope: vocabByLevel[vocabLevel], or a 10-word level slice of it
 let progress = {};    // points to progressByLevel[vocabLevel]; id -> { box, due (ms) }
 let queue = [];       // ids for current session
 let queueTotal = 0;
@@ -25,6 +32,7 @@ let hintShown = false;
 let kanjiListN5 = [];
 let kanjiListN4 = [];
 let kqLevel = "N5";
+let kqLevelIndex = null; // null = semua kanji; else index into chunk(list, 5)
 let kqQueue = [];
 let kqIndex = 0;
 let kqCorrect = 0;
@@ -35,8 +43,14 @@ let kqCurrentEntry = null;
 let kqAnswered = false;
 const KQ_FORMATS = ["kanji", "kana", "english"];
 
-function kqActiveList() {
+function kqFullList() {
   return kqLevel === "N4" ? kanjiListN4 : kanjiListN5;
+}
+
+function kqActiveList() {
+  const full = kqFullList();
+  if (kqLevelIndex === null) return full;
+  return chunk(full, 5)[kqLevelIndex] || full;
 }
 
 // Latihan Soal (JLPT practice quiz) state
@@ -114,6 +128,40 @@ const el = {
   pqDone: document.getElementById("pqDone"),
   pqDoneSummary: document.getElementById("pqDoneSummary"),
   pqRestartBtn: document.getElementById("pqRestartBtn"),
+  vocabLevelSelect: document.getElementById("vocabLevelSelect"),
+  kqLevelSelect: document.getElementById("kqLevelSelect"),
+
+  // Rencana Belajar
+  viewPlan: document.getElementById("view-plan"),
+  spOverview: document.getElementById("spOverview"),
+  spDayNumber: document.getElementById("spDayNumber"),
+  spDaySub: document.getElementById("spDaySub"),
+  spHistoryBody: document.getElementById("spHistoryBody"),
+  spBrowse: document.getElementById("spBrowse"),
+  spBrowseKindToggle: document.getElementById("spBrowseKindToggle"),
+  spBrowsePos: document.getElementById("spBrowsePos"),
+  spCard: document.getElementById("spCard"),
+  spCardBox: document.getElementById("spCardBox"),
+  spCardType: document.getElementById("spCardType"),
+  spCardFront: document.getElementById("spCardFront"),
+  spCardFrontBack: document.getElementById("spCardFrontBack"),
+  spCardKana: document.getElementById("spCardKana"),
+  spCardMeaning: document.getElementById("spCardMeaning"),
+  spPrevBtn: document.getElementById("spPrevBtn"),
+  spNextBtn: document.getElementById("spNextBtn"),
+  spFinishBrowseBtn: document.getElementById("spFinishBrowseBtn"),
+  spBackFromBrowseBtn: document.getElementById("spBackFromBrowseBtn"),
+  spQuiz: document.getElementById("spQuiz"),
+  spPhaseLabel: document.getElementById("spPhaseLabel"),
+  spPositionLabel: document.getElementById("spPositionLabel"),
+  spCorrect: document.getElementById("spCorrect"),
+  spWrong: document.getElementById("spWrong"),
+  spQuestion: document.getElementById("spQuestion"),
+  spChoices: document.getElementById("spChoices"),
+  spQuizDone: document.getElementById("spQuizDone"),
+  spQuizDoneTitle: document.getElementById("spQuizDoneTitle"),
+  spQuizDoneSummary: document.getElementById("spQuizDoneSummary"),
+  spBackFromQuizBtn: document.getElementById("spBackFromQuizBtn"),
 };
 
 function loadAllProgress() {
@@ -138,12 +186,49 @@ function renderVocabLevelToggles() {
   });
 }
 
+function activeVocabList() {
+  const full = vocabByLevel[vocabLevel];
+  if (vocabLevelIndex === null) return full;
+  return chunk(full, 10)[vocabLevelIndex] || full;
+}
+
+function renderVocabLevelSelect() {
+  const sel = el.vocabLevelSelect;
+  sel.textContent = "";
+  const allOpt = document.createElement("option");
+  allOpt.value = "";
+  allOpt.textContent = "Semua kata";
+  sel.appendChild(allOpt);
+
+  chunk(vocabByLevel[vocabLevel], 10).forEach((levelWords, i) => {
+    const start = i * 10 + 1;
+    const end = start + levelWords.length - 1;
+    const opt = document.createElement("option");
+    opt.value = String(i);
+    opt.textContent = `Level ${i + 1} (kata ${start}-${end})`;
+    sel.appendChild(opt);
+  });
+
+  sel.value = vocabLevelIndex === null ? "" : String(vocabLevelIndex);
+}
+
+function setVocabLevelIndex(value) {
+  vocabLevelIndex = value === "" ? null : parseInt(value, 10);
+  vocab = activeVocabList();
+  buildQueue();
+  if (!el.viewList.classList.contains("hidden")) {
+    renderVocabList(el.vocabSearch.value);
+  }
+}
+
 function setVocabLevel(level) {
   if (level === vocabLevel || !vocabByLevel[level] || vocabByLevel[level].length === 0) return;
   vocabLevel = level;
-  vocab = vocabByLevel[level];
+  vocabLevelIndex = null;
   progress = progressByLevel[level];
   renderVocabLevelToggles();
+  renderVocabLevelSelect();
+  vocab = activeVocabList();
   buildQueue();
   if (!el.viewList.classList.contains("hidden")) {
     renderVocabList(el.vocabSearch.value);
@@ -349,6 +434,7 @@ function switchView(view) {
   el.viewList.classList.toggle("hidden", view !== "list");
   el.viewKanji.classList.toggle("hidden", view !== "kanji");
   el.viewQuiz.classList.toggle("hidden", view !== "quiz");
+  el.viewPlan.classList.toggle("hidden", view !== "plan");
 
   if (view === "list") {
     renderVocabList(el.vocabSearch.value);
@@ -356,6 +442,8 @@ function switchView(view) {
     kqBuildQueue();
   } else if (view === "quiz" && pqQueue.length === 0 && pqActiveList().length > 0) {
     pqBuildQueue();
+  } else if (view === "plan") {
+    spShowOverview();
   }
 
   closeSidebar();
@@ -386,11 +474,39 @@ function kqRenderLevelToggle() {
   });
 }
 
+function kqRenderLevelSelect() {
+  const sel = el.kqLevelSelect;
+  sel.textContent = "";
+  const allOpt = document.createElement("option");
+  allOpt.value = "";
+  allOpt.textContent = "Semua kanji";
+  sel.appendChild(allOpt);
+
+  chunk(kqFullList(), 5).forEach((levelKanji, i) => {
+    const start = i * 5 + 1;
+    const end = start + levelKanji.length - 1;
+    const opt = document.createElement("option");
+    opt.value = String(i);
+    opt.textContent = `Level ${i + 1} (kanji ${start}-${end})`;
+    sel.appendChild(opt);
+  });
+
+  sel.value = kqLevelIndex === null ? "" : String(kqLevelIndex);
+}
+
+function kqSetLevelIndex(value) {
+  kqLevelIndex = value === "" ? null : parseInt(value, 10);
+  kqQueue = [];
+  kqBuildQueue();
+}
+
 function kqSetLevel(level) {
   if (level === kqLevel) return;
   if ((level === "N4" ? kanjiListN4 : kanjiListN5).length === 0) return;
   kqLevel = level;
+  kqLevelIndex = null;
   kqQueue = [];
+  kqRenderLevelSelect();
   kqBuildQueue();
 }
 
@@ -634,6 +750,443 @@ function pqSelectAnswer(idx, btnEl) {
   }, 900);
 }
 
+// ===================== Rencana Belajar (daily study plan) =====================
+
+const SP_STORAGE_KEY = "study-plan-v1";
+const SP_VOCAB_CHUNK = 10;
+const SP_KANJI_CHUNK = 5;
+const SP_SESSION_KEYS = ["s1", "s2", "s3", "s4"];
+const SP_FORMATS = ["kanji", "kana", "english"];
+
+let sp = null;
+let spBrowseKind = "vocab";
+let spBrowseIndex = 0;
+let spBrowseFlipped = false;
+let spQuizKey = null;
+let spQuizPhase = "vocab";
+let spQuizQuestions = { vocab: [], kanji: [] };
+let spQuizIndex = 0;
+let spQuizCorrect = 0;
+let spQuizWrong = 0;
+let spQuizAnswered = false;
+let spQuizCurrentQuestion = null;
+
+function spEmptySessions() {
+  return {
+    s1: { done: false },
+    s2: { done: false, correct: 0, wrong: 0 },
+    s3: { done: false, correct: 0, wrong: 0 },
+    s4: { done: false, correct: 0, wrong: 0 },
+  };
+}
+
+function spLoad() {
+  try {
+    const raw = localStorage.getItem(SP_STORAGE_KEY);
+    sp = raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    sp = null;
+  }
+  if (!sp) {
+    sp = { day: 1, sessions: spEmptySessions(), weaknessVocab: {}, weaknessKanji: {}, history: [] };
+  }
+}
+
+function spSave() {
+  localStorage.setItem(SP_STORAGE_KEY, JSON.stringify(sp));
+}
+
+function spVocabPool() {
+  return [...vocabByLevel.N5, ...vocabByLevel.N4];
+}
+
+function spKanjiPool() {
+  return [...kanjiListN5, ...kanjiListN4];
+}
+
+function spDayVocab(day) {
+  return spVocabPool().slice((day - 1) * SP_VOCAB_CHUNK, day * SP_VOCAB_CHUNK);
+}
+
+function spDayKanji(day) {
+  return spKanjiPool().slice((day - 1) * SP_KANJI_CHUNK, day * SP_KANJI_CHUNK);
+}
+
+function spLevelLabel(poolIndexStart, n5Length) {
+  return poolIndexStart < n5Length ? "N5" : "N4";
+}
+
+function spDaySubLabel(day) {
+  const vLabel = spLevelLabel((day - 1) * SP_VOCAB_CHUNK, vocabByLevel.N5.length);
+  const kLabel = spLevelLabel((day - 1) * SP_KANJI_CHUNK, kanjiListN5.length);
+  return `Vocab ${vLabel} · Kanji ${kLabel}`;
+}
+
+function spDisplayValue(entry, format, kind) {
+  if (format === "kanji") return entry.kanji;
+  if (format === "kana") return kind === "kanji" ? (entry.kunyomi[0] || entry.onyomi[0]) : entry.kana;
+  return entry.meaning.split(";")[0].trim();
+}
+
+function spWeightedSample(pool, weaknessMap, count) {
+  const bag = [];
+  pool.forEach(item => {
+    const weight = 1 + (weaknessMap[item.id] || 0);
+    for (let i = 0; i < weight; i++) bag.push(item);
+  });
+  shuffle(bag);
+  const seen = new Set();
+  const result = [];
+  for (const item of bag) {
+    if (seen.has(item.id)) continue;
+    seen.add(item.id);
+    result.push(item);
+    if (result.length >= count) break;
+  }
+  return result;
+}
+
+function spReviewEntries(kind, count) {
+  if (sp.day <= 1) return [];
+  const pool = kind === "vocab" ? spVocabPool() : spKanjiPool();
+  const chunkSize = kind === "vocab" ? SP_VOCAB_CHUNK : SP_KANJI_CHUNK;
+  const historicalPool = pool.slice(0, (sp.day - 1) * chunkSize);
+  const weakness = kind === "vocab" ? sp.weaknessVocab : sp.weaknessKanji;
+  return spWeightedSample(historicalPool, weakness, count);
+}
+
+function spMakeQuestion(entry, qFormat, aFormat, kind, pool) {
+  const correctValue = spDisplayValue(entry, aFormat, kind);
+  const candidates = pool.filter(e => e.id !== entry.id);
+  shuffle(candidates);
+
+  const distractors = [];
+  const seen = new Set([correctValue]);
+  for (const c of candidates) {
+    if (distractors.length >= 3) break;
+    const val = spDisplayValue(c, aFormat, kind);
+    if (seen.has(val)) continue;
+    seen.add(val);
+    distractors.push(c);
+  }
+
+  const choiceEntries = [entry, ...distractors];
+  shuffle(choiceEntries);
+
+  return {
+    kind,
+    qFormat,
+    questionText: spDisplayValue(entry, qFormat, kind),
+    choices: choiceEntries.map(c => ({ id: c.id, text: spDisplayValue(c, aFormat, kind) })),
+    answerId: entry.id,
+  };
+}
+
+function spBuildPhaseQuestions(entries, kind) {
+  const pool = kind === "vocab" ? spVocabPool() : spKanjiPool();
+  const allPairs = [];
+  SP_FORMATS.forEach(qf => SP_FORMATS.forEach(af => { if (qf !== af) allPairs.push([qf, af]); }));
+
+  const questions = [];
+  entries.forEach(entry => {
+    const pairs = [...allPairs];
+    shuffle(pairs);
+    pairs.slice(0, 2).forEach(([qFormat, aFormat]) => {
+      questions.push(spMakeQuestion(entry, qFormat, aFormat, kind, pool));
+    });
+  });
+
+  shuffle(questions);
+  return questions;
+}
+
+function spEnsureLoaded() {
+  if (!sp) spLoad();
+}
+
+function spCheckDayAdvance() {
+  const allDone = SP_SESSION_KEYS.every(k => sp.sessions[k].done);
+  if (!allDone) return;
+
+  sp.history.push({
+    day: sp.day,
+    vocabLabel: spLevelLabel((sp.day - 1) * SP_VOCAB_CHUNK, vocabByLevel.N5.length),
+    kanjiLabel: spLevelLabel((sp.day - 1) * SP_KANJI_CHUNK, kanjiListN5.length),
+    sessions: JSON.parse(JSON.stringify(sp.sessions)),
+  });
+  sp.day += 1;
+  sp.sessions = spEmptySessions();
+  spSave();
+}
+
+function spShowOverview() {
+  spEnsureLoaded();
+  el.spOverview.classList.remove("hidden");
+  el.spBrowse.classList.add("hidden");
+  el.spQuiz.classList.add("hidden");
+  spRenderOverview();
+}
+
+function spRenderOverview() {
+  el.spDayNumber.textContent = sp.day;
+  el.spDaySub.textContent = spDaySubLabel(sp.day);
+
+  SP_SESSION_KEYS.forEach(key => {
+    const s = sp.sessions[key];
+    const statusEl = document.getElementById(`spStatus_${key}`);
+    if (s.done) {
+      statusEl.textContent = key === "s1" ? "✓ Selesai" : `✓ ${s.correct} benar, ${s.wrong} salah`;
+      statusEl.classList.add("done");
+    } else {
+      statusEl.textContent = "Belum dikerjakan";
+      statusEl.classList.remove("done");
+    }
+  });
+
+  spRenderHistory();
+}
+
+function spRenderHistory() {
+  el.spHistoryBody.textContent = "";
+  const frag = document.createDocumentFragment();
+
+  [...sp.history].reverse().forEach(rec => {
+    const tr = document.createElement("tr");
+    const scoreText = s => (s ? `${s.correct}/${s.correct + s.wrong}` : "-");
+    const cells = [
+      `Hari ${rec.day}`,
+      `Vocab ${rec.vocabLabel} · Kanji ${rec.kanjiLabel}`,
+      scoreText(rec.sessions.s2),
+      scoreText(rec.sessions.s3),
+      scoreText(rec.sessions.s4),
+    ];
+    cells.forEach(text => {
+      const td = document.createElement("td");
+      td.textContent = text;
+      tr.appendChild(td);
+    });
+    frag.appendChild(tr);
+  });
+
+  el.spHistoryBody.appendChild(frag);
+}
+
+function spStartSession(key) {
+  if (key === "s1") {
+    spStartBrowse();
+  } else {
+    spStartQuiz(key);
+  }
+}
+
+// --- Sesi 1: belajar bebas, tanpa skor ---
+
+function spBrowseList() {
+  return spBrowseKind === "vocab" ? spDayVocab(sp.day) : spDayKanji(sp.day);
+}
+
+function spRenderBrowseKindToggle() {
+  el.spBrowseKindToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.kind === spBrowseKind);
+  });
+}
+
+function spSetBrowseKind(kind) {
+  if (kind === spBrowseKind) return;
+  spBrowseKind = kind;
+  spBrowseIndex = 0;
+  spRenderBrowseKindToggle();
+  spShowBrowseCard();
+}
+
+function spStartBrowse() {
+  el.spOverview.classList.add("hidden");
+  el.spQuiz.classList.add("hidden");
+  el.spBrowse.classList.remove("hidden");
+  spBrowseKind = "vocab";
+  spBrowseIndex = 0;
+  spRenderBrowseKindToggle();
+  spShowBrowseCard();
+}
+
+function spShowBrowseCard() {
+  const list = spBrowseList();
+  spBrowseFlipped = false;
+  el.spCardBox.classList.remove("flipped");
+
+  if (list.length === 0) {
+    el.spCardType.textContent = "";
+    el.spCardFront.textContent = "-";
+    el.spCardFrontBack.textContent = "-";
+    el.spCardKana.textContent = "";
+    el.spCardMeaning.textContent = "Tidak ada konten baru untuk hari ini.";
+    el.spBrowsePos.textContent = "0 of 0";
+    return;
+  }
+
+  const entry = list[spBrowseIndex];
+  el.spBrowsePos.textContent = `${spBrowseIndex + 1} of ${list.length}`;
+  el.spCardFront.textContent = entry.kanji;
+  el.spCardFrontBack.textContent = entry.kanji;
+  el.spCardMeaning.textContent = entry.meaning;
+
+  if (spBrowseKind === "vocab") {
+    el.spCardType.textContent = entry.type.split(",")[0].trim();
+    el.spCardKana.textContent = entry.kana;
+  } else {
+    el.spCardType.textContent = "Kanji";
+    el.spCardKana.textContent = entry.kunyomi[0] || entry.onyomi[0] || "";
+  }
+}
+
+function spFlipBrowseCard() {
+  if (spBrowseList().length === 0) return;
+  spBrowseFlipped = !spBrowseFlipped;
+  el.spCardBox.classList.toggle("flipped", spBrowseFlipped);
+}
+
+function spBrowsePrev() {
+  const list = spBrowseList();
+  if (list.length === 0) return;
+  spBrowseIndex = (spBrowseIndex - 1 + list.length) % list.length;
+  spShowBrowseCard();
+}
+
+function spBrowseNext() {
+  const list = spBrowseList();
+  if (list.length === 0) return;
+  spBrowseIndex = (spBrowseIndex + 1) % list.length;
+  spShowBrowseCard();
+}
+
+function spFinishBrowse() {
+  sp.sessions.s1.done = true;
+  spSave();
+  spCheckDayAdvance();
+  spShowOverview();
+}
+
+function spBackFromBrowse() {
+  spShowOverview();
+}
+
+// --- Sesi 2/3/4: kuis bertahap (kosakata dulu, lalu kanji), berskor ---
+
+function spCurrentPhaseQuestions() {
+  return spQuizQuestions[spQuizPhase];
+}
+
+function spStartQuiz(key) {
+  spQuizKey = key;
+  spQuizCorrect = 0;
+  spQuizWrong = 0;
+  el.spCorrect.textContent = "0";
+  el.spWrong.textContent = "0";
+
+  let vocabEntries = spDayVocab(sp.day);
+  let kanjiEntries = spDayKanji(sp.day);
+  if (key === "s4") {
+    vocabEntries = vocabEntries.concat(spReviewEntries("vocab", 5));
+    kanjiEntries = kanjiEntries.concat(spReviewEntries("kanji", 3));
+  }
+
+  spQuizQuestions.vocab = vocabEntries.length ? spBuildPhaseQuestions(vocabEntries, "vocab") : [];
+  spQuizQuestions.kanji = kanjiEntries.length ? spBuildPhaseQuestions(kanjiEntries, "kanji") : [];
+  spQuizPhase = spQuizQuestions.vocab.length ? "vocab" : "kanji";
+  spQuizIndex = 0;
+
+  el.spOverview.classList.add("hidden");
+  el.spBrowse.classList.add("hidden");
+  el.spQuiz.classList.remove("hidden");
+
+  spShowQuizQuestion();
+}
+
+function spShowQuizQuestion() {
+  const list = spCurrentPhaseQuestions();
+
+  if (spQuizIndex >= list.length) {
+    if (spQuizPhase === "vocab" && spQuizQuestions.kanji.length > 0) {
+      spQuizPhase = "kanji";
+      spQuizIndex = 0;
+      spShowQuizQuestion();
+      return;
+    }
+    spFinishQuiz();
+    return;
+  }
+
+  spQuizAnswered = false;
+  spQuizCurrentQuestion = list[spQuizIndex];
+
+  el.spPhaseLabel.textContent = spQuizPhase === "vocab" ? "Kosakata" : "Kanji";
+  el.spPositionLabel.textContent = `${spQuizIndex + 1} of ${list.length}`;
+  el.spQuestion.className = `kq-question fmt-${spQuizCurrentQuestion.qFormat}`;
+  el.spQuestion.textContent = spQuizCurrentQuestion.questionText;
+  el.spQuestion.classList.remove("hidden");
+  el.spChoices.classList.remove("hidden");
+  el.spQuizDone.classList.add("hidden");
+
+  el.spChoices.textContent = "";
+  spQuizCurrentQuestion.choices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.className = "kq-choice";
+    btn.textContent = choice.text;
+    btn.addEventListener("click", () => spSelectAnswer(choice, btn));
+    el.spChoices.appendChild(btn);
+  });
+}
+
+function spSelectAnswer(choice, btnEl) {
+  if (spQuizAnswered) return;
+  spQuizAnswered = true;
+
+  const isCorrect = choice.id === spQuizCurrentQuestion.answerId;
+  const weaknessMap = spQuizPhase === "vocab" ? sp.weaknessVocab : sp.weaknessKanji;
+
+  if (isCorrect) {
+    spQuizCorrect++;
+    el.spCorrect.textContent = spQuizCorrect;
+    btnEl.classList.add("correct");
+  } else {
+    spQuizWrong++;
+    el.spWrong.textContent = spQuizWrong;
+    btnEl.classList.add("wrong");
+    weaknessMap[spQuizCurrentQuestion.answerId] = (weaknessMap[spQuizCurrentQuestion.answerId] || 0) + 1;
+  }
+
+  const buttons = [...el.spChoices.querySelectorAll(".kq-choice")];
+  buttons.forEach((b, i) => {
+    b.disabled = true;
+    if (b !== btnEl && spQuizCurrentQuestion.choices[i].id === spQuizCurrentQuestion.answerId) {
+      b.classList.add("correct");
+    }
+  });
+
+  setTimeout(() => {
+    spQuizIndex++;
+    spShowQuizQuestion();
+  }, 900);
+}
+
+function spFinishQuiz() {
+  sp.sessions[spQuizKey] = { done: true, correct: spQuizCorrect, wrong: spQuizWrong };
+  spSave();
+  spCheckDayAdvance();
+
+  el.spQuestion.classList.add("hidden");
+  el.spChoices.classList.add("hidden");
+  el.spQuizDone.classList.remove("hidden");
+  const total = spQuizCorrect + spQuizWrong;
+  el.spQuizDoneSummary.textContent = total
+    ? `Benar ${spQuizCorrect} dari ${total} (salah ${spQuizWrong}).`
+    : "Tidak ada soal untuk sesi ini.";
+}
+
+function spBackFromQuiz() {
+  spShowOverview();
+}
+
 function openSidebar() {
   el.sidebar.classList.add("open");
   el.sidebarOverlay.classList.remove("hidden");
@@ -655,6 +1208,7 @@ function showToast(msg) {
 function init() {
   loadAllProgress();
   renderVocabLevelToggles();
+  spLoad();
 
   // vocab.json is the N5 dataset (kept at its original path); vocab-n4.json is N4.
   Promise.all([
@@ -664,7 +1218,8 @@ function init() {
     .then(([n5, n4]) => {
       vocabByLevel.N5 = n5;
       vocabByLevel.N4 = n4;
-      vocab = vocabByLevel[vocabLevel];
+      vocab = activeVocabList();
+      renderVocabLevelSelect();
       buildQueue();
     })
     .catch(err => {
@@ -677,6 +1232,7 @@ function init() {
     .then(r => r.json())
     .then(data => {
       kanjiListN5 = data;
+      kqRenderLevelSelect();
       if (!el.viewKanji.classList.contains("hidden") && kqQueue.length === 0) {
         kqBuildQueue();
       }
@@ -788,6 +1344,24 @@ function init() {
     pqQueue = [];
     pqBuildQueue();
   });
+
+  el.vocabLevelSelect.addEventListener("change", () => setVocabLevelIndex(el.vocabLevelSelect.value));
+  el.kqLevelSelect.addEventListener("change", () => kqSetLevelIndex(el.kqLevelSelect.value));
+
+  document.querySelectorAll("[data-start]").forEach(btn => {
+    btn.addEventListener("click", () => spStartSession(btn.dataset.start));
+  });
+
+  el.spBrowseKindToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.addEventListener("click", () => spSetBrowseKind(btn.dataset.kind));
+  });
+
+  el.spCard.addEventListener("click", spFlipBrowseCard);
+  el.spPrevBtn.addEventListener("click", e => { e.stopPropagation(); spBrowsePrev(); });
+  el.spNextBtn.addEventListener("click", e => { e.stopPropagation(); spBrowseNext(); });
+  el.spFinishBrowseBtn.addEventListener("click", spFinishBrowse);
+  el.spBackFromBrowseBtn.addEventListener("click", spBackFromBrowse);
+  el.spBackFromQuizBtn.addEventListener("click", spBackFromQuiz);
 }
 
 init();
