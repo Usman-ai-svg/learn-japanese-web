@@ -1,0 +1,4570 @@
+[
+ {
+  "id": 1,
+  "kanji": "あ",
+  "kana": "あ",
+  "romaji": "a",
+  "type": "expression",
+  "meaning": "ah; oh"
+ },
+ {
+  "id": 2,
+  "kanji": "ああ",
+  "kana": "ああ",
+  "romaji": "aa",
+  "type": "adverb",
+  "meaning": "ah; yes"
+ },
+ {
+  "id": 3,
+  "kanji": "アフリカ",
+  "kana": "あふりか",
+  "romaji": "afurika",
+  "type": "noun, katakana",
+  "meaning": "Africa"
+ },
+ {
+  "id": 4,
+  "kanji": "上がる",
+  "kana": "あがる",
+  "romaji": "agaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to rise"
+ },
+ {
+  "id": 5,
+  "kanji": "挨拶",
+  "kana": "あいさつ",
+  "romaji": "aisatsu",
+  "type": "noun, suru verb",
+  "meaning": "to greet"
+ },
+ {
+  "id": 6,
+  "kanji": "味",
+  "kana": "あじ",
+  "romaji": "aji",
+  "type": "noun",
+  "meaning": "flavor; taste; uniqueness; attractiveness; experience"
+ },
+ {
+  "id": 7,
+  "kanji": "アジア",
+  "kana": "アジア",
+  "romaji": "ajia",
+  "type": "noun, katakana",
+  "meaning": "Asia"
+ },
+ {
+  "id": 8,
+  "kanji": "赤ちゃん",
+  "kana": "あかちゃｎ",
+  "romaji": "akachan",
+  "type": "noun",
+  "meaning": "baby; infant"
+ },
+ {
+  "id": 9,
+  "kanji": "赤ん坊",
+  "kana": "あかんぼう",
+  "romaji": "akanbou",
+  "type": "noun",
+  "meaning": "baby; infant"
+ },
+ {
+  "id": 10,
+  "kanji": "アクセサリー",
+  "kana": "アクセサリー",
+  "romaji": "akusesarii",
+  "type": "noun, katakana",
+  "meaning": "accessory"
+ },
+ {
+  "id": 11,
+  "kanji": "アメリカ",
+  "kana": "アメリカ",
+  "romaji": "amerika",
+  "type": "noun, katakana",
+  "meaning": "America"
+ },
+ {
+  "id": 12,
+  "kanji": "アナウンサー",
+  "kana": "アナウンサー",
+  "romaji": "anaunsaa",
+  "type": "noun, katakana",
+  "meaning": "announcer"
+ },
+ {
+  "id": 13,
+  "kanji": "あんな",
+  "kana": "あんな",
+  "romaji": "anna",
+  "type": "pre-noun adjectival",
+  "meaning": "such"
+ },
+ {
+  "id": 14,
+  "kanji": "案内",
+  "kana": "あんない",
+  "romaji": "annai",
+  "type": "noun, suru verb",
+  "meaning": "to guide"
+ },
+ {
+  "id": 15,
+  "kanji": "安心",
+  "kana": "あんしん",
+  "romaji": "anshin",
+  "type": "noun, adjective, na-adjective, suru verb",
+  "meaning": "peace of mind"
+ },
+ {
+  "id": 16,
+  "kanji": "安全",
+  "kana": "あんぜん",
+  "romaji": "anzen",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "safety; security"
+ },
+ {
+  "id": 17,
+  "kanji": "アルバイト",
+  "kana": "アルバイト",
+  "romaji": "arubaito",
+  "type": "noun, suru verb, katakana",
+  "meaning": "part-time job"
+ },
+ {
+  "id": 18,
+  "kanji": "アルコール",
+  "kana": "アルコール",
+  "romaji": "arukooru",
+  "type": "noun, katakana",
+  "meaning": "alcohol"
+ },
+ {
+  "id": 19,
+  "kanji": "浅い",
+  "kana": "あさい",
+  "romaji": "asai",
+  "type": "adjective, i-adjective",
+  "meaning": "shallow"
+ },
+ {
+  "id": 20,
+  "kanji": "遊び",
+  "kana": "あそび",
+  "romaji": "asobi",
+  "type": "noun",
+  "meaning": "playing"
+ },
+ {
+  "id": 21,
+  "kanji": "集まる",
+  "kana": "あつまる",
+  "romaji": "atsumaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to gather; to collect; to assemble"
+ },
+ {
+  "id": 22,
+  "kanji": "集める",
+  "kana": "あつめる",
+  "romaji": "atsumeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to collect; to assemble; to gather"
+ },
+ {
+  "id": 23,
+  "kanji": "謝る",
+  "kana": "あやまる",
+  "romaji": "ayamaru",
+  "type": "verb, godan verb",
+  "meaning": "to apologize"
+ },
+ {
+  "id": 24,
+  "kanji": "倍",
+  "kana": "ばい",
+  "romaji": "bai",
+  "type": "noun",
+  "meaning": "double"
+ },
+ {
+  "id": 25,
+  "kanji": "番組",
+  "kana": "ばんぐみ",
+  "romaji": "bangumi",
+  "type": "noun",
+  "meaning": "program (e.g. TV)"
+ },
+ {
+  "id": 26,
+  "kanji": "場所",
+  "kana": "ばしょ",
+  "romaji": "basho",
+  "type": "noun",
+  "meaning": "place"
+ },
+ {
+  "id": 27,
+  "kanji": "ベル",
+  "kana": "ベル",
+  "romaji": "beru",
+  "type": "noun, katakana",
+  "meaning": "bell"
+ },
+ {
+  "id": 28,
+  "kanji": "美術館",
+  "kana": "びじゅつかん",
+  "romaji": "bijutsukan",
+  "type": "noun",
+  "meaning": "art gallery; art museum"
+ },
+ {
+  "id": 29,
+  "kanji": "びっくり",
+  "kana": "びっくり",
+  "romaji": "bikkuri",
+  "type": "adverb, suru verb",
+  "meaning": "to be surprised"
+ },
+ {
+  "id": 30,
+  "kanji": "ビル",
+  "kana": "ビル",
+  "romaji": "biru",
+  "type": "noun, katakana",
+  "meaning": "building"
+ },
+ {
+  "id": 31,
+  "kanji": "僕",
+  "kana": "ぼく",
+  "romaji": "boku",
+  "type": "pronoun",
+  "meaning": "I (used by males)"
+ },
+ {
+  "id": 32,
+  "kanji": "貿易",
+  "kana": "ぼうえき",
+  "romaji": "boueki",
+  "type": "noun, suru verb",
+  "meaning": "trade"
+ },
+ {
+  "id": 33,
+  "kanji": "部長",
+  "kana": "ぶちょう",
+  "romaji": "buchou",
+  "type": "noun",
+  "meaning": "manager; head (chief, director) of a section or department"
+ },
+ {
+  "id": 34,
+  "kanji": "ぶどう",
+  "kana": "ぶどう",
+  "romaji": "budou",
+  "type": "noun",
+  "meaning": "grapes"
+ },
+ {
+  "id": 35,
+  "kanji": "文学",
+  "kana": "ぶんがく",
+  "romaji": "bungaku",
+  "type": "noun",
+  "meaning": "literature"
+ },
+ {
+  "id": 36,
+  "kanji": "文化",
+  "kana": "文化",
+  "romaji": "bunka",
+  "type": "noun",
+  "meaning": "culture"
+ },
+ {
+  "id": 37,
+  "kanji": "文法",
+  "kana": "ぶんぽう",
+  "romaji": "bunpou",
+  "type": "noun",
+  "meaning": "grammar"
+ },
+ {
+  "id": 38,
+  "kanji": "ちゃん",
+  "kana": "ちゃん",
+  "romaji": "chan",
+  "type": "suffix",
+  "meaning": "suffix for familiar female person"
+ },
+ {
+  "id": 39,
+  "kanji": "チェック",
+  "kana": "チェック",
+  "romaji": "chekku",
+  "type": "noun, suru verb, katakana",
+  "meaning": "to check"
+ },
+ {
+  "id": 40,
+  "kanji": "血",
+  "kana": "ち",
+  "romaji": "chi",
+  "type": "noun",
+  "meaning": "blood"
+ },
+ {
+  "id": 41,
+  "kanji": "力",
+  "kana": "ちから",
+  "romaji": "chikara",
+  "type": "noun",
+  "meaning": "energy; force; strength; might; power"
+ },
+ {
+  "id": 42,
+  "kanji": "地理",
+  "kana": "ちり",
+  "romaji": "chiri",
+  "type": "noun",
+  "meaning": "geography"
+ },
+ {
+  "id": 43,
+  "kanji": "中学校",
+  "kana": "ちゅうがっこう",
+  "romaji": "chuugakkou",
+  "type": "noun",
+  "meaning": "junior high school; middle school"
+ },
+ {
+  "id": 44,
+  "kanji": "注意",
+  "kana": "ちゅうい",
+  "romaji": "chuui",
+  "type": "noun, suru verb",
+  "meaning": "caution"
+ },
+ {
+  "id": 45,
+  "kanji": "注射",
+  "kana": "ちゅうしゃ",
+  "romaji": "chuusha",
+  "type": "noun, suru verb",
+  "meaning": "injection"
+ },
+ {
+  "id": 46,
+  "kanji": "駐車場",
+  "kana": "ちゅうしゃじょう",
+  "romaji": "chuushajou",
+  "type": "noun",
+  "meaning": "parking lot"
+ },
+ {
+  "id": 47,
+  "kanji": "大分",
+  "kana": "だいぶ",
+  "romaji": "daibu",
+  "type": "adverb",
+  "meaning": "considerably; greatly; a lot"
+ },
+ {
+  "id": 48,
+  "kanji": "大学生",
+  "kana": "だいがくせい",
+  "romaji": "daigakusei",
+  "type": "noun",
+  "meaning": "university student; college student"
+ },
+ {
+  "id": 49,
+  "kanji": "大事",
+  "kana": "だいじ",
+  "romaji": "daiji",
+  "type": "adjective, na-adjective",
+  "meaning": "important; serious; crucial"
+ },
+ {
+  "id": 50,
+  "kanji": "大体",
+  "kana": "だいたい",
+  "romaji": "daitai",
+  "type": "noun",
+  "meaning": "roughly"
+ },
+ {
+  "id": 51,
+  "kanji": "暖房",
+  "kana": "だんぼう",
+  "romaji": "danbou",
+  "type": "noun, suru verb",
+  "meaning": "heating"
+ },
+ {
+  "id": 52,
+  "kanji": "男性",
+  "kana": "だんせい",
+  "romaji": "dansei",
+  "type": "noun",
+  "meaning": "man; male"
+ },
+ {
+  "id": 53,
+  "kanji": "できるだけ",
+  "kana": "できるだけ",
+  "romaji": "dekiru dake",
+  "type": "adverb, expression",
+  "meaning": "as much as possible"
+ },
+ {
+  "id": 54,
+  "kanji": "電報",
+  "kana": "でんぽう",
+  "romaji": "denpou",
+  "type": "noun",
+  "meaning": "telegram"
+ },
+ {
+  "id": 55,
+  "kanji": "電灯",
+  "kana": "でんとう",
+  "romaji": "dentou",
+  "type": "noun",
+  "meaning": "electric light"
+ },
+ {
+  "id": 56,
+  "kanji": "どんどん",
+  "kana": "どんどん",
+  "romaji": "dondon",
+  "type": "adverb",
+  "meaning": "rapidly; more and more"
+ },
+ {
+  "id": 57,
+  "kanji": "泥棒",
+  "kana": "どろぼう",
+  "romaji": "dorobou",
+  "type": "noun",
+  "meaning": "thief"
+ },
+ {
+  "id": 58,
+  "kanji": "動物園",
+  "kana": "どうぶつえん",
+  "romaji": "doubutsuen",
+  "type": "noun",
+  "meaning": "zoo; zoological gardens"
+ },
+ {
+  "id": 59,
+  "kanji": "道具",
+  "kana": "どうぐ",
+  "romaji": "dougu",
+  "type": "noun",
+  "meaning": "tool"
+ },
+ {
+  "id": 60,
+  "kanji": "枝",
+  "kana": "えだ",
+  "romaji": "eda",
+  "type": "noun",
+  "meaning": "branch"
+ },
+ {
+  "id": 61,
+  "kanji": "遠慮",
+  "kana": "えんりょ",
+  "romaji": "enryo",
+  "type": "noun, suru verb",
+  "meaning": "reserve; refraining"
+ },
+ {
+  "id": 62,
+  "kanji": "選ぶ",
+  "kana": "えらぶ",
+  "romaji": "erabu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to choose"
+ },
+ {
+  "id": 63,
+  "kanji": "エスカレーター",
+  "kana": "エスカレーター",
+  "romaji": "esukareetaa",
+  "type": "noun, katakana",
+  "meaning": "escalator"
+ },
+ {
+  "id": 64,
+  "kanji": "ファックス",
+  "kana": "ファックス",
+  "romaji": "fakkusu",
+  "type": "noun, suru verb, katakana",
+  "meaning": "fax"
+ },
+ {
+  "id": 65,
+  "kanji": "不便",
+  "kana": "ふべん",
+  "romaji": "fuben",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "inconvenience"
+ },
+ {
+  "id": 66,
+  "kanji": "増える",
+  "kana": "ふえる",
+  "romaji": "fueru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to increase"
+ },
+ {
+  "id": 67,
+  "kanji": "深い",
+  "kana": "ふかい",
+  "romaji": "fukai",
+  "type": "adjective, i-adjective",
+  "meaning": "deep"
+ },
+ {
+  "id": 68,
+  "kanji": "復習",
+  "kana": "ふくしゅう",
+  "romaji": "fukushuu",
+  "type": "noun, verb, suru verb",
+  "meaning": "review (of learned material); revision"
+ },
+ {
+  "id": 69,
+  "kanji": "複雑",
+  "kana": "ふくざつ",
+  "romaji": "fukuzatsu",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "complexity; complication"
+ },
+ {
+  "id": 70,
+  "kanji": "踏む",
+  "kana": "ふむ",
+  "romaji": "fumu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to step on"
+ },
+ {
+  "id": 71,
+  "kanji": "船",
+  "kana": "ふね",
+  "romaji": "fune",
+  "type": "noun",
+  "meaning": "ship"
+ },
+ {
+  "id": 72,
+  "kanji": "振り出す",
+  "kana": "ふりだす",
+  "romaji": "furidasu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to start to rain"
+ },
+ {
+  "id": 73,
+  "kanji": "布団",
+  "kana": "ふとん",
+  "romaji": "futon",
+  "type": "noun",
+  "meaning": "Japanese bedding; futon"
+ },
+ {
+  "id": 74,
+  "kanji": "太る",
+  "kana": "ふとる",
+  "romaji": "futoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to become fat"
+ },
+ {
+  "id": 75,
+  "kanji": "普通",
+  "kana": "ふつう",
+  "romaji": "futsuu",
+  "type": "noun, adverb",
+  "meaning": "usually"
+ },
+ {
+  "id": 76,
+  "kanji": "ガラス",
+  "kana": "ガラス",
+  "romaji": "garasu",
+  "type": "noun, katakana",
+  "meaning": "a glass"
+ },
+ {
+  "id": 77,
+  "kanji": "ガソリン",
+  "kana": "ガソリン",
+  "romaji": "gasorin",
+  "type": "noun, katakana",
+  "meaning": "gasoline; petrol"
+ },
+ {
+  "id": 78,
+  "kanji": "ガソリンスタンド",
+  "kana": "ガソリンスタンド",
+  "romaji": "gasorin sutando",
+  "type": "noun, katakana",
+  "meaning": "petrol station"
+ },
+ {
+  "id": 79,
+  "kanji": "ガス",
+  "kana": "ガス",
+  "romaji": "gasu",
+  "type": "noun, katakana",
+  "meaning": "petrol station"
+ },
+ {
+  "id": 80,
+  "kanji": "原因",
+  "kana": "げんいん",
+  "romaji": "genin",
+  "type": "noun, suru verb",
+  "meaning": "cause"
+ },
+ {
+  "id": 81,
+  "kanji": "下宿",
+  "kana": "げしゅく",
+  "romaji": "geshuku",
+  "type": "noun, suru verb",
+  "meaning": "lodging"
+ },
+ {
+  "id": 82,
+  "kanji": "技術",
+  "kana": "ぎじゅつ",
+  "romaji": "gijutsu",
+  "type": "noun",
+  "meaning": "art; technology; skill"
+ },
+ {
+  "id": 83,
+  "kanji": "ごちそう",
+  "kana": "ごちそう",
+  "romaji": "gochisou",
+  "type": "noun, suru verb",
+  "meaning": "a feast"
+ },
+ {
+  "id": 84,
+  "kanji": "ごみ",
+  "kana": "ごみ",
+  "romaji": "gomi",
+  "type": "noun",
+  "meaning": "rubbish"
+ },
+ {
+  "id": 85,
+  "kanji": "ご覧になる",
+  "kana": "ごらんいなる",
+  "romaji": "goran ni naru",
+  "type": "verb, godan verb, expression",
+  "meaning": "(respectful) to see"
+ },
+ {
+  "id": 86,
+  "kanji": "ご主人",
+  "kana": "ごしゅじん",
+  "romaji": "goshujin",
+  "type": "noun",
+  "meaning": "your husband; her husband"
+ },
+ {
+  "id": 87,
+  "kanji": "ご存知",
+  "kana": "ごぞんじ",
+  "romaji": "gozonji",
+  "type": "noun",
+  "meaning": "knowing"
+ },
+ {
+  "id": 88,
+  "kanji": "具合",
+  "kana": "ぐあい",
+  "romaji": "guai",
+  "type": "noun",
+  "meaning": "condition; health"
+ },
+ {
+  "id": 89,
+  "kanji": "葉",
+  "kana": "は",
+  "romaji": "ha",
+  "type": "noun",
+  "meaning": "leaves; leaf"
+ },
+ {
+  "id": 90,
+  "kanji": "拝見",
+  "kana": "はいけん",
+  "romaji": "haiken",
+  "type": "noun, suru verb",
+  "meaning": "seeing; looking at"
+ },
+ {
+  "id": 91,
+  "kanji": "歯医者",
+  "kana": "はいしゃ",
+  "romaji": "haisha",
+  "type": "noun",
+  "meaning": "dentist"
+ },
+ {
+  "id": 92,
+  "kanji": "はっきり",
+  "kana": "はっきり",
+  "romaji": "hakkiri",
+  "type": "adverb",
+  "meaning": "clearly"
+ },
+ {
+  "id": 93,
+  "kanji": "運ぶ",
+  "kana": "はこぶ",
+  "romaji": "hakobu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to carry"
+ },
+ {
+  "id": 94,
+  "kanji": "花見",
+  "kana": "はなみ",
+  "romaji": "hanami",
+  "type": "noun, verb, suru verb",
+  "meaning": "cherry blossom viewing; flower viewing"
+ },
+ {
+  "id": 95,
+  "kanji": "ハンドバッグ",
+  "kana": "ハンドバッグ",
+  "romaji": "handobaggu",
+  "type": "noun, katakana",
+  "meaning": "handbag"
+ },
+ {
+  "id": 96,
+  "kanji": "反対",
+  "kana": "はんたい",
+  "romaji": "hantai",
+  "type": "noun, adjective, na-adjective, suru verb",
+  "meaning": "opposition"
+ },
+ {
+  "id": 97,
+  "kanji": "払う",
+  "kana": "はらう",
+  "romaji": "harau",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to pay"
+ },
+ {
+  "id": 98,
+  "kanji": "発音",
+  "kana": "はつおん",
+  "romaji": "hatsuon",
+  "type": "noun, suru verb",
+  "meaning": "pronounciation"
+ },
+ {
+  "id": 99,
+  "kanji": "林",
+  "kana": "はやし",
+  "romaji": "hayashi",
+  "type": "noun",
+  "meaning": "woods; forest"
+ },
+ {
+  "id": 100,
+  "kanji": "恥ずかしい",
+  "kana": "はずかしい",
+  "romaji": "hazukashii",
+  "type": "adjective, i-adjective",
+  "meaning": "embarrassed"
+ },
+ {
+  "id": 101,
+  "kanji": "変",
+  "kana": "へん",
+  "romaji": "hen",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "strange; peculiar; weird"
+ },
+ {
+  "id": 102,
+  "kanji": "返事",
+  "kana": "へんじ",
+  "romaji": "henji",
+  "type": "noun, suru verb",
+  "meaning": "reply; answer; response"
+ },
+ {
+  "id": 103,
+  "kanji": "火",
+  "kana": "ひ",
+  "romaji": "hi",
+  "type": "noun",
+  "meaning": "fire"
+ },
+ {
+  "id": 104,
+  "kanji": "酷い",
+  "kana": "ひどい",
+  "romaji": "hidoi",
+  "type": "adjective, i-adjective",
+  "meaning": "terrible; awful"
+ },
+ {
+  "id": 105,
+  "kanji": "冷える",
+  "kana": "ひえる",
+  "romaji": "hieru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to grow cold"
+ },
+ {
+  "id": 106,
+  "kanji": "髭",
+  "kana": "ひげ",
+  "romaji": "hige",
+  "type": "noun",
+  "meaning": "beard"
+ },
+ {
+  "id": 107,
+  "kanji": "非常に",
+  "kana": "ひじょうに",
+  "romaji": "hijou ni",
+  "type": "adverb",
+  "meaning": "extremely"
+ },
+ {
+  "id": 108,
+  "kanji": "光",
+  "kana": "ひかり",
+  "romaji": "hikari",
+  "type": "noun",
+  "meaning": "light"
+ },
+ {
+  "id": 109,
+  "kanji": "光る",
+  "kana": "ひかる",
+  "romaji": "hikaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to shine"
+ },
+ {
+  "id": 110,
+  "kanji": "引き出し",
+  "kana": "ひきだし",
+  "romaji": "hikidashi",
+  "type": "noun",
+  "meaning": "drawer"
+ },
+ {
+  "id": 111,
+  "kanji": "引き出す",
+  "kana": "ひきだす",
+  "romaji": "hikidasu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to withdraw"
+ },
+ {
+  "id": 112,
+  "kanji": "引っ越す",
+  "kana": "ひっこす",
+  "romaji": "hikkosu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to move house"
+ },
+ {
+  "id": 113,
+  "kanji": "飛行場",
+  "kana": "ひこうじょう",
+  "romaji": "hikoujou",
+  "type": "noun",
+  "meaning": "airfield; airport"
+ },
+ {
+  "id": 114,
+  "kanji": "開く",
+  "kana": "ひらく",
+  "romaji": "hiraku",
+  "type": "verb, godan verb, intransitive verb, transitive verb",
+  "meaning": "to open; to undo; to unseal; to unpack"
+ },
+ {
+  "id": 115,
+  "kanji": "拾う",
+  "kana": "ひろう",
+  "romaji": "hirou",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to pick up"
+ },
+ {
+  "id": 116,
+  "kanji": "昼間",
+  "kana": "ひるま",
+  "romaji": "hiruma",
+  "type": "noun",
+  "meaning": "daytime; during the day"
+ },
+ {
+  "id": 117,
+  "kanji": "昼休み",
+  "kana": "ひるやすみ",
+  "romaji": "hiruyasumi",
+  "type": "noun",
+  "meaning": "lunch break; noon recess; noo rest period"
+ },
+ {
+  "id": 118,
+  "kanji": "久しぶり",
+  "kana": "ひさしぶり",
+  "romaji": "hisashiburi",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "after a long time"
+ },
+ {
+  "id": 119,
+  "kanji": "褒める",
+  "kana": "ほめる",
+  "romaji": "homeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to praise"
+ },
+ {
+  "id": 120,
+  "kanji": "翻訳",
+  "kana": "ほんやく",
+  "romaji": "honyaku",
+  "type": "noun, suru verb",
+  "meaning": "translation"
+ },
+ {
+  "id": 121,
+  "kanji": "星",
+  "kana": "ほし",
+  "romaji": "hoshi",
+  "type": "noun",
+  "meaning": "star"
+ },
+ {
+  "id": 122,
+  "kanji": "ほとんど",
+  "kana": "ほとんど",
+  "romaji": "hotondo",
+  "type": "adverbial noun",
+  "meaning": "mostly"
+ },
+ {
+  "id": 123,
+  "kanji": "法律",
+  "kana": "ほうりつ",
+  "romaji": "houritsu",
+  "type": "noun",
+  "meaning": "law"
+ },
+ {
+  "id": 124,
+  "kanji": "放送",
+  "kana": "ほうそう",
+  "romaji": "housou",
+  "type": "noun, suru verb",
+  "meaning": "to broadcast"
+ },
+ {
+  "id": 125,
+  "kanji": "一度",
+  "kana": "いちど",
+  "romaji": "ichido",
+  "type": "noun",
+  "meaning": "once; one time; on one occasion"
+ },
+ {
+  "id": 126,
+  "kanji": "以外",
+  "kana": "いがい",
+  "romaji": "igai",
+  "type": "noun",
+  "meaning": "with the exception of; excepting"
+ },
+ {
+  "id": 127,
+  "kanji": "医学",
+  "kana": "いがく",
+  "romaji": "igaku",
+  "type": "noun",
+  "meaning": "medical science; medicine"
+ },
+ {
+  "id": 128,
+  "kanji": "いじめる",
+  "kana": "いじめる",
+  "romaji": "ijimeru",
+  "type": "ichidan verb, transitive verb",
+  "meaning": "to tease"
+ },
+ {
+  "id": 129,
+  "kanji": "以上",
+  "kana": "いじょう",
+  "romaji": "ijou",
+  "type": "noun, adverbial noun",
+  "meaning": "… and more; … and upwards"
+ },
+ {
+  "id": 130,
+  "kanji": "以下",
+  "kana": "いか",
+  "romaji": "ika",
+  "type": "noun",
+  "meaning": "not exceeding"
+ },
+ {
+  "id": 131,
+  "kanji": "意見",
+  "kana": "いけん",
+  "romaji": "iken",
+  "type": "noun, verb, suru verb",
+  "meaning": "opinion; view; comment"
+ },
+ {
+  "id": 132,
+  "kanji": "生き物",
+  "kana": "いきもの",
+  "romaji": "ikimono",
+  "type": "noun",
+  "meaning": "living things"
+ },
+ {
+  "id": 133,
+  "kanji": "生きる",
+  "kana": "いきる",
+  "romaji": "ikiru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to live"
+ },
+ {
+  "id": 134,
+  "kanji": "以内",
+  "kana": "いない",
+  "romaji": "inai",
+  "type": "noun, suffix",
+  "meaning": "within"
+ },
+ {
+  "id": 135,
+  "kanji": "田舎",
+  "kana": "いなか",
+  "romaji": "inaka",
+  "type": "noun",
+  "meaning": "countryside"
+ },
+ {
+  "id": 136,
+  "kanji": "祈る",
+  "kana": "いのる",
+  "romaji": "inoru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to pray"
+ },
+ {
+  "id": 137,
+  "kanji": "いっぱい",
+  "kana": "いっぱい",
+  "romaji": "ippai",
+  "type": "noun, adjective, na-adjective, adverb",
+  "meaning": "full"
+ },
+ {
+  "id": 138,
+  "kanji": "色んな",
+  "kana": "いろんな",
+  "romaji": "ironna",
+  "type": "pre-noun adjectival",
+  "meaning": "various"
+ },
+ {
+  "id": 139,
+  "kanji": "石",
+  "kana": "いし",
+  "romaji": "ishi",
+  "type": "noun",
+  "meaning": "stone"
+ },
+ {
+  "id": 140,
+  "kanji": "急ぐ",
+  "kana": "いそぐ",
+  "romaji": "isogu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to hurry; to rush; to hasten; to make something happen sooner"
+ },
+ {
+  "id": 141,
+  "kanji": "一生懸命",
+  "kana": "いっしょうけんめい",
+  "romaji": "isshoukenmei",
+  "type": "adverbial noun, adjective, na-adjective",
+  "meaning": "very hard; with utmost effort"
+ },
+ {
+  "id": 142,
+  "kanji": "頂く",
+  "kana": "いただく",
+  "romaji": "itadaku",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "(humble) to receive"
+ },
+ {
+  "id": 143,
+  "kanji": "致す",
+  "kana": "いたす",
+  "romaji": "itasu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "(humbe) to do"
+ },
+ {
+  "id": 144,
+  "kanji": "糸",
+  "kana": "いと",
+  "romaji": "ito",
+  "type": "noun",
+  "meaning": "thread"
+ },
+ {
+  "id": 145,
+  "kanji": "ジャム",
+  "kana": "ジャム",
+  "romaji": "jamu",
+  "type": "noun, katakana",
+  "meaning": "jam"
+ },
+ {
+  "id": 146,
+  "kanji": "字",
+  "kana": "じ",
+  "romaji": "ji",
+  "type": "noun",
+  "meaning": "character"
+ },
+ {
+  "id": 147,
+  "kanji": "時代",
+  "kana": "じだい",
+  "romaji": "jidai",
+  "type": "noun",
+  "meaning": "period"
+ },
+ {
+  "id": 148,
+  "kanji": "事故",
+  "kana": "じこ",
+  "romaji": "jiko",
+  "type": "noun",
+  "meaning": "accident"
+ },
+ {
+  "id": 149,
+  "kanji": "事務所",
+  "kana": "じむしょ",
+  "romaji": "jimusho",
+  "type": "noun",
+  "meaning": "office"
+ },
+ {
+  "id": 150,
+  "kanji": "神社",
+  "kana": "じんじゃ",
+  "romaji": "jinja",
+  "type": "noun",
+  "meaning": "shinto shrine"
+ },
+ {
+  "id": 151,
+  "kanji": "人口",
+  "kana": "じんこう",
+  "romaji": "jinkou",
+  "type": "noun",
+  "meaning": "population"
+ },
+ {
+  "id": 152,
+  "kanji": "人生",
+  "kana": "じんせい",
+  "romaji": "jinsei",
+  "type": "noun",
+  "meaning": "human life"
+ },
+ {
+  "id": 153,
+  "kanji": "地震",
+  "kana": "じしん",
+  "romaji": "jishin",
+  "type": "noun",
+  "meaning": "earthquake"
+ },
+ {
+  "id": 154,
+  "kanji": "辞典",
+  "kana": "じてん",
+  "romaji": "jiten",
+  "type": "noun",
+  "meaning": "dictionary"
+ },
+ {
+  "id": 155,
+  "kanji": "自由",
+  "kana": "じゆう",
+  "romaji": "jiyuu",
+  "type": "noun, adjective, na-adjective, expression",
+  "meaning": "freedom"
+ },
+ {
+  "id": 156,
+  "kanji": "女性",
+  "kana": "じょせい",
+  "romaji": "josei",
+  "type": "noun",
+  "meaning": "woman; female"
+ },
+ {
+  "id": 157,
+  "kanji": "準備",
+  "kana": "じゅんび",
+  "romaji": "junbi",
+  "type": "noun, suru verb",
+  "meaning": "to prepare"
+ },
+ {
+  "id": 158,
+  "kanji": "十分",
+  "kana": "じゅうぶん",
+  "romaji": "juubun",
+  "type": "noun, adjective, na-adjective, adverb",
+  "meaning": "enough; sufficient; plenty; adequate; satisfactory"
+ },
+ {
+  "id": 159,
+  "kanji": "柔道",
+  "kana": "じゅうどう",
+  "romaji": "juudou",
+  "type": "noun",
+  "meaning": "judo"
+ },
+ {
+  "id": 160,
+  "kanji": "住所",
+  "kana": "じゅうしょ",
+  "romaji": "juusho",
+  "type": "noun",
+  "meaning": "address"
+ },
+ {
+  "id": 161,
+  "kanji": "カーテン",
+  "kana": "カーテン",
+  "romaji": "kaaten",
+  "type": "noun, katakana",
+  "meaning": "curtain"
+ },
+ {
+  "id": 162,
+  "kanji": "壁",
+  "kana": "かべ",
+  "romaji": "kabe",
+  "type": "noun",
+  "meaning": "wall"
+ },
+ {
+  "id": 163,
+  "kanji": "課長",
+  "kana": "かちょう",
+  "romaji": "kachou",
+  "type": "noun",
+  "meaning": "section manager; section chief"
+ },
+ {
+  "id": 164,
+  "kanji": "帰り",
+  "kana": "かえり",
+  "romaji": "kaeri",
+  "type": "noun",
+  "meaning": "return; coming back"
+ },
+ {
+  "id": 165,
+  "kanji": "変える",
+  "kana": "かえる",
+  "romaji": "kaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to change; to transform"
+ },
+ {
+  "id": 166,
+  "kanji": "科学",
+  "kana": "かがく",
+  "romaji": "kagaku",
+  "type": "noun",
+  "meaning": "science"
+ },
+ {
+  "id": 167,
+  "kanji": "鏡",
+  "kana": "かがみ",
+  "romaji": "kagami",
+  "type": "noun",
+  "meaning": "mirror"
+ },
+ {
+  "id": 168,
+  "kanji": "海岸",
+  "kana": "かいがん",
+  "romaji": "kaigan",
+  "type": "noun",
+  "meaning": "coast"
+ },
+ {
+  "id": 169,
+  "kanji": "会議",
+  "kana": "かいぎ",
+  "romaji": "kaigi",
+  "type": "noun, verb, suru verb",
+  "meaning": "meeting; conference; session; assembly"
+ },
+ {
+  "id": 170,
+  "kanji": "会議室",
+  "kana": "かいぎしつ",
+  "romaji": "kaigishitsu",
+  "type": "noun",
+  "meaning": "conference room; conference hall; council room"
+ },
+ {
+  "id": 171,
+  "kanji": "会場",
+  "kana": "かいじょう",
+  "romaji": "kaijou",
+  "type": "noun",
+  "meaning": "assembly hall; meeting place; venue; grounds"
+ },
+ {
+  "id": 172,
+  "kanji": "会話",
+  "kana": "かいわ",
+  "romaji": "kaiwa",
+  "type": "noun, verb, suru verb",
+  "meaning": "conversation"
+ },
+ {
+  "id": 173,
+  "kanji": "火事",
+  "kana": "かじ",
+  "romaji": "kaji",
+  "type": "noun",
+  "meaning": "fire"
+ },
+ {
+  "id": 174,
+  "kanji": "格好",
+  "kana": "かっこう",
+  "romaji": "kakkou",
+  "type": "noun",
+  "meaning": "appearance"
+ },
+ {
+  "id": 175,
+  "kanji": "構う",
+  "kana": "かまう",
+  "romaji": "kamau",
+  "type": "verb, godan verb",
+  "meaning": "to mind"
+ },
+ {
+  "id": 176,
+  "kanji": "髪",
+  "kana": "かみ",
+  "romaji": "kami",
+  "type": "noun",
+  "meaning": "hair"
+ },
+ {
+  "id": 177,
+  "kanji": "嚙む",
+  "kana": "かむ",
+  "romaji": "kamu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to bite; to chew"
+ },
+ {
+  "id": 178,
+  "kanji": "家内",
+  "kana": "かない",
+  "romaji": "kanai",
+  "type": "noun",
+  "meaning": "(my) wife; inside the home; one's family"
+ },
+ {
+  "id": 179,
+  "kanji": "必ず",
+  "kana": "かならず",
+  "romaji": "kanarazu",
+  "type": "adverb",
+  "meaning": "always; certainly"
+ },
+ {
+  "id": 180,
+  "kanji": "悲しい",
+  "kana": "かなしい",
+  "romaji": "kanashii",
+  "type": "adjective, i-adjective",
+  "meaning": "sad"
+ },
+ {
+  "id": 181,
+  "kanji": "考える",
+  "kana": "かんがえる",
+  "romaji": "kangaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to think"
+ },
+ {
+  "id": 182,
+  "kanji": "看護婦",
+  "kana": "かんごふ",
+  "romaji": "kangofu",
+  "type": "noun",
+  "meaning": "female nurse"
+ },
+ {
+  "id": 183,
+  "kanji": "関係",
+  "kana": "かんけい",
+  "romaji": "kankei",
+  "type": "noun, suru verb",
+  "meaning": "relationship"
+ },
+ {
+  "id": 184,
+  "kanji": "彼女",
+  "kana": "かのじょ",
+  "romaji": "kanojo",
+  "type": "pronoun",
+  "meaning": "she; her"
+ },
+ {
+  "id": 185,
+  "kanji": "簡単",
+  "kana": "かんたん",
+  "romaji": "kantan",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "simple; easy"
+ },
+ {
+  "id": 186,
+  "kanji": "彼",
+  "kana": "かれ",
+  "romaji": "kare",
+  "type": "pronoun",
+  "meaning": "he; him; his"
+ },
+ {
+  "id": 187,
+  "kanji": "彼ら",
+  "kana": "かれら",
+  "romaji": "karera",
+  "type": "pronoun",
+  "meaning": "they; them"
+ },
+ {
+  "id": 188,
+  "kanji": "形",
+  "kana": "かたち",
+  "romaji": "katachi",
+  "type": "noun",
+  "meaning": "shape"
+ },
+ {
+  "id": 189,
+  "kanji": "片付ける",
+  "kana": "かたづける",
+  "romaji": "katadzukeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to tidy up"
+ },
+ {
+  "id": 190,
+  "kanji": "硬い",
+  "kana": "かたい",
+  "romaji": "katai",
+  "type": "adjective, i-adjective",
+  "meaning": "hard"
+ },
+ {
+  "id": 191,
+  "kanji": "勝つ",
+  "kana": "かつ",
+  "romaji": "katsu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to win"
+ },
+ {
+  "id": 192,
+  "kanji": "乾く",
+  "kana": "かわく",
+  "romaji": "kawaku",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to get dry"
+ },
+ {
+  "id": 193,
+  "kanji": "代わり",
+  "kana": "かわり",
+  "romaji": "kawari",
+  "type": "noun",
+  "meaning": "instead; in place"
+ },
+ {
+  "id": 194,
+  "kanji": "変わる",
+  "kana": "かわる",
+  "romaji": "kawaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to change"
+ },
+ {
+  "id": 195,
+  "kanji": "通う",
+  "kana": "かよう",
+  "romaji": "kayou",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to commute"
+ },
+ {
+  "id": 196,
+  "kanji": "飾る",
+  "kana": "かざる",
+  "romaji": "kazaru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to decorate"
+ },
+ {
+  "id": 197,
+  "kanji": "毛",
+  "kana": "け",
+  "romaji": "ke",
+  "type": "noun",
+  "meaning": "hair or fur"
+ },
+ {
+  "id": 198,
+  "kanji": "ケーキ",
+  "kana": "ケーキ",
+  "romaji": "keeki",
+  "type": "noun, katakana",
+  "meaning": "cake"
+ },
+ {
+  "id": 199,
+  "kanji": "怪我",
+  "kana": "けが",
+  "romaji": "kega",
+  "type": "noun, suru verb",
+  "meaning": "to injure"
+ },
+ {
+  "id": 200,
+  "kanji": "計画",
+  "kana": "けいかく",
+  "romaji": "keikaku",
+  "type": "noun, suru verb",
+  "meaning": "to plan"
+ },
+ {
+  "id": 201,
+  "kanji": "経験",
+  "kana": "けいけん",
+  "romaji": "keiken",
+  "type": "noun, suru verb",
+  "meaning": "to experience"
+ },
+ {
+  "id": 202,
+  "kanji": "警察",
+  "kana": "けいさつ",
+  "romaji": "keisatsu",
+  "type": "noun",
+  "meaning": "police"
+ },
+ {
+  "id": 203,
+  "kanji": "経済",
+  "kana": "けいざい",
+  "romaji": "keizai",
+  "type": "noun",
+  "meaning": "finance; economy"
+ },
+ {
+  "id": 204,
+  "kanji": "見物",
+  "kana": "けんぶつ",
+  "romaji": "kenbutsu",
+  "type": "noun, suru verb",
+  "meaning": "sightseeing; visit"
+ },
+ {
+  "id": 205,
+  "kanji": "喧嘩",
+  "kana": "けんか",
+  "romaji": "kenka",
+  "type": "noun, suru verb",
+  "meaning": "to quarrel"
+ },
+ {
+  "id": 206,
+  "kanji": "研究",
+  "kana": "けんきゅう",
+  "romaji": "kenkyuu",
+  "type": "noun, suru verb",
+  "meaning": "research"
+ },
+ {
+  "id": 207,
+  "kanji": "研究室",
+  "kana": "けんきゅうしつ",
+  "romaji": "kenkyuushitsu",
+  "type": "noun",
+  "meaning": "laboratory"
+ },
+ {
+  "id": 208,
+  "kanji": "消しゴム",
+  "kana": "けしゴム",
+  "romaji": "keshigomu",
+  "type": "noun",
+  "meaning": "eraser"
+ },
+ {
+  "id": 209,
+  "kanji": "景色",
+  "kana": "けしき",
+  "romaji": "keshiki",
+  "type": "noun",
+  "meaning": "scenery"
+ },
+ {
+  "id": 210,
+  "kanji": "気",
+  "kana": "き",
+  "romaji": "ki",
+  "type": "noun",
+  "meaning": "spirit"
+ },
+ {
+  "id": 211,
+  "kanji": "厳しい",
+  "kana": "きびしい",
+  "romaji": "kibishii",
+  "type": "adjective, i-adjective",
+  "meaning": "strict"
+ },
+ {
+  "id": 212,
+  "kanji": "きぶん",
+  "kana": "きぶん",
+  "romaji": "kibun",
+  "type": "noun",
+  "meaning": "feeling; mood"
+ },
+ {
+  "id": 213,
+  "kanji": "機会",
+  "kana": "きかい",
+  "romaji": "kikai",
+  "type": "noun",
+  "meaning": "chance; opportunity"
+ },
+ {
+  "id": 214,
+  "kanji": "危険",
+  "kana": "きけん",
+  "romaji": "kiken",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "danger"
+ },
+ {
+  "id": 215,
+  "kanji": "聞こえる",
+  "kana": "きこえる",
+  "romaji": "kikoeru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to be heard; to be audible; to be said"
+ },
+ {
+  "id": 216,
+  "kanji": "決まる",
+  "kana": "きまる",
+  "romaji": "kimaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be decided"
+ },
+ {
+  "id": 217,
+  "kanji": "決める",
+  "kana": "きめる",
+  "romaji": "kimeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to decide"
+ },
+ {
+  "id": 218,
+  "kanji": "君",
+  "kana": "きみ",
+  "romaji": "kimi",
+  "type": "pronoun",
+  "meaning": "You"
+ },
+ {
+  "id": 219,
+  "kanji": "気持ち",
+  "kana": "きもち",
+  "romaji": "kimochi",
+  "type": "noun",
+  "meaning": "feeling"
+ },
+ {
+  "id": 220,
+  "kanji": "着物",
+  "kana": "きもの",
+  "romaji": "kimono",
+  "type": "noun",
+  "meaning": "kimono; Japanese traditional clothing"
+ },
+ {
+  "id": 221,
+  "kanji": "近所",
+  "kana": "きんじょ",
+  "romaji": "kinjo",
+  "type": "noun",
+  "meaning": "neighbourhood"
+ },
+ {
+  "id": 222,
+  "kanji": "絹",
+  "kana": "きぬ",
+  "romaji": "kinu",
+  "type": "noun",
+  "meaning": "silk"
+ },
+ {
+  "id": 223,
+  "kanji": "季節",
+  "kana": "きせつ",
+  "romaji": "kisetsu",
+  "type": "noun",
+  "meaning": "season"
+ },
+ {
+  "id": 224,
+  "kanji": "汽車",
+  "kana": "きしゃ",
+  "romaji": "kisha",
+  "type": "noun",
+  "meaning": "train"
+ },
+ {
+  "id": 225,
+  "kanji": "規則",
+  "kana": "きそく",
+  "romaji": "kisoku",
+  "type": "noun",
+  "meaning": "rule"
+ },
+ {
+  "id": 226,
+  "kanji": "子",
+  "kana": "こ",
+  "romaji": "ko",
+  "type": "noun",
+  "meaning": "child"
+ },
+ {
+  "id": 227,
+  "kanji": "心",
+  "kana": "こころ",
+  "romaji": "kokoro",
+  "type": "noun",
+  "meaning": "heart"
+ },
+ {
+  "id": 228,
+  "kanji": "国際",
+  "kana": "こくさい",
+  "romaji": "kokusai",
+  "type": "noun",
+  "meaning": "international"
+ },
+ {
+  "id": 229,
+  "kanji": "細かい",
+  "kana": "こまかい",
+  "romaji": "komakai",
+  "type": "adjective, i-adjective",
+  "meaning": "small; fine"
+ },
+ {
+  "id": 230,
+  "kanji": "米",
+  "kana": "こめ",
+  "romaji": "kome",
+  "type": "noun",
+  "meaning": "(husked grains of) rice"
+ },
+ {
+  "id": 231,
+  "kanji": "込む",
+  "kana": "こむ",
+  "romaji": "komu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be crowded"
+ },
+ {
+  "id": 232,
+  "kanji": "今度",
+  "kana": "こんど",
+  "romaji": "kondo",
+  "type": "noun",
+  "meaning": "this time; next time"
+ },
+ {
+  "id": 233,
+  "kanji": "この間",
+  "kana": "このあいだ",
+  "romaji": "kono aida",
+  "type": "adverbial noun",
+  "meaning": "the other day; recently"
+ },
+ {
+  "id": 234,
+  "kanji": "このごろ",
+  "kana": "このごろ",
+  "romaji": "kono goro",
+  "type": "adverbial noun",
+  "meaning": "these days; nowadays"
+ },
+ {
+  "id": 235,
+  "kanji": "コンピュータ",
+  "kana": "コンピュータ",
+  "romaji": "konpyuuta",
+  "type": "noun, katakana",
+  "meaning": "computer"
+ },
+ {
+  "id": 236,
+  "kanji": "コンサート",
+  "kana": "コンサート",
+  "romaji": "konsaato",
+  "type": "noun, katakana",
+  "meaning": "concert"
+ },
+ {
+  "id": 237,
+  "kanji": "今夜",
+  "kana": "こんや",
+  "romaji": "konya",
+  "type": "noun",
+  "meaning": "this evening; tonight"
+ },
+ {
+  "id": 238,
+  "kanji": "これから",
+  "kana": "これから",
+  "romaji": "korekara",
+  "type": "conjunction",
+  "meaning": "after this"
+ },
+ {
+  "id": 239,
+  "kanji": "故障",
+  "kana": "こしょう",
+  "romaji": "koshou",
+  "type": "noun, suru verb",
+  "meaning": "to break-down"
+ },
+ {
+  "id": 240,
+  "kanji": "答え",
+  "kana": "こたえ",
+  "romaji": "kotae",
+  "type": "noun",
+  "meaning": "response"
+ },
+ {
+  "id": 241,
+  "kanji": "小鳥",
+  "kana": "ことり",
+  "romaji": "kotori",
+  "type": "noun",
+  "meaning": "small bird"
+ },
+ {
+  "id": 242,
+  "kanji": "こう",
+  "kana": "こう",
+  "romaji": "kou",
+  "type": "adverb",
+  "meaning": "this way"
+ },
+ {
+  "id": 243,
+  "kanji": "校長",
+  "kana": "こうちょう",
+  "romaji": "kouchou",
+  "type": "noun",
+  "meaning": "principal; headmaster"
+ },
+ {
+  "id": 244,
+  "kanji": "講堂",
+  "kana": "こうどう",
+  "romaji": "koudou",
+  "type": "noun",
+  "meaning": "auditorium"
+ },
+ {
+  "id": 245,
+  "kanji": "郊外",
+  "kana": "こうがい",
+  "romaji": "kougai",
+  "type": "noun",
+  "meaning": "suburb; residential area on the outskirt of a city"
+ },
+ {
+  "id": 246,
+  "kanji": "講義",
+  "kana": "こうぎ",
+  "romaji": "kougi",
+  "type": "noun, suru verb",
+  "meaning": "lecture"
+ },
+ {
+  "id": 247,
+  "kanji": "工業",
+  "kana": "こうぎょう",
+  "romaji": "kougyou",
+  "type": "noun",
+  "meaning": "industry"
+ },
+ {
+  "id": 248,
+  "kanji": "工場",
+  "kana": "こうじょう",
+  "romaji": "koujou",
+  "type": "noun",
+  "meaning": "factory"
+ },
+ {
+  "id": 249,
+  "kanji": "高校",
+  "kana": "こうこう",
+  "romaji": "koukou",
+  "type": "noun",
+  "meaning": "senior high school; high school"
+ },
+ {
+  "id": 250,
+  "kanji": "高校生",
+  "kana": "こうこうせい",
+  "romaji": "koukousei",
+  "type": "noun",
+  "meaning": "high school student"
+ },
+ {
+  "id": 251,
+  "kanji": "公務員",
+  "kana": "こうむいん",
+  "romaji": "koumuin",
+  "type": "noun",
+  "meaning": "government worker"
+ },
+ {
+  "id": 252,
+  "kanji": "高等学校",
+  "kana": "こうとうがっこう",
+  "romaji": "koutougakkou",
+  "type": "noun",
+  "meaning": "high school"
+ },
+ {
+  "id": 253,
+  "kanji": "交通",
+  "kana": "こうつう",
+  "romaji": "koutsuu",
+  "type": "noun",
+  "meaning": "traffic"
+ },
+ {
+  "id": 254,
+  "kanji": "怖い",
+  "kana": "こわい",
+  "romaji": "kowai",
+  "type": "adjective, i-adjective",
+  "meaning": "frightening"
+ },
+ {
+  "id": 255,
+  "kanji": "壊れる",
+  "kana": "こわれる",
+  "romaji": "kowareru",
+  "type": "ichidan verb, intransitive verb",
+  "meaning": "to be broken"
+ },
+ {
+  "id": 256,
+  "kanji": "壊す",
+  "kana": "こわす",
+  "romaji": "kowasu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to break"
+ },
+ {
+  "id": 257,
+  "kanji": "首",
+  "kana": "くび",
+  "romaji": "kubi",
+  "type": "noun",
+  "meaning": "neck"
+ },
+ {
+  "id": 258,
+  "kanji": "下さる",
+  "kana": "くださる",
+  "romaji": "kudasaru",
+  "type": "verb, godan verb",
+  "meaning": "(respectful) to give"
+ },
+ {
+  "id": 259,
+  "kanji": "曇",
+  "kana": "くも",
+  "romaji": "kumo",
+  "type": "noun",
+  "meaning": "cloud"
+ },
+ {
+  "id": 260,
+  "kanji": "君",
+  "kana": "くん",
+  "romaji": "kun",
+  "type": "suffix",
+  "meaning": "suffix for familiar young male"
+ },
+ {
+  "id": 261,
+  "kanji": "比べる",
+  "kana": "くらべる",
+  "romaji": "kuraberu",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to compare"
+ },
+ {
+  "id": 262,
+  "kanji": "暮れる",
+  "kana": "くれる",
+  "romaji": "kureru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to get dark"
+ },
+ {
+  "id": 263,
+  "kanji": "草",
+  "kana": "くさ",
+  "romaji": "kusa",
+  "type": "noun",
+  "meaning": "grass"
+ },
+ {
+  "id": 264,
+  "kanji": "空気",
+  "kana": "くうき",
+  "romaji": "kuuki",
+  "type": "noun",
+  "meaning": "air"
+ },
+ {
+  "id": 265,
+  "kanji": "空港",
+  "kana": "くうこう",
+  "romaji": "kuukou",
+  "type": "noun",
+  "meaning": "airport"
+ },
+ {
+  "id": 266,
+  "kanji": "客",
+  "kana": "きゃく",
+  "romaji": "kyaku",
+  "type": "noun",
+  "meaning": "guest; customer"
+ },
+ {
+  "id": 267,
+  "kanji": "教育",
+  "kana": "きょういく",
+  "romaji": "kyouiku",
+  "type": "noun, suru verb",
+  "meaning": "education"
+ },
+ {
+  "id": 268,
+  "kanji": "教会",
+  "kana": "きょうかい",
+  "romaji": "kyoukai",
+  "type": "noun",
+  "meaning": "church; congregation; Christian church"
+ },
+ {
+  "id": 269,
+  "kanji": "興味",
+  "kana": "きょうみ",
+  "romaji": "kyoumi",
+  "type": "noun",
+  "meaning": "interest (in something); curiosity (about something); zest (for)"
+ },
+ {
+  "id": 270,
+  "kanji": "競争",
+  "kana": "きょうそう",
+  "romaji": "kyousou",
+  "type": "noun, suru verb",
+  "meaning": "competition"
+ },
+ {
+  "id": 271,
+  "kanji": "急",
+  "kana": "きゅう",
+  "romaji": "kyuu",
+  "type": "adjective, na-adjective",
+  "meaning": "sudden; abrupt; unexpected"
+ },
+ {
+  "id": 272,
+  "kanji": "急行",
+  "kana": "きゅうこう",
+  "romaji": "kyuukou",
+  "type": "noun, verb, suru verb",
+  "meaning": "hurrying (to somewhere); rushing; hastening"
+ },
+ {
+  "id": 273,
+  "kanji": "間違える",
+  "kana": "まちがえる",
+  "romaji": "machigaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to make a mistake (in)"
+ },
+ {
+  "id": 274,
+  "kanji": "参る",
+  "kana": "まいる",
+  "romaji": "mairu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "(humble) to go; to come"
+ },
+ {
+  "id": 275,
+  "kanji": "負ける",
+  "kana": "まける",
+  "romaji": "makeru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to lose"
+ },
+ {
+  "id": 276,
+  "kanji": "漫画",
+  "kana": "まんが",
+  "romaji": "manga",
+  "type": "noun",
+  "meaning": "comic"
+ },
+ {
+  "id": 277,
+  "kanji": "間に合う",
+  "kana": "まにあう",
+  "romaji": "maniau",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be in time (for)"
+ },
+ {
+  "id": 278,
+  "kanji": "真ん中",
+  "kana": "まんなか",
+  "romaji": "mannaka",
+  "type": "noun",
+  "meaning": "middle; centre; center"
+ },
+ {
+  "id": 279,
+  "kanji": "周り",
+  "kana": "まわり",
+  "romaji": "mawari",
+  "type": "noun",
+  "meaning": "around"
+ },
+ {
+  "id": 280,
+  "kanji": "回る",
+  "kana": "まわる",
+  "romaji": "mawaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to go around"
+ },
+ {
+  "id": 281,
+  "kanji": "まず",
+  "kana": "まず",
+  "romaji": "mazu",
+  "type": "adverb",
+  "meaning": "first of all"
+ },
+ {
+  "id": 282,
+  "kanji": "召し上がる",
+  "kana": "めしあがる",
+  "romaji": "mejiagaru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to eat; to drink"
+ },
+ {
+  "id": 283,
+  "kanji": "珍しい",
+  "kana": "めずらしい",
+  "romaji": "mezurashii",
+  "type": "adjective, i-adjective",
+  "meaning": "unusual; rare"
+ },
+ {
+  "id": 284,
+  "kanji": "見える",
+  "kana": "みえる",
+  "romaji": "mieru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to be seen; to be in sight; to look; to seem"
+ },
+ {
+  "id": 285,
+  "kanji": "港",
+  "kana": "みなと",
+  "romaji": "minato",
+  "type": "noun",
+  "meaning": "harbour"
+ },
+ {
+  "id": 286,
+  "kanji": "味噌",
+  "kana": "みそ",
+  "romaji": "miso",
+  "type": "noun",
+  "meaning": "fermented condiment made from soybeans"
+ },
+ {
+  "id": 287,
+  "kanji": "見つかる",
+  "kana": "みつかる",
+  "romaji": "mitsukaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be found; to be discovered"
+ },
+ {
+  "id": 288,
+  "kanji": "見つける",
+  "kana": "みつける",
+  "romaji": "mitsukeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to discover; to find; to come across; to detect; to spot"
+ },
+ {
+  "id": 289,
+  "kanji": "都",
+  "kana": "みやこ",
+  "romaji": "miyako",
+  "type": "noun",
+  "meaning": "capital"
+ },
+ {
+  "id": 290,
+  "kanji": "湖",
+  "kana": "みずうみ",
+  "romaji": "mizuumi",
+  "type": "noun",
+  "meaning": "lake"
+ },
+ {
+  "id": 291,
+  "kanji": "戻る",
+  "kana": "もどる",
+  "romaji": "modoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to turn back"
+ },
+ {
+  "id": 292,
+  "kanji": "木綿",
+  "kana": "もめん",
+  "romaji": "momen",
+  "type": "noun",
+  "meaning": "cotton (material)"
+ },
+ {
+  "id": 293,
+  "kanji": "森",
+  "kana": "もり",
+  "romaji": "mori",
+  "type": "noun",
+  "meaning": "forest"
+ },
+ {
+  "id": 294,
+  "kanji": "もし",
+  "kana": "もし",
+  "romaji": "moshi",
+  "type": "adverb",
+  "meaning": "if; in case; supposing"
+ },
+ {
+  "id": 295,
+  "kanji": "申し上げる",
+  "kana": "もうしあげる",
+  "romaji": "moushiageru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to say; to offer"
+ },
+ {
+  "id": 296,
+  "kanji": "申す",
+  "kana": "もうす",
+  "romaji": "mousu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to be called; to say"
+ },
+ {
+  "id": 297,
+  "kanji": "もうすぐ",
+  "kana": "もうすぐ",
+  "romaji": "mousugu",
+  "type": "adverb, expression",
+  "meaning": "soon"
+ },
+ {
+  "id": 298,
+  "kanji": "迎える",
+  "kana": "むかえる",
+  "romaji": "mukaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to go out to meet"
+ },
+ {
+  "id": 299,
+  "kanji": "昔",
+  "kana": "むかし",
+  "romaji": "mukashi",
+  "type": "noun, adverbial noun",
+  "meaning": "olden days; former"
+ },
+ {
+  "id": 300,
+  "kanji": "向かう",
+  "kana": "むかう",
+  "romaji": "mukau",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to head towards"
+ },
+ {
+  "id": 301,
+  "kanji": "無理",
+  "kana": "むり",
+  "romaji": "muri",
+  "type": "noun, adjective, na-adjective, suru verb",
+  "meaning": "impossible"
+ },
+ {
+  "id": 302,
+  "kanji": "虫",
+  "kana": "むし",
+  "romaji": "mushi",
+  "type": "noun",
+  "meaning": "insect"
+ },
+ {
+  "id": 303,
+  "kanji": "息子",
+  "kana": "むすこ",
+  "romaji": "musuko",
+  "type": "noun",
+  "meaning": "son"
+ },
+ {
+  "id": 304,
+  "kanji": "娘",
+  "kana": "むすめ",
+  "romaji": "musume",
+  "type": "noun",
+  "meaning": "daughter"
+ },
+ {
+  "id": 305,
+  "kanji": "投げる",
+  "kana": "なげる",
+  "romaji": "nageru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to throw or cast away"
+ },
+ {
+  "id": 306,
+  "kanji": "泣く",
+  "kana": "なく",
+  "romaji": "naku",
+  "type": "verb, godan verb",
+  "meaning": "to weep"
+ },
+ {
+  "id": 307,
+  "kanji": "無くなる",
+  "kana": "なくなる",
+  "romaji": "nakunaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to disappear; to get lost"
+ },
+ {
+  "id": 308,
+  "kanji": "亡くなる",
+  "kana": "なくなる",
+  "romaji": "nakunaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to die"
+ },
+ {
+  "id": 309,
+  "kanji": "生",
+  "kana": "なま",
+  "romaji": "nama",
+  "type": "noun, prefix",
+  "meaning": "raw"
+ },
+ {
+  "id": 310,
+  "kanji": "直る",
+  "kana": "なおる",
+  "romaji": "naoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be fixed; to be repaired"
+ },
+ {
+  "id": 311,
+  "kanji": "治る",
+  "kana": "なおる",
+  "romaji": "naoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be cured; to heal"
+ },
+ {
+  "id": 312,
+  "kanji": "慣れる",
+  "kana": "なれる",
+  "romaji": "nareru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to get used to"
+ },
+ {
+  "id": 313,
+  "kanji": "鳴る",
+  "kana": "なる",
+  "romaji": "naru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to sound"
+ },
+ {
+  "id": 314,
+  "kanji": "なるほど",
+  "kana": "なるほど",
+  "romaji": "naruhodo",
+  "type": "adverb, expression",
+  "meaning": "now I understand"
+ },
+ {
+  "id": 315,
+  "kanji": "寝坊",
+  "kana": "ねぼう",
+  "romaji": "nebou",
+  "type": "noun, verb, suru verb",
+  "meaning": "sleeping in late; oversleeping"
+ },
+ {
+  "id": 316,
+  "kanji": "値段",
+  "kana": "ねだん",
+  "romaji": "nedan",
+  "type": "noun",
+  "meaning": "price; cost"
+ },
+ {
+  "id": 317,
+  "kanji": "眠い",
+  "kana": "ねむい",
+  "romaji": "nemui",
+  "type": "adjective, i-adjective",
+  "meaning": "sleepy"
+ },
+ {
+  "id": 318,
+  "kanji": "眠る",
+  "kana": "ねむる",
+  "romaji": "nemuru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to sleep"
+ },
+ {
+  "id": 319,
+  "kanji": "熱",
+  "kana": "ねつ",
+  "romaji": "netsu",
+  "type": "noun",
+  "meaning": "fever"
+ },
+ {
+  "id": 320,
+  "kanji": "苦い",
+  "kana": "にがい",
+  "romaji": "nigai",
+  "type": "adjective, i-adjective",
+  "meaning": "bitter"
+ },
+ {
+  "id": 321,
+  "kanji": "逃げる",
+  "kana": "にげる",
+  "romaji": "nigeru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to escape"
+ },
+ {
+  "id": 322,
+  "kanji": "二階建て",
+  "kana": "にかいだて",
+  "romaji": "nikaidake",
+  "type": "noun",
+  "meaning": "two-storied building"
+ },
+ {
+  "id": 323,
+  "kanji": "人形",
+  "kana": "にんぎょう",
+  "romaji": "ningyou",
+  "type": "noun",
+  "meaning": "doll"
+ },
+ {
+  "id": 324,
+  "kanji": "匂い",
+  "kana": "におい",
+  "romaji": "nioi",
+  "type": "noun",
+  "meaning": "a smell"
+ },
+ {
+  "id": 325,
+  "kanji": "似る",
+  "kana": "にる",
+  "romaji": "niru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to be similar"
+ },
+ {
+  "id": 326,
+  "kanji": "喉",
+  "kana": "のど",
+  "romaji": "nodo",
+  "type": "noun",
+  "meaning": "throat"
+ },
+ {
+  "id": 327,
+  "kanji": "残る",
+  "kana": "のこる",
+  "romaji": "nokoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to remain"
+ },
+ {
+  "id": 328,
+  "kanji": "乗り換える",
+  "kana": "のりかえる",
+  "romaji": "norikaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to change between buses or trains"
+ },
+ {
+  "id": 329,
+  "kanji": "乗り物",
+  "kana": "のりもの",
+  "romaji": "norimono",
+  "type": "noun",
+  "meaning": "vehicle"
+ },
+ {
+  "id": 330,
+  "kanji": "濡れる",
+  "kana": "ぬれる",
+  "romaji": "nureru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to get wet"
+ },
+ {
+  "id": 331,
+  "kanji": "塗る",
+  "kana": "ぬる",
+  "romaji": "nuru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to paint; to plaster"
+ },
+ {
+  "id": 332,
+  "kanji": "盗む",
+  "kana": "ぬすむ",
+  "romaji": "nusumu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to steal"
+ },
+ {
+  "id": 333,
+  "kanji": "入学",
+  "kana": "にゅうがく",
+  "romaji": "nyuugaku",
+  "type": "noun, verb, suru verb",
+  "meaning": "entry to school or university; enrollment"
+ },
+ {
+  "id": 334,
+  "kanji": "入院",
+  "kana": "にゅういｎ",
+  "romaji": "nyuuin",
+  "type": "noun, verb, suru verb",
+  "meaning": "hospitalization"
+ },
+ {
+  "id": 335,
+  "kanji": "落ちる",
+  "kana": "おちる",
+  "romaji": "ochiru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to fall or drop"
+ },
+ {
+  "id": 336,
+  "kanji": "踊り",
+  "kana": "おどり",
+  "romaji": "odori",
+  "type": "noun",
+  "meaning": "a dance"
+ },
+ {
+  "id": 337,
+  "kanji": "驚く",
+  "kana": "おどろく",
+  "romaji": "odoroku",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be surprised"
+ },
+ {
+  "id": 338,
+  "kanji": "踊る",
+  "kana": "おどる",
+  "romaji": "odoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to dance"
+ },
+ {
+  "id": 339,
+  "kanji": "お出でになる",
+  "kana": "おいでになる",
+  "romaji": "oide ni naru",
+  "type": "verb, godan verb, expression",
+  "meaning": "(respectful) to be"
+ },
+ {
+  "id": 340,
+  "kanji": "お祝い",
+  "kana": "おいわい",
+  "romaji": "oiwai",
+  "type": "noun, suru verb",
+  "meaning": "congratulation"
+ },
+ {
+  "id": 341,
+  "kanji": "お嬢さん",
+  "kana": "おじょうさん",
+  "romaji": "ojousan",
+  "type": "noun",
+  "meaning": "(another's) daughter"
+ },
+ {
+  "id": 342,
+  "kanji": "可笑しい",
+  "kana": "おかしい",
+  "romaji": "okashii",
+  "type": "adjective, i-adjective",
+  "meaning": "strange or funny"
+ },
+ {
+  "id": 343,
+  "kanji": "行う",
+  "kana": "おこなう",
+  "romaji": "okonau",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to perform; to do; to carry out"
+ },
+ {
+  "id": 344,
+  "kanji": "怒る",
+  "kana": "おこる",
+  "romaji": "okoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be angry"
+ },
+ {
+  "id": 345,
+  "kanji": "起こす",
+  "kana": "おこす",
+  "romaji": "okosu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to wake"
+ },
+ {
+  "id": 346,
+  "kanji": "億",
+  "kana": "おく",
+  "romaji": "oku",
+  "type": "numeric",
+  "meaning": "one hundred million"
+ },
+ {
+  "id": 347,
+  "kanji": "屋上",
+  "kana": "おくじょう",
+  "romaji": "okujou",
+  "type": "noun",
+  "meaning": "rooftop"
+ },
+ {
+  "id": 348,
+  "kanji": "遅れる",
+  "kana": "おくれる",
+  "romaji": "okureru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to be late"
+ },
+ {
+  "id": 349,
+  "kanji": "贈り物",
+  "kana": "おくりもの",
+  "romaji": "okurimono",
+  "type": "noun",
+  "meaning": "present; gift"
+ },
+ {
+  "id": 350,
+  "kanji": "送る",
+  "kana": "おくる",
+  "romaji": "okuru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to send"
+ },
+ {
+  "id": 351,
+  "kanji": "お祭り",
+  "kana": "おまつり",
+  "romaji": "omatsuri",
+  "type": "noun",
+  "meaning": "festival"
+ },
+ {
+  "id": 352,
+  "kanji": "お見舞い",
+  "kana": "おみまい",
+  "romaji": "omimai",
+  "type": "noun",
+  "meaning": "visiting ill or distressed people"
+ },
+ {
+  "id": 353,
+  "kanji": "お土産",
+  "kana": "おみやげ",
+  "romaji": "omiyage",
+  "type": "noun",
+  "meaning": "souvenir"
+ },
+ {
+  "id": 354,
+  "kanji": "おもちゃ",
+  "kana": "おもちゃ",
+  "romaji": "omocha",
+  "type": "noun",
+  "meaning": "toy"
+ },
+ {
+  "id": 355,
+  "kanji": "思い出す",
+  "kana": "おもいだす",
+  "romaji": "omoidasu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to remember"
+ },
+ {
+  "id": 356,
+  "kanji": "表",
+  "kana": "おもて",
+  "romaji": "omote",
+  "type": "noun",
+  "meaning": "the front"
+ },
+ {
+  "id": 357,
+  "kanji": "オートバイ",
+  "kana": "オートバイ",
+  "romaji": "ootobai",
+  "type": "noun, katakana",
+  "meaning": "motorcycle"
+ },
+ {
+  "id": 358,
+  "kanji": "お礼",
+  "kana": "おれい",
+  "romaji": "orei",
+  "type": "noun",
+  "meaning": "thanks"
+ },
+ {
+  "id": 359,
+  "kanji": "折れる",
+  "kana": "おれる",
+  "romaji": "oreru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to break; to be broken"
+ },
+ {
+  "id": 360,
+  "kanji": "下りる",
+  "kana": "おりる",
+  "romaji": "oriru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to get off"
+ },
+ {
+  "id": 361,
+  "kanji": "折る",
+  "kana": "おる",
+  "romaji": "oru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to break or to fold"
+ },
+ {
+  "id": 362,
+  "kanji": "押し入れ",
+  "kana": "おしいれ",
+  "romaji": "oshiire",
+  "type": "noun",
+  "meaning": "closet"
+ },
+ {
+  "id": 363,
+  "kanji": "仰る",
+  "kana": "おっしゃる",
+  "romaji": "ossharu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "(respectful) to say"
+ },
+ {
+  "id": 364,
+  "kanji": "お宅",
+  "kana": "おたく",
+  "romaji": "otaku",
+  "type": "noun",
+  "meaning": "your home"
+ },
+ {
+  "id": 365,
+  "kanji": "音",
+  "kana": "おと",
+  "romaji": "oto",
+  "type": "noun",
+  "meaning": "sound; note"
+ },
+ {
+  "id": 366,
+  "kanji": "落とす",
+  "kana": "おとす",
+  "romaji": "otosu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to drop"
+ },
+ {
+  "id": 367,
+  "kanji": "お釣り",
+  "kana": "おつり",
+  "romaji": "otsuri",
+  "type": "noun",
+  "meaning": "change (for a purchase)"
+ },
+ {
+  "id": 368,
+  "kanji": "夫",
+  "kana": "おっと",
+  "romaji": "otto",
+  "type": "noun",
+  "meaning": "husband"
+ },
+ {
+  "id": 369,
+  "kanji": "終わり",
+  "kana": "おわり",
+  "romaji": "owari",
+  "type": "noun",
+  "meaning": "the end"
+ },
+ {
+  "id": 370,
+  "kanji": "親",
+  "kana": "おや",
+  "romaji": "oya",
+  "type": "noun",
+  "meaning": "parents"
+ },
+ {
+  "id": 371,
+  "kanji": "泳ぎ方",
+  "kana": "およぎかた",
+  "romaji": "oyogikata",
+  "type": "noun",
+  "meaning": "way of swimming"
+ },
+ {
+  "id": 372,
+  "kanji": "パート",
+  "kana": "パート",
+  "romaji": "paato",
+  "type": "noun, katakana",
+  "meaning": "part; part time"
+ },
+ {
+  "id": 373,
+  "kanji": "パソコン",
+  "kana": "パソコン",
+  "romaji": "pasokon",
+  "type": "noun, katakana",
+  "meaning": "personal computer"
+ },
+ {
+  "id": 374,
+  "kanji": "ピアノ",
+  "kana": "ピアノ",
+  "romaji": "piano",
+  "type": "noun, katakana",
+  "meaning": "piano"
+ },
+ {
+  "id": 375,
+  "kanji": "プレゼント",
+  "kana": "プレゼント",
+  "romaji": "purezento",
+  "type": "noun, katakana",
+  "meaning": "present; gift"
+ },
+ {
+  "id": 376,
+  "kanji": "冷房",
+  "kana": "れいぼう",
+  "romaji": "reibou",
+  "type": "noun, suru verb",
+  "meaning": "air conditioning"
+ },
+ {
+  "id": 377,
+  "kanji": "レジ",
+  "kana": "レジ",
+  "romaji": "reji",
+  "type": "noun, katakana",
+  "meaning": "cashier"
+ },
+ {
+  "id": 378,
+  "kanji": "歴史",
+  "kana": "れきし",
+  "romaji": "rekishi",
+  "type": "noun",
+  "meaning": "history"
+ },
+ {
+  "id": 379,
+  "kanji": "連絡",
+  "kana": "れんらく",
+  "romaji": "renraku",
+  "type": "suru verb",
+  "meaning": "to contact; to get in touch"
+ },
+ {
+  "id": 380,
+  "kanji": "レポート",
+  "kana": "レポート",
+  "romaji": "repooto",
+  "type": "noun, katakana",
+  "meaning": "report"
+ },
+ {
+  "id": 381,
+  "kanji": "利用",
+  "kana": "りよう",
+  "romaji": "riyou",
+  "type": "noun, verb, suru verb",
+  "meaning": "use; utilization; application"
+ },
+ {
+  "id": 382,
+  "kanji": "理由",
+  "kana": "りゆう",
+  "romaji": "riyuu",
+  "type": "noun",
+  "meaning": "reason"
+ },
+ {
+  "id": 383,
+  "kanji": "留守",
+  "kana": "るす",
+  "romaji": "rusu",
+  "type": "noun, suru verb",
+  "meaning": "absence"
+ },
+ {
+  "id": 384,
+  "kanji": "旅館",
+  "kana": "りょかん",
+  "romaji": "ryokan",
+  "type": "noun",
+  "meaning": "traditional inn; Japanese-style lodging"
+ },
+ {
+  "id": 385,
+  "kanji": "両方",
+  "kana": "りょうほう",
+  "romaji": "ryouhou",
+  "type": "noun",
+  "meaning": "both sides"
+ },
+ {
+  "id": 386,
+  "kanji": "寂しい",
+  "kana": "さびしい",
+  "romaji": "sabishii",
+  "type": "adjective, i-adjective",
+  "meaning": "lonely"
+ },
+ {
+  "id": 387,
+  "kanji": "下がる",
+  "kana": "さがる",
+  "romaji": "sagaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to get down"
+ },
+ {
+  "id": 388,
+  "kanji": "探す",
+  "kana": "さがす",
+  "romaji": "sagasu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to look for"
+ },
+ {
+  "id": 389,
+  "kanji": "下げる",
+  "kana": "さげる",
+  "romaji": "sageru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to lower"
+ },
+ {
+  "id": 390,
+  "kanji": "最後",
+  "kana": "さいご",
+  "romaji": "saigo",
+  "type": "noun",
+  "meaning": "end; last"
+ },
+ {
+  "id": 391,
+  "kanji": "最近",
+  "kana": "さいきん",
+  "romaji": "saikin",
+  "type": "noun, adverbial noun",
+  "meaning": "recently"
+ },
+ {
+  "id": 392,
+  "kanji": "最初",
+  "kana": "さいしょ",
+  "romaji": "saisho",
+  "type": "noun, adverbial noun",
+  "meaning": "beginning; first"
+ },
+ {
+  "id": 393,
+  "kanji": "坂",
+  "kana": "さか",
+  "romaji": "saka",
+  "type": "noun",
+  "meaning": "slope; hill"
+ },
+ {
+  "id": 394,
+  "kanji": "盛ん",
+  "kana": "さかん",
+  "romaji": "sakan",
+  "type": "adjective, na-adjective",
+  "meaning": "popularity; prosperous"
+ },
+ {
+  "id": 395,
+  "kanji": "昨夜",
+  "kana": "さくや",
+  "romaji": "sakuya",
+  "type": "noun, adverbial noun",
+  "meaning": "last night"
+ },
+ {
+  "id": 396,
+  "kanji": "サンダル",
+  "kana": "サンダル",
+  "romaji": "sandaru",
+  "type": "noun, katakana",
+  "meaning": "sandal"
+ },
+ {
+  "id": 397,
+  "kanji": "サンドイッチ",
+  "kana": "サンドイッチ",
+  "romaji": "sandoicchi",
+  "type": "noun, katakana",
+  "meaning": "sandwich"
+ },
+ {
+  "id": 398,
+  "kanji": "産業",
+  "kana": "さんぎょう",
+  "romaji": "sangyou",
+  "type": "noun",
+  "meaning": "industry"
+ },
+ {
+  "id": 399,
+  "kanji": "サラダ",
+  "kana": "サラダ",
+  "romaji": "sarada",
+  "type": "noun, katakana",
+  "meaning": "salad"
+ },
+ {
+  "id": 400,
+  "kanji": "再来月",
+  "kana": "さらいげつ",
+  "romaji": "saraigetsu",
+  "type": "noun, adverbial noun",
+  "meaning": "month after next"
+ },
+ {
+  "id": 401,
+  "kanji": "再来週",
+  "kana": "さらいしゅう",
+  "romaji": "saraishuu",
+  "type": "noun, adverbial noun",
+  "meaning": "week after next"
+ },
+ {
+  "id": 402,
+  "kanji": "差し上げる",
+  "kana": "さしあげる",
+  "romaji": "sashiageru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to give"
+ },
+ {
+  "id": 403,
+  "kanji": "騒ぐ",
+  "kana": "さわぐ",
+  "romaji": "sawagu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to make noise; to be excited"
+ },
+ {
+  "id": 404,
+  "kanji": "触る",
+  "kana": "さわる",
+  "romaji": "sawaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to touch"
+ },
+ {
+  "id": 405,
+  "kanji": "生物",
+  "kana": "せいぶつ",
+  "romaji": "seibutsu",
+  "type": "noun",
+  "meaning": "living things"
+ },
+ {
+  "id": 406,
+  "kanji": "政治",
+  "kana": "せいじ",
+  "romaji": "seiji",
+  "type": "noun",
+  "meaning": "politics"
+ },
+ {
+  "id": 407,
+  "kanji": "生活",
+  "kana": "せいかつ",
+  "romaji": "seikatsu",
+  "type": "noun, suru verb",
+  "meaning": "to live"
+ },
+ {
+  "id": 408,
+  "kanji": "生命",
+  "kana": "せいめい",
+  "romaji": "seimei",
+  "type": "noun",
+  "meaning": "life"
+ },
+ {
+  "id": 409,
+  "kanji": "生産",
+  "kana": "せいさん",
+  "romaji": "seisan",
+  "type": "noun, suru verb",
+  "meaning": "production"
+ },
+ {
+  "id": 410,
+  "kanji": "西洋",
+  "kana": "せいよう",
+  "romaji": "seiyou",
+  "type": "noun",
+  "meaning": "the west; Western countries"
+ },
+ {
+  "id": 411,
+  "kanji": "世界",
+  "kana": "せかい",
+  "romaji": "sekai",
+  "type": "noun",
+  "meaning": "the world"
+ },
+ {
+  "id": 412,
+  "kanji": "席",
+  "kana": "せき",
+  "romaji": "seki",
+  "type": "noun",
+  "meaning": "seat"
+ },
+ {
+  "id": 413,
+  "kanji": "線",
+  "kana": "せん",
+  "romaji": "sen",
+  "type": "noun",
+  "meaning": "line"
+ },
+ {
+  "id": 414,
+  "kanji": "背中",
+  "kana": "せなか",
+  "romaji": "senka",
+  "type": "noun",
+  "meaning": "back (of body)"
+ },
+ {
+  "id": 415,
+  "kanji": "先輩",
+  "kana": "せんぱい",
+  "romaji": "senpai",
+  "type": "noun",
+  "meaning": "senior"
+ },
+ {
+  "id": 416,
+  "kanji": "戦争",
+  "kana": "せんそう",
+  "romaji": "sensou",
+  "type": "noun, suru verb",
+  "meaning": "war"
+ },
+ {
+  "id": 417,
+  "kanji": "説明",
+  "kana": "せつめい",
+  "romaji": "setsumei",
+  "type": "noun, verb, suru verb",
+  "meaning": "explanation"
+ },
+ {
+  "id": 418,
+  "kanji": "社長",
+  "kana": "しゃちょう",
+  "romaji": "shachou",
+  "type": "noun",
+  "meaning": "company president; manager; director"
+ },
+ {
+  "id": 419,
+  "kanji": "社会",
+  "kana": "しゃかい",
+  "romaji": "shakai",
+  "type": "noun",
+  "meaning": "society; public; community; the world"
+ },
+ {
+  "id": 420,
+  "kanji": "市",
+  "kana": "し",
+  "romaji": "shi",
+  "type": "noun",
+  "meaning": "city"
+ },
+ {
+  "id": 421,
+  "kanji": "試合",
+  "kana": "しあい",
+  "romaji": "shiai",
+  "type": "noun, suru verb",
+  "meaning": "match; game"
+ },
+ {
+  "id": 422,
+  "kanji": "𠮟る",
+  "kana": "しかる",
+  "romaji": "shikaru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to scold"
+ },
+ {
+  "id": 423,
+  "kanji": "仕方",
+  "kana": "しかた",
+  "romaji": "shikata",
+  "type": "noun",
+  "meaning": "way; method"
+ },
+ {
+  "id": 424,
+  "kanji": "試験",
+  "kana": "しけん",
+  "romaji": "shiken",
+  "type": "noun, suru verb",
+  "meaning": "examination"
+ },
+ {
+  "id": 425,
+  "kanji": "しっかり",
+  "kana": "しっかり",
+  "romaji": "shikkari",
+  "type": "adverb, suru verb",
+  "meaning": "firmly; steadily"
+ },
+ {
+  "id": 426,
+  "kanji": "島",
+  "kana": "しま",
+  "romaji": "shima",
+  "type": "noun",
+  "meaning": "island"
+ },
+ {
+  "id": 427,
+  "kanji": "市民",
+  "kana": "しみん",
+  "romaji": "shimin",
+  "type": "noun",
+  "meaning": "citizen"
+ },
+ {
+  "id": 428,
+  "kanji": "品物",
+  "kana": "しなもの",
+  "romaji": "shinamono",
+  "type": "noun",
+  "meaning": "goods; article; thing"
+ },
+ {
+  "id": 429,
+  "kanji": "新聞社",
+  "kana": "しんぶんしゃ",
+  "romaji": "shinbunsha",
+  "type": "noun",
+  "meaning": "newspaper company"
+ },
+ {
+  "id": 430,
+  "kanji": "親切",
+  "kana": "しんせつ",
+  "romaji": "shinsetsu",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "kindness"
+ },
+ {
+  "id": 431,
+  "kanji": "失敗",
+  "kana": "しっぱい",
+  "romaji": "shippai",
+  "type": "noun, suru verb",
+  "meaning": "failure"
+ },
+ {
+  "id": 432,
+  "kanji": "調べる",
+  "kana": "しらべる",
+  "romaji": "shiraberu",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to investigate"
+ },
+ {
+  "id": 433,
+  "kanji": "しらせる",
+  "kana": "しらせる",
+  "romaji": "shiraseru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to notify"
+ },
+ {
+  "id": 434,
+  "kanji": "下着",
+  "kana": "したぎ",
+  "romaji": "shitagi",
+  "type": "noun",
+  "meaning": "underwear"
+ },
+ {
+  "id": 435,
+  "kanji": "食料品",
+  "kana": "しょくりょうひん",
+  "romaji": "shokuryouhin",
+  "type": "noun",
+  "meaning": "food; groceries"
+ },
+ {
+  "id": 436,
+  "kanji": "小学校",
+  "kana": "しょうがっこう",
+  "romaji": "shougakkou",
+  "type": "noun",
+  "meaning": "elementary school"
+ },
+ {
+  "id": 437,
+  "kanji": "生じる",
+  "kana": "しょうじる",
+  "romaji": "shoujiru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to produce"
+ },
+ {
+  "id": 438,
+  "kanji": "紹介",
+  "kana": "しょうかい",
+  "romaji": "shoukai",
+  "type": "noun, suru verb",
+  "meaning": "introduction"
+ },
+ {
+  "id": 439,
+  "kanji": "将来",
+  "kana": "しょうらい",
+  "romaji": "shourai",
+  "type": "noun, adverbial noun",
+  "meaning": "future"
+ },
+ {
+  "id": 440,
+  "kanji": "小説",
+  "kana": "しょうせつ",
+  "romaji": "shousetsu",
+  "type": "noun",
+  "meaning": "novel"
+ },
+ {
+  "id": 441,
+  "kanji": "趣味",
+  "kana": "しゅみ",
+  "romaji": "shumi",
+  "type": "noun",
+  "meaning": "hobby; pastime; preference"
+ },
+ {
+  "id": 442,
+  "kanji": "習慣",
+  "kana": "しゅうかん",
+  "romaji": "shuukan",
+  "type": "noun",
+  "meaning": "habit; custom; cultural practice"
+ },
+ {
+  "id": 443,
+  "kanji": "祖母",
+  "kana": "そぼ",
+  "romaji": "sobo",
+  "type": "noun",
+  "meaning": "grandmother"
+ },
+ {
+  "id": 444,
+  "kanji": "育てる",
+  "kana": "そだてる",
+  "romaji": "sodateru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to rear; to bring up"
+ },
+ {
+  "id": 445,
+  "kanji": "祖父",
+  "kana": "そふ",
+  "romaji": "sofu",
+  "type": "noun",
+  "meaning": "grandfather"
+ },
+ {
+  "id": 446,
+  "kanji": "ソフト",
+  "kana": "ソフト",
+  "romaji": "sofuto",
+  "type": "noun, katakana",
+  "meaning": "soft"
+ },
+ {
+  "id": 447,
+  "kanji": "そんな",
+  "kana": "そんな",
+  "romaji": "sonna",
+  "type": "pre-noun adjectival",
+  "meaning": "that sort of"
+ },
+ {
+  "id": 448,
+  "kanji": "それで",
+  "kana": "それで",
+  "romaji": "sore de",
+  "type": "conjunction",
+  "meaning": "because of that"
+ },
+ {
+  "id": 449,
+  "kanji": "それほど",
+  "kana": "それほど",
+  "romaji": "sore hodo",
+  "type": "adverb",
+  "meaning": "to that extent"
+ },
+ {
+  "id": 450,
+  "kanji": "そろそろ",
+  "kana": "そろそろ",
+  "romaji": "sorosoro",
+  "type": "adverb",
+  "meaning": "gradually; soon"
+ },
+ {
+  "id": 451,
+  "kanji": "卒業",
+  "kana": "そつぎょう",
+  "romaji": "sotsugyou",
+  "type": "noun, suru verb",
+  "meaning": "graduation"
+ },
+ {
+  "id": 452,
+  "kanji": "相談",
+  "kana": "そうだん",
+  "romaji": "soudan",
+  "type": "noun, suru verb",
+  "meaning": "to discuss"
+ },
+ {
+  "id": 453,
+  "kanji": "素晴らしい",
+  "kana": "すばらしい",
+  "romaji": "subarashii",
+  "type": "adjective, i-adjective",
+  "meaning": "wonderful"
+ },
+ {
+  "id": 454,
+  "kanji": "滑る",
+  "kana": "すべる",
+  "romaji": "suberu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to slide; to slip"
+ },
+ {
+  "id": 455,
+  "kanji": "凄い",
+  "kana": "すごい",
+  "romaji": "sugoi",
+  "type": "adjective, i-adjective",
+  "meaning": "terrific"
+ },
+ {
+  "id": 456,
+  "kanji": "水道",
+  "kana": "すいどう",
+  "romaji": "suidou",
+  "type": "noun",
+  "meaning": "water supply"
+ },
+ {
+  "id": 457,
+  "kanji": "水泳",
+  "kana": "すいえい",
+  "romaji": "suiei",
+  "type": "noun, suru verb",
+  "meaning": "swimming"
+ },
+ {
+  "id": 458,
+  "kanji": "すっかり",
+  "kana": "すっかり",
+  "romaji": "sukkari",
+  "type": "adverb",
+  "meaning": "completely"
+ },
+ {
+  "id": 459,
+  "kanji": "空く",
+  "kana": "すく",
+  "romaji": "suku",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to be hungry"
+ },
+ {
+  "id": 460,
+  "kanji": "スクリーン",
+  "kana": "スクリーン",
+  "romaji": "sukariin",
+  "type": "noun, katakana",
+  "meaning": "screen"
+ },
+ {
+  "id": 461,
+  "kanji": "隅",
+  "kana": "すみ",
+  "romaji": "sumi",
+  "type": "noun",
+  "meaning": "corner; nook"
+ },
+ {
+  "id": 462,
+  "kanji": "済む",
+  "kana": "すむ",
+  "romaji": "sumu",
+  "type": "ver, godan verb, intransitive verb",
+  "meaning": "to finish"
+ },
+ {
+  "id": 463,
+  "kanji": "砂",
+  "kana": "すな",
+  "romaji": "suna",
+  "type": "noun",
+  "meaning": "sand"
+ },
+ {
+  "id": 464,
+  "kanji": "すり",
+  "kana": "すり",
+  "romaji": "suri",
+  "type": "noun",
+  "meaning": "pickpocket"
+ },
+ {
+  "id": 465,
+  "kanji": "スーツケース",
+  "kana": "スーツケース",
+  "romaji": "suutsukeesu",
+  "type": "noun, katakana",
+  "meaning": "suitcase"
+ },
+ {
+  "id": 466,
+  "kanji": "進",
+  "kana": "すすむ",
+  "romaji": "susumu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to make progress"
+ },
+ {
+  "id": 467,
+  "kanji": "ステーキ",
+  "kana": "ステーキ",
+  "romaji": "suteeki",
+  "type": "noun, katakana",
+  "meaning": "steak"
+ },
+ {
+  "id": 468,
+  "kanji": "ステレオ",
+  "kana": "ステレオ",
+  "romaji": "sutereo",
+  "type": "noun, katakana",
+  "meaning": "stereo"
+ },
+ {
+  "id": 469,
+  "kanji": "捨てる",
+  "kana": "すてる",
+  "romaji": "suteru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to throw away"
+ },
+ {
+  "id": 470,
+  "kanji": "数学",
+  "kana": "すうがく",
+  "romaji": "suugaku",
+  "type": "noun",
+  "meaning": "mathematics; arithmetic"
+ },
+ {
+  "id": 471,
+  "kanji": "スーツ",
+  "kana": "スーツ",
+  "romaji": "suutsu",
+  "type": "noun, katakana",
+  "meaning": "suit"
+ },
+ {
+  "id": 472,
+  "kanji": "正しい",
+  "kana": "ただしい",
+  "romaji": "tadashii",
+  "type": "adjective, i-adjective",
+  "meaning": "right; correct"
+ },
+ {
+  "id": 473,
+  "kanji": "退院",
+  "kana": "たいいん",
+  "romaji": "taiin",
+  "type": "noun, verb, suru verb",
+  "meaning": "leaving hospital; discharge from hospital"
+ },
+ {
+  "id": 474,
+  "kanji": "台風",
+  "kana": "たいふう",
+  "romaji": "taifuu",
+  "type": "noun",
+  "meaning": "typhoon"
+ },
+ {
+  "id": 475,
+  "kanji": "タイプ",
+  "kana": "タイプ",
+  "romaji": "taipu",
+  "type": "noun",
+  "meaning": "type; style"
+ },
+ {
+  "id": 476,
+  "kanji": "たいてい",
+  "kana": "たいてい",
+  "romaji": "taitei",
+  "type": "noun, adjective, na-adjective, adverb",
+  "meaning": "usually"
+ },
+ {
+  "id": 477,
+  "kanji": "たまに",
+  "kana": "たまに",
+  "romaji": "tamani",
+  "type": "adverb",
+  "meaning": "occasionally"
+ },
+ {
+  "id": 478,
+  "kanji": "棚",
+  "kana": "たな",
+  "romaji": "tana",
+  "type": "noun",
+  "meaning": "shelves"
+ },
+ {
+  "id": 479,
+  "kanji": "誕生",
+  "kana": "たんじょう",
+  "romaji": "tanjou",
+  "type": "noun, suru verb",
+  "meaning": "birth"
+ },
+ {
+  "id": 480,
+  "kanji": "楽しみ",
+  "kana": "たのしみ",
+  "romaji": "tanoshimi",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "looking forward to"
+ },
+ {
+  "id": 481,
+  "kanji": "倒れる",
+  "kana": "たおれる",
+  "romaji": "taoreru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to fall (over, down)"
+ },
+ {
+  "id": 482,
+  "kanji": "足りる",
+  "kana": "たりる",
+  "romaji": "tariru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to be sufficient; to be enough"
+ },
+ {
+  "id": 483,
+  "kanji": "足す",
+  "kana": "たす",
+  "romaji": "tasu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to add (numbers / something)"
+ },
+ {
+  "id": 484,
+  "kanji": "畳",
+  "kana": "たたみ",
+  "romaji": "tatami",
+  "type": "noun",
+  "meaning": "Japanese straw mat"
+ },
+ {
+  "id": 485,
+  "kanji": "建てる",
+  "kana": "たてる",
+  "romaji": "tateru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to build"
+ },
+ {
+  "id": 486,
+  "kanji": "尋ねる",
+  "kana": "たずねる",
+  "romaji": "tazuneru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to ask"
+ },
+ {
+  "id": 487,
+  "kanji": "訊ねる",
+  "kana": "たずねる",
+  "romaji": "tazuneru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to visit"
+ },
+ {
+  "id": 488,
+  "kanji": "手袋",
+  "kana": "てぶくろ",
+  "romaji": "tebukuro",
+  "type": "noun",
+  "meaning": "glove"
+ },
+ {
+  "id": 489,
+  "kanji": "丁寧",
+  "kana": "ていねい",
+  "romaji": "teinei",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "polite"
+ },
+ {
+  "id": 490,
+  "kanji": "テキスト",
+  "kana": "テキスト",
+  "romaji": "tekisuto",
+  "type": "noun, katakana",
+  "meaning": "text; textbook"
+ },
+ {
+  "id": 491,
+  "kanji": "適当",
+  "kana": "てきとう",
+  "romaji": "tekitou",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "suitable"
+ },
+ {
+  "id": 492,
+  "kanji": "点",
+  "kana": "てん",
+  "romaji": "ten",
+  "type": "noun",
+  "meaning": "point; dot"
+ },
+ {
+  "id": 493,
+  "kanji": "店員",
+  "kana": "てんいん",
+  "romaji": "tenin",
+  "type": "noun",
+  "meaning": "employee (of a store); shop assistant; clerk"
+ },
+ {
+  "id": 494,
+  "kanji": "テニス",
+  "kana": "テニス",
+  "romaji": "tenisu",
+  "type": "noun, katakana",
+  "meaning": "tennis"
+ },
+ {
+  "id": 495,
+  "kanji": "天気予報",
+  "kana": "てんきよほう",
+  "romaji": "tenkiyohou",
+  "type": "noun",
+  "meaning": "weather forecast"
+ },
+ {
+  "id": 496,
+  "kanji": "展覧会",
+  "kana": "てんらんかい",
+  "romaji": "tenrankai",
+  "type": "noun",
+  "meaning": "exhibition"
+ },
+ {
+  "id": 497,
+  "kanji": "寺",
+  "kana": "てら",
+  "romaji": "tera",
+  "type": "noun",
+  "meaning": "temple"
+ },
+ {
+  "id": 498,
+  "kanji": "手伝う",
+  "kana": "てつだう",
+  "romaji": "tetsudau",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to help; to assist; to aid"
+ },
+ {
+  "id": 499,
+  "kanji": "途中",
+  "kana": "とちゅう",
+  "romaji": "tochuu",
+  "type": "noun, adverbial noun",
+  "meaning": "on the way"
+ },
+ {
+  "id": 500,
+  "kanji": "届ける",
+  "kana": "とどける",
+  "romaji": "todokeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to send"
+ },
+ {
+  "id": 501,
+  "kanji": "特急",
+  "kana": "とっきゅう",
+  "romaji": "tokkyuu",
+  "type": "noun",
+  "meaning": "limited express (train, faster than an express)"
+ },
+ {
+  "id": 502,
+  "kanji": "床屋",
+  "kana": "とこや",
+  "romaji": "tokoya",
+  "type": "noun",
+  "meaning": "barber"
+ },
+ {
+  "id": 503,
+  "kanji": "特別",
+  "kana": "とくべつ",
+  "romaji": "tokubetsu",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "special; particular; extraordinary; exceptional"
+ },
+ {
+  "id": 504,
+  "kanji": "特に",
+  "kana": "とくに",
+  "romaji": "tokuni",
+  "type": "adverb",
+  "meaning": "particularly; especially; in particular; expressly"
+ },
+ {
+  "id": 505,
+  "kanji": "泊まる",
+  "kana": "とまる",
+  "romaji": "tomaru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to stay at"
+ },
+ {
+  "id": 506,
+  "kanji": "止める",
+  "kana": "とめる",
+  "romaji": "tomeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to stop something"
+ },
+ {
+  "id": 507,
+  "kanji": "遠く",
+  "kana": "とおく",
+  "romaji": "tooku",
+  "type": "noun, adverbial noun",
+  "meaning": "distant"
+ },
+ {
+  "id": 508,
+  "kanji": "通る",
+  "kana": "とおる",
+  "romaji": "tooru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to go through"
+ },
+ {
+  "id": 509,
+  "kanji": "取り替える",
+  "kana": "とりかえる",
+  "romaji": "torikaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to exchange; to swap; to replace"
+ },
+ {
+  "id": 510,
+  "kanji": "到頭",
+  "kana": "とうとう",
+  "romaji": "toutou",
+  "type": "adverb",
+  "meaning": "finally; after all"
+ },
+ {
+  "id": 511,
+  "kanji": "続ける",
+  "kana": "つづける",
+  "romaji": "tsudzukeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to continue; to keep up; to keep on"
+ },
+ {
+  "id": 512,
+  "kanji": "続く",
+  "kana": "つづく",
+  "romaji": "tsudzuku",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to continue"
+ },
+ {
+  "id": 513,
+  "kanji": "都合",
+  "kana": "つごう",
+  "romaji": "tsugou",
+  "type": "noun, adverb",
+  "meaning": "convenience"
+ },
+ {
+  "id": 514,
+  "kanji": "捕まえる",
+  "kana": "つかまえる",
+  "romaji": "tsukamaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to catch"
+ },
+ {
+  "id": 515,
+  "kanji": "漬ける",
+  "kana": "つける",
+  "romaji": "tsukeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to soak; to pickle"
+ },
+ {
+  "id": 516,
+  "kanji": "月",
+  "kana": "つき",
+  "romaji": "tsuki",
+  "type": "noun",
+  "meaning": "moon"
+ },
+ {
+  "id": 517,
+  "kanji": "付く",
+  "kana": "つく",
+  "romaji": "tsuku",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to bea ttached"
+ },
+ {
+  "id": 518,
+  "kanji": "妻",
+  "kana": "つま",
+  "romaji": "tsuma",
+  "type": "noun",
+  "meaning": "(humble) wife"
+ },
+ {
+  "id": 519,
+  "kanji": "連れる",
+  "kana": "つれる",
+  "romaji": "tsureru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to take (someone) with one"
+ },
+ {
+  "id": 520,
+  "kanji": "釣る",
+  "kana": "つる",
+  "romaji": "tsuru",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to fish"
+ },
+ {
+  "id": 521,
+  "kanji": "伝える",
+  "kana": "つたえる",
+  "romaji": "tsutaeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to report; to tell"
+ },
+ {
+  "id": 522,
+  "kanji": "包む",
+  "kana": "つつむ",
+  "romaji": "tsutsumu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to wrap"
+ },
+ {
+  "id": 523,
+  "kanji": "腕",
+  "kana": "うで",
+  "romaji": "ude",
+  "type": "noun",
+  "meaning": "arm"
+ },
+ {
+  "id": 524,
+  "kanji": "植える",
+  "kana": "うえる",
+  "romaji": "ueru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to plant; to grow"
+ },
+ {
+  "id": 525,
+  "kanji": "動く",
+  "kana": "うごく",
+  "romaji": "ugoku",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to move"
+ },
+ {
+  "id": 526,
+  "kanji": "伺う",
+  "kana": "うかがう",
+  "romaji": "ukagau",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to visit"
+ },
+ {
+  "id": 527,
+  "kanji": "受ける",
+  "kana": "うける",
+  "romaji": "ukeru",
+  "type": "verb, ichidan verb, transitive verb",
+  "meaning": "to take a lesson or test"
+ },
+ {
+  "id": 528,
+  "kanji": "受付",
+  "kana": "うけつけ",
+  "romaji": "uketsuke",
+  "type": "noun",
+  "meaning": "reception (desk); information desk"
+ },
+ {
+  "id": 529,
+  "kanji": "生まれ",
+  "kana": "うまれ",
+  "romaji": "umare",
+  "type": "noun",
+  "meaning": "birth"
+ },
+ {
+  "id": 530,
+  "kanji": "運転手",
+  "kana": "うんてんしゅ",
+  "romaji": "untenshu",
+  "type": "noun",
+  "meaning": "driver; chauffeur"
+ },
+ {
+  "id": 531,
+  "kanji": "裏",
+  "kana": "うら",
+  "romaji": "ura",
+  "type": "noun",
+  "meaning": "reverse side"
+ },
+ {
+  "id": 532,
+  "kanji": "嬉しい",
+  "kana": "うれしい",
+  "romaji": "ureshii",
+  "type": "adjective, i-adjective",
+  "meaning": "happy"
+ },
+ {
+  "id": 533,
+  "kanji": "売り場",
+  "kana": "うりば",
+  "romaji": "uriba",
+  "type": "noun",
+  "meaning": "selling area"
+ },
+ {
+  "id": 534,
+  "kanji": "噓",
+  "kana": "うそ",
+  "romaji": "uso",
+  "type": "noun",
+  "meaning": "a lie"
+ },
+ {
+  "id": 535,
+  "kanji": "打つ",
+  "kana": "うつ",
+  "romaji": "utsu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to hit"
+ },
+ {
+  "id": 536,
+  "kanji": "美しい",
+  "kana": "うつくしい",
+  "romaji": "utsukushii",
+  "type": "adjective, i-adjective",
+  "meaning": "beautiful"
+ },
+ {
+  "id": 537,
+  "kanji": "移る",
+  "kana": "うつる",
+  "romaji": "utsuru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to move house or transfer"
+ },
+ {
+  "id": 538,
+  "kanji": "写す",
+  "kana": "うつす",
+  "romaji": "utsusu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to copy or photograph"
+ },
+ {
+  "id": 539,
+  "kanji": "ワープロ",
+  "kana": "ワープロ",
+  "romaji": "waapuro",
+  "type": "noun, katakana",
+  "meaning": "word processor"
+ },
+ {
+  "id": 540,
+  "kanji": "別れる",
+  "kana": "わかれる",
+  "romaji": "wakareru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to separate"
+ },
+ {
+  "id": 541,
+  "kanji": "沸かす",
+  "kana": "わかす",
+  "romaji": "wakasu",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to boil; to heat"
+ },
+ {
+  "id": 542,
+  "kanji": "沸く",
+  "kana": "わく",
+  "romaji": "waku",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to boil"
+ },
+ {
+  "id": 543,
+  "kanji": "笑う",
+  "kana": "わらう",
+  "romaji": "warau",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to laugh; to smile"
+ },
+ {
+  "id": 544,
+  "kanji": "割れる",
+  "kana": "われる",
+  "romaji": "wareru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to break"
+ },
+ {
+  "id": 545,
+  "kanji": "割合",
+  "kana": "わりあい",
+  "romaji": "wariai",
+  "type": "noun",
+  "meaning": "rate; ratio"
+ },
+ {
+  "id": 546,
+  "kanji": "忘れ物",
+  "kana": "わすれもの",
+  "romaji": "wasuremono",
+  "type": "noun",
+  "meaning": "lost article"
+ },
+ {
+  "id": 547,
+  "kanji": "焼ける",
+  "kana": "やける",
+  "romaji": "yakeru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to burn; to be roasted"
+ },
+ {
+  "id": 548,
+  "kanji": "焼く",
+  "kana": "やく",
+  "romaji": "yaku",
+  "type": "verb, godan verb, transitive verb",
+  "meaning": "to bake; to grill"
+ },
+ {
+  "id": 549,
+  "kanji": "役に立つ",
+  "kana": "やくにたつ",
+  "romaji": "yakunitatsu",
+  "type": "verb, godan verb, expression",
+  "meaning": "to be helpful"
+ },
+ {
+  "id": 550,
+  "kanji": "約束",
+  "kana": "やくそく",
+  "romaji": "yakusoku",
+  "type": "noun, suru verb",
+  "meaning": "promise"
+ },
+ {
+  "id": 551,
+  "kanji": "止む",
+  "kana": "やむ",
+  "romaji": "yamu",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to stop"
+ },
+ {
+  "id": 552,
+  "kanji": "やっぱり",
+  "kana": "やっぱり",
+  "romaji": "yappari",
+  "type": "adverb",
+  "meaning": "as I thought"
+ },
+ {
+  "id": 553,
+  "kanji": "優しい",
+  "kana": "やさしい",
+  "romaji": "yasashii",
+  "type": "adjective, i-adjective",
+  "meaning": "kind"
+ },
+ {
+  "id": 554,
+  "kanji": "瘦せる",
+  "kana": "やせる",
+  "romaji": "yaseru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to become thin"
+ },
+ {
+  "id": 555,
+  "kanji": "柔らかい",
+  "kana": "やわらかい",
+  "romaji": "yawarakai",
+  "type": "adjective, i-adjective",
+  "meaning": "soft"
+ },
+ {
+  "id": 556,
+  "kanji": "汚れる",
+  "kana": "よごれる",
+  "romaji": "yogoreru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to get dirty"
+ },
+ {
+  "id": 557,
+  "kanji": "喜ぶ",
+  "kana": "よろこぶ",
+  "romaji": "yorokobu",
+  "type": "verb, godan verb",
+  "meaning": "to be delighted"
+ },
+ {
+  "id": 558,
+  "kanji": "寄る",
+  "kana": "よる",
+  "romaji": "yoru",
+  "type": "verb, godan verb, intransitive verb",
+  "meaning": "to visit; to drop by"
+ },
+ {
+  "id": 559,
+  "kanji": "予習",
+  "kana": "よしゅう",
+  "romaji": "yoshuu",
+  "type": "noun, verb, suru verb",
+  "meaning": "preparation for a lesson"
+ },
+ {
+  "id": 560,
+  "kanji": "予定",
+  "kana": "よてい",
+  "romaji": "yotei",
+  "type": "noun, suru verb",
+  "meaning": "plan"
+ },
+ {
+  "id": 561,
+  "kanji": "用",
+  "kana": "よう",
+  "romaji": "you",
+  "type": "noun, suffix",
+  "meaning": "business; task; errand; use; purpose"
+ },
+ {
+  "id": 562,
+  "kanji": "用意",
+  "kana": "ようい",
+  "romaji": "youi",
+  "type": "noun, verb, suru verb",
+  "meaning": "preparation; arrangements; provision; getting ready"
+ },
+ {
+  "id": 563,
+  "kanji": "用事",
+  "kana": "ようじ",
+  "romaji": "youji",
+  "type": "noun",
+  "meaning": "tasks; things to do; errand; business (to take care of)"
+ },
+ {
+  "id": 564,
+  "kanji": "予約",
+  "kana": "よやく",
+  "romaji": "yoyaku",
+  "type": "noun, suru verb",
+  "meaning": "reservation"
+ },
+ {
+  "id": 565,
+  "kanji": "湯",
+  "kana": "ゆ",
+  "romaji": "yu",
+  "type": "noun",
+  "meaning": "hot water"
+ },
+ {
+  "id": 566,
+  "kanji": "指",
+  "kana": "ゆび",
+  "romaji": "yubi",
+  "type": "noun",
+  "meaning": "finger"
+ },
+ {
+  "id": 567,
+  "kanji": "指輪",
+  "kana": "ゆびわ",
+  "romaji": "yubiwa",
+  "type": "noun",
+  "meaning": "finger ring"
+ },
+ {
+  "id": 568,
+  "kanji": "夢",
+  "kana": "ゆめ",
+  "romaji": "yume",
+  "type": "noun",
+  "meaning": "dream"
+ },
+ {
+  "id": 569,
+  "kanji": "揺れる",
+  "kana": "ゆれる",
+  "romaji": "yureru",
+  "type": "verb, ichidan verb, intransitive verb",
+  "meaning": "to shake"
+ },
+ {
+  "id": 570,
+  "kanji": "残念",
+  "kana": "ざんねん",
+  "romaji": "zannen",
+  "type": "noun, adjective, na-adjective",
+  "meaning": "regrettable; unfortunate"
+ },
+ {
+  "id": 571,
+  "kanji": "全然",
+  "kana": "ぜんぜん",
+  "romaji": "zenzen",
+  "type": "adverb",
+  "meaning": "not entirely (used in a negative sentence)"
+ }
+]

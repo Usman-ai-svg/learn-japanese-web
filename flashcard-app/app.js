@@ -1,11 +1,20 @@
-const STORAGE_KEY = "n5-flashcards-progress-v1";
+// SRS progress is stored per level under its own key so N5 and N4 don't collide
+// (both id sets start at 1). The N5 key is kept from the single-level version so
+// existing users keep their progress.
+const STORAGE_KEYS = {
+  N5: "n5-flashcards-progress-v1",
+  N4: "n4-flashcards-progress-v1",
+};
 const NEW_BATCH_SIZE = 20;
 // Leitner-style box intervals in days, index = box number.
 const BOX_INTERVALS = [0, 1, 3, 7, 14, 30, 60];
 const MAX_BOX = BOX_INTERVALS.length - 1;
 
-let vocab = [];
-let progress = {};   // id -> { box, due (timestamp ms) }
+let vocabByLevel = { N5: [], N4: [] };
+let progressByLevel = { N5: {}, N4: {} };
+let vocabLevel = "N5";
+let vocab = [];       // points to vocabByLevel[vocabLevel]
+let progress = {};    // points to progressByLevel[vocabLevel]; id -> { box, due (ms) }
 let queue = [];       // ids for current session
 let queueTotal = 0;
 let current = null;
@@ -75,17 +84,38 @@ const el = {
   kqRestartBtn: document.getElementById("kqRestartBtn"),
 };
 
-function loadProgress() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    progress = raw ? JSON.parse(raw) : {};
-  } catch (e) {
-    progress = {};
+function loadAllProgress() {
+  for (const lvl of ["N5", "N4"]) {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS[lvl]);
+      progressByLevel[lvl] = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      progressByLevel[lvl] = {};
+    }
   }
+  progress = progressByLevel[vocabLevel];
 }
 
 function saveProgress() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  localStorage.setItem(STORAGE_KEYS[vocabLevel], JSON.stringify(progress));
+}
+
+function renderVocabLevelToggles() {
+  document.querySelectorAll("[data-vocab-level-toggle] .fmt-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.vlevel === vocabLevel);
+  });
+}
+
+function setVocabLevel(level) {
+  if (level === vocabLevel || !vocabByLevel[level] || vocabByLevel[level].length === 0) return;
+  vocabLevel = level;
+  vocab = vocabByLevel[level];
+  progress = progressByLevel[level];
+  renderVocabLevelToggles();
+  buildQueue();
+  if (!el.viewList.classList.contains("hidden")) {
+    renderVocabList(el.vocabSearch.value);
+  }
 }
 
 function now() {
@@ -464,17 +494,24 @@ function showToast(msg) {
 }
 
 function init() {
-  loadProgress();
-  fetch("data/vocab.json")
-    .then(r => r.json())
-    .then(data => {
-      vocab = data;
+  loadAllProgress();
+  renderVocabLevelToggles();
+
+  // vocab.json is the N5 dataset (kept at its original path); vocab-n4.json is N4.
+  Promise.all([
+    fetch("data/vocab.json").then(r => r.json()),
+    fetch("data/vocab-n4.json").then(r => r.json()),
+  ])
+    .then(([n5, n4]) => {
+      vocabByLevel.N5 = n5;
+      vocabByLevel.N4 = n4;
+      vocab = vocabByLevel[vocabLevel];
       buildQueue();
     })
     .catch(err => {
       el.cardKanji.textContent = "⚠";
       el.cardType.textContent = "error";
-      console.error("Gagal memuat vocab.json:", err);
+      console.error("Gagal memuat data vocab:", err);
     });
 
   fetch("data/kanji-n5.json")
@@ -525,12 +562,17 @@ function init() {
   el.studyMoreBtn.addEventListener("click", buildQueue);
 
   el.resetProgressBtn.addEventListener("click", () => {
-    if (confirm("Reset semua progres belajar? Ini tidak bisa dibatalkan.")) {
+    if (confirm(`Reset semua progres belajar ${vocabLevel}? Ini tidak bisa dibatalkan.`)) {
       progress = {};
+      progressByLevel[vocabLevel] = progress;
       saveProgress();
       buildQueue();
-      showToast("Progres direset");
+      showToast(`Progres ${vocabLevel} direset`);
     }
+  });
+
+  document.querySelectorAll("[data-vocab-level-toggle] .fmt-btn").forEach(btn => {
+    btn.addEventListener("click", () => setVocabLevel(btn.dataset.vlevel));
   });
 
   el.navItems.forEach(btn => {

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N5 単語 — Flashcard SRS</title>
-<link rel="stylesheet" href="style.css?v=5">
+<title>Learn Japanese</title>
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <div class="app-shell">
@@ -12,7 +12,7 @@
     <div id="sidebarOverlay" class="sidebar-overlay hidden"></div>
 
     <aside id="sidebar" class="sidebar">
-      <div class="sidebar-brand">N5 単語<span>Flashcard SRS</span></div>
+      <div class="sidebar-brand">Learn Japanese<span>JLPT N5 · N4</span></div>
       <nav class="sidebar-nav">
         <button class="nav-item active" data-view="flashcard">
           <span class="nav-icon">🎴</span><span>Flashcard</span>
@@ -38,6 +38,12 @@
 
       <main>
         <section id="view-flashcard" class="view">
+          <div class="level-bar">
+            <div class="fmt-toggle vocab-level-toggle" data-vocab-level-toggle>
+              <button data-vlevel="N5" class="fmt-btn">N5</button>
+              <button data-vlevel="N4" class="fmt-btn">N4</button>
+            </div>
+          </div>
           <div id="progressWrap">
             <div id="progressBar"></div>
           </div>
@@ -82,6 +88,10 @@
 
         <section id="view-list" class="view hidden">
           <div class="list-toolbar">
+            <div class="fmt-toggle vocab-level-toggle" data-vocab-level-toggle>
+              <button data-vlevel="N5" class="fmt-btn">N5</button>
+              <button data-vlevel="N4" class="fmt-btn">N4</button>
+            </div>
             <input type="search" id="vocabSearch" placeholder="Cari kanji, kana, romaji, atau arti...">
             <span id="listCount" class="list-count"></span>
           </div>
@@ -143,6 +153,6 @@
     </div>
   </div>
 
-<script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>
