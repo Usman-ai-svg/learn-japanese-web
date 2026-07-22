@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn Japanese</title>
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <div class="app-shell">
@@ -153,12 +153,24 @@
             <div class="kq-card-flip-inner" id="kqCardFlipInner">
               <div class="kq-question" id="kqQuestion"></div>
               <div class="kq-answer-back" id="kqAnswerBack">
-                <div class="kanji small" id="kqBackKanji"></div>
-                <div class="reading-block" id="kqBackReadings">
-                  <div class="reading-line"><span class="reading-label">On'yomi</span><span id="kqBackOnyomi"></span></div>
-                  <div class="reading-line"><span class="reading-label">Kun'yomi</span><span id="kqBackKunyomi"></span></div>
+                <div class="kqb-kanji-panel">
+                  <div class="kqb-kanji" id="kqBackKanji"></div>
                 </div>
-                <div class="meaning" id="kqBackMeaning"></div>
+                <div class="kqb-info-panel">
+                  <div class="kqb-field">
+                    <div class="kqb-label">English</div>
+                    <div class="kqb-value" id="kqBackMeaning"></div>
+                  </div>
+                  <div class="kqb-field">
+                    <div class="kqb-label">Kun Yomi</div>
+                    <div class="kqb-value" id="kqBackKunyomi"></div>
+                  </div>
+                  <div class="kqb-field">
+                    <div class="kqb-label">On Yomi</div>
+                    <div class="kqb-value" id="kqBackOnyomi"></div>
+                  </div>
+                  <div class="kqb-hint">Klik untuk lanjut →</div>
+                </div>
               </div>
             </div>
           </div>
@@ -315,6 +327,6 @@
     </div>
   </div>
 
-<script src="app.js?v=9"></script>
+<script src="app.js?v=10"></script>
 </body>
 </html>

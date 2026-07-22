@@ -125,6 +125,7 @@ const el = {
   kqQuestionFormatToggle: document.getElementById("kqQuestionFormatToggle"),
   kqAnswerFormatToggle: document.getElementById("kqAnswerFormatToggle"),
   kqQuestion: document.getElementById("kqQuestion"),
+  kqCardFlip: document.getElementById("kqCardFlip"),
   kqCardFlipInner: document.getElementById("kqCardFlipInner"),
   kqBackKanji: document.getElementById("kqBackKanji"),
   kqBackOnyomi: document.getElementById("kqBackOnyomi"),
@@ -652,11 +653,12 @@ function kqSelectAnswer(entry, btnEl) {
   });
 
   el.kqCardFlipInner.classList.add("flipped");
+}
 
-  setTimeout(() => {
-    kqIndex++;
-    kqShowQuestion();
-  }, 1700);
+function kqAdvanceIfFlipped() {
+  if (!kqAnswered) return;
+  kqIndex++;
+  kqShowQuestion();
 }
 
 function pqBuildQueue() {
@@ -1373,6 +1375,8 @@ function init() {
     kqQueue = [];
     kqBuildQueue();
   });
+
+  el.kqCardFlip.addEventListener("click", kqAdvanceIfFlipped);
 
   el.pqLevelToggle.querySelectorAll(".fmt-btn").forEach(btn => {
     btn.addEventListener("click", () => pqSetLevel(btn.dataset.level));
