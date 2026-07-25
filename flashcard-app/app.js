@@ -981,26 +981,51 @@ function spRenderOverview() {
   spRenderHistory();
 }
 
+function spScoreText(s) {
+  return s && s.done ? `${s.correct}/${s.correct + s.wrong}` : "-";
+}
+
+function spBuildHistoryRow(dayLabel, levelLabel, sessions, isCurrent) {
+  const tr = document.createElement("tr");
+  if (isCurrent) tr.className = "sp-history-current";
+  const cells = [
+    dayLabel,
+    levelLabel,
+    spScoreText(sessions.s2),
+    spScoreText(sessions.s3),
+    spScoreText(sessions.s4),
+  ];
+  cells.forEach(text => {
+    const td = document.createElement("td");
+    td.textContent = text;
+    tr.appendChild(td);
+  });
+  return tr;
+}
+
 function spRenderHistory() {
   el.spHistoryBody.textContent = "";
   const frag = document.createDocumentFragment();
 
+  // Hari yang sedang berjalan: tampilkan segera begitu ada sesi yang selesai,
+  // jangan tunggu sampai ke-4 sesi kelar (itu baru masuk sp.history).
+  const anySessionDone = SP_SESSION_KEYS.some(k => sp.sessions[k].done);
+  if (anySessionDone) {
+    frag.appendChild(spBuildHistoryRow(
+      `Hari ${sp.day} (berlangsung)`,
+      spDaySubLabel(sp.day),
+      sp.sessions,
+      true
+    ));
+  }
+
   [...sp.history].reverse().forEach(rec => {
-    const tr = document.createElement("tr");
-    const scoreText = s => (s ? `${s.correct}/${s.correct + s.wrong}` : "-");
-    const cells = [
+    frag.appendChild(spBuildHistoryRow(
       `Hari ${rec.day}`,
       `Vocab ${rec.vocabLabel} · Kanji ${rec.kanjiLabel}`,
-      scoreText(rec.sessions.s2),
-      scoreText(rec.sessions.s3),
-      scoreText(rec.sessions.s4),
-    ];
-    cells.forEach(text => {
-      const td = document.createElement("td");
-      td.textContent = text;
-      tr.appendChild(td);
-    });
-    frag.appendChild(tr);
+      rec.sessions,
+      false
+    ));
   });
 
   el.spHistoryBody.appendChild(frag);
