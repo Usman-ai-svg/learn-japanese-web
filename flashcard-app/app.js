@@ -917,22 +917,57 @@ function spMakeQuestion(entry, qFormat, aFormat, kind, pool) {
   };
 }
 
+// Beberapa kosakata (terutama kata ganti/partikel) tidak punya bentuk kanji asli --
+// datanya menyimpan kanji === kana untuk kata itu. Kalau salah satu arah soal tetap
+// memakai pasangan kanji<->kana untuk kata seperti itu, soal & jawabannya jadi sama
+// persis (dua-duanya kana). Untuk kata begitu, arah kanji/kana cuma boleh dipasangkan
+// dengan english, tidak boleh dipasangkan satu sama lain.
+function spValidFormatPairs(entry, kind, allPairs) {
+  if (kind !== "vocab" || entry.kanji !== entry.kana) return allPairs;
+  return allPairs.filter(([qf, af]) => qf === "english" || af === "english");
+}
+
+// Menyusun urutan soal supaya kata yang sama tidak muncul dua kali berturut-turut.
+// Round-robin murni per putaran (bukan pick-random-non-repeat yang bisa "kehabisan
+// alternatif" dan terpaksa mengulang kata yang sama di ujung antrian): tiap putaran
+// mengambil tepat satu soal dari tiap kata (urutan diacak), lalu sambungan antar
+// putaran dicek supaya kata terakhir putaran sebelumnya tidak jadi kata pertama
+// putaran berikutnya.
+function spInterleaveQuestions(perEntryQuestions) {
+  const groups = perEntryQuestions.filter(g => g.length > 0).map(g => [...g]);
+  const maxLen = groups.reduce((m, g) => Math.max(m, g.length), 0);
+
+  const result = [];
+  let lastGroup = null;
+
+  for (let round = 0; round < maxLen; round++) {
+    const roundGroups = groups.filter(g => g.length > round);
+    shuffle(roundGroups);
+
+    if (roundGroups.length > 1 && roundGroups[0] === lastGroup) {
+      [roundGroups[0], roundGroups[1]] = [roundGroups[1], roundGroups[0]];
+    }
+
+    roundGroups.forEach(g => result.push(g[round]));
+    if (roundGroups.length > 0) lastGroup = roundGroups[roundGroups.length - 1];
+  }
+
+  return result;
+}
+
 function spBuildPhaseQuestions(entries, kind) {
   const pool = kind === "vocab" ? spVocabPool() : spKanjiPool();
   const allPairs = [];
   SP_FORMATS.forEach(qf => SP_FORMATS.forEach(af => { if (qf !== af) allPairs.push([qf, af]); }));
 
-  const questions = [];
-  entries.forEach(entry => {
-    const pairs = [...allPairs];
-    shuffle(pairs);
-    pairs.slice(0, 2).forEach(([qFormat, aFormat]) => {
-      questions.push(spMakeQuestion(entry, qFormat, aFormat, kind, pool));
-    });
+  const perEntryQuestions = entries.map(entry => {
+    const pairs = spValidFormatPairs(entry, kind, allPairs);
+    const shuffled = [...pairs];
+    shuffle(shuffled);
+    return shuffled.slice(0, 2).map(([qFormat, aFormat]) => spMakeQuestion(entry, qFormat, aFormat, kind, pool));
   });
 
-  shuffle(questions);
-  return questions;
+  return spInterleaveQuestions(perEntryQuestions);
 }
 
 function spEnsureLoaded() {
