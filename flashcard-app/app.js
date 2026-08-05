@@ -1064,11 +1064,33 @@ function spSyncPendingExam() {
 }
 
 function spCheckDayAdvance() {
+  // Selesaikan gerbang Ujian dulu, terlepas dari status sesi hari berjalan --
+  // Ujian retroaktif bisa diselesaikan pada hari yang sudah lewat checkpoint-nya
+  // (day sudah maju duluan sebelum fitur Ujian ada), jadi tidak boleh menunggu
+  // "sesi hari ini selesai" yang mungkin tidak akan pernah relevan lagi.
+  if (sp.pendingExam && sp.pendingExam.examDone && sp.pendingExam.semesterDone) {
+    const resolvedDay = sp.pendingExam.dayTo;
+    sp.pendingExam = null;
+    if (sp.day === resolvedDay) {
+      sp.history.push({
+        day: sp.day,
+        vocabLabel: spLevelLabel((sp.day - 1) * SP_VOCAB_CHUNK, vocabByLevel.N5.length),
+        kanjiLabel: spLevelLabel((sp.day - 1) * SP_KANJI_CHUNK, kanjiListN5.length),
+        sessions: JSON.parse(JSON.stringify(sp.sessions)),
+      });
+      sp.day += 1;
+      sp.sessions = spEmptySessions();
+    }
+    spSave();
+    return;
+  }
+  if (sp.pendingExam) return; // masih menunggu Ujian/Ujian Semester diselesaikan
+
   const allDone = SP_SESSION_KEYS.every(k => sp.sessions[k].done);
   if (!allDone) return;
 
   spSyncPendingExam();
-  if (sp.pendingExam && !(sp.pendingExam.examDone && sp.pendingExam.semesterDone)) {
+  if (sp.pendingExam) {
     spSave();
     return;
   }
@@ -1079,7 +1101,6 @@ function spCheckDayAdvance() {
     kanjiLabel: spLevelLabel((sp.day - 1) * SP_KANJI_CHUNK, kanjiListN5.length),
     sessions: JSON.parse(JSON.stringify(sp.sessions)),
   });
-  sp.pendingExam = null;
   sp.day += 1;
   sp.sessions = spEmptySessions();
   spSave();
