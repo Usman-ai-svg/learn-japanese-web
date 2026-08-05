@@ -1028,27 +1028,46 @@ function spEnsureLoaded() {
   if (!sp) spLoad();
 }
 
+// Membuka gerbang Ujian kalau ada checkpoint (kelipatan SP_EXAM_INTERVAL) yang belum
+// diselesaikan. Dipanggil baik tepat saat hari checkpoint selesai (dari
+// spCheckDayAdvance) maupun tiap kali membuka Rencana Belajar (dari spShowOverview) --
+// yang kedua ini penting untuk pengguna yang hari-nya sudah kepalang lanjut melewati
+// sebuah checkpoint SEBELUM fitur Ujian ini ada, supaya gerbangnya tetap muncul
+// belakangan alih-alih hilang begitu saja.
+function spSyncPendingExam() {
+  if (sp.pendingExam) return;
+
+  const shouldBeResolved = Math.floor(sp.day / SP_EXAM_INTERVAL);
+  if (sp.examNumber >= shouldBeResolved) return;
+
+  const examNumber = sp.examNumber + 1;
+  const checkpointDay = examNumber * SP_EXAM_INTERVAL;
+
+  // Kalau hari ini PERSIS checkpoint-nya, tunggu sampai ke-4 sesi hari itu selesai
+  // dulu -- jangan memblokir sebelum kontennya sendiri dipelajari. Kalau hari
+  // sekarang sudah LEWAT checkpoint itu (kasus retroaktif), langsung buka gerbang.
+  if (sp.day === checkpointDay) {
+    const allDone = SP_SESSION_KEYS.every(k => sp.sessions[k].done);
+    if (!allDone) return;
+  }
+
+  const needsSemester = examNumber % SP_SEMESTER_INTERVAL === 0;
+  sp.pendingExam = {
+    examNumber,
+    dayFrom: checkpointDay - SP_EXAM_INTERVAL + 1,
+    dayTo: checkpointDay,
+    examDone: false,
+    needsSemester,
+    semesterDone: !needsSemester,
+  };
+  spSave();
+}
+
 function spCheckDayAdvance() {
   const allDone = SP_SESSION_KEYS.every(k => sp.sessions[k].done);
   if (!allDone) return;
 
-  // Hari kelipatan SP_EXAM_INTERVAL: buka gerbang Ujian (dan Ujian Semester tiap
-  // kelipatan SP_SEMESTER_INTERVAL Ujian) dulu, jangan lanjut ke hari berikutnya.
-  if (sp.day % SP_EXAM_INTERVAL === 0 && !sp.pendingExam) {
-    const examNumber = sp.examNumber + 1;
-    const needsSemester = examNumber % SP_SEMESTER_INTERVAL === 0;
-    sp.pendingExam = {
-      examNumber,
-      dayFrom: sp.day - SP_EXAM_INTERVAL + 1,
-      dayTo: sp.day,
-      examDone: false,
-      needsSemester,
-      semesterDone: !needsSemester,
-    };
-    spSave();
-    return;
-  }
-
+  spSyncPendingExam();
   if (sp.pendingExam && !(sp.pendingExam.examDone && sp.pendingExam.semesterDone)) {
     spSave();
     return;
@@ -1068,6 +1087,7 @@ function spCheckDayAdvance() {
 
 function spShowOverview() {
   spEnsureLoaded();
+  spSyncPendingExam();
   el.spOverview.classList.remove("hidden");
   el.spBrowse.classList.add("hidden");
   el.spQuiz.classList.add("hidden");
