@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn Japanese</title>
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
   <div class="app-shell">
@@ -257,6 +257,21 @@
               </div>
             </div>
 
+            <div class="sp-session-grid hidden" id="spExamGate">
+              <div class="sp-session-card">
+                <div class="sp-session-name">🎓 Ujian</div>
+                <div class="sp-session-desc" id="spExamRange"></div>
+                <div class="sp-session-status" id="spExamStatus">Belum dikerjakan</div>
+                <button class="primary sp-session-btn" id="spStartExamBtn">Mulai Ujian</button>
+              </div>
+              <div class="sp-session-card hidden" id="spSemesterCard">
+                <div class="sp-session-name">🏅 Ujian Semester</div>
+                <div class="sp-session-desc" id="spSemesterRange"></div>
+                <div class="sp-session-status" id="spSemesterStatus">Belum dikerjakan</div>
+                <button class="primary sp-session-btn" id="spStartSemesterBtn">Mulai Ujian Semester</button>
+              </div>
+            </div>
+
             <div id="spHistoryWrap">
               <h3 class="sp-history-title">Riwayat</h3>
               <div class="vocab-table-wrap">
@@ -265,6 +280,18 @@
                     <tr><th>Hari</th><th>Level</th><th>Sesi 2</th><th>Sesi 3</th><th>Sesi 4</th></tr>
                   </thead>
                   <tbody id="spHistoryBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="spExamHistoryWrap">
+              <h3 class="sp-history-title">Riwayat Ujian</h3>
+              <div class="vocab-table-wrap">
+                <table class="vocab-table">
+                  <thead>
+                    <tr><th>Jenis</th><th>Cakupan</th><th>Skor</th></tr>
+                  </thead>
+                  <tbody id="spExamHistoryBody"></tbody>
                 </table>
               </div>
             </div>
@@ -327,6 +354,6 @@
     </div>
   </div>
 
-<script src="app.js?v=12"></script>
+<script src="app.js?v=13"></script>
 </body>
 </html>

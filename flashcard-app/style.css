@@ -779,6 +779,10 @@ main {
 .sp-history-title { font-size: 0.95rem; margin-bottom: 10px; }
 .sp-history-current td { background: var(--paper); font-weight: 700; }
 
+#spExamGate { margin-bottom: 28px; }
+#spExamHistoryWrap { margin-top: 28px; }
+.sp-session-btn:disabled { opacity: 0.5; cursor: default; }
+
 .sp-phase-label {
   font-size: 0.78rem;
   font-weight: 700;

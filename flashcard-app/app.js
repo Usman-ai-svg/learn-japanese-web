@@ -162,6 +162,16 @@ const el = {
   spDayNumber: document.getElementById("spDayNumber"),
   spDaySub: document.getElementById("spDaySub"),
   spHistoryBody: document.getElementById("spHistoryBody"),
+  spSessionList: document.getElementById("spSessionList"),
+  spExamGate: document.getElementById("spExamGate"),
+  spExamRange: document.getElementById("spExamRange"),
+  spExamStatus: document.getElementById("spExamStatus"),
+  spStartExamBtn: document.getElementById("spStartExamBtn"),
+  spSemesterCard: document.getElementById("spSemesterCard"),
+  spSemesterRange: document.getElementById("spSemesterRange"),
+  spSemesterStatus: document.getElementById("spSemesterStatus"),
+  spStartSemesterBtn: document.getElementById("spStartSemesterBtn"),
+  spExamHistoryBody: document.getElementById("spExamHistoryBody"),
   spBrowse: document.getElementById("spBrowse"),
   spBrowseKindToggle: document.getElementById("spBrowseKindToggle"),
   spBrowsePos: document.getElementById("spBrowsePos"),
@@ -792,11 +802,19 @@ const SP_VOCAB_CHUNK = 10;
 const SP_KANJI_CHUNK = 5;
 const SP_SESSION_KEYS = ["s1", "s2", "s3", "s4"];
 const SP_FORMATS = ["kanji", "kana", "english"];
+const SP_EXAM_INTERVAL = 10;        // Ujian tiap 10 hari
+const SP_SEMESTER_INTERVAL = 5;     // Ujian Semester tiap 5 Ujian (= 50 hari)
+const SP_EXAM_VOCAB_COUNT = 40;
+const SP_EXAM_KANJI_COUNT = 20;
+const SP_SEMESTER_VOCAB_COUNT = 100;
+const SP_SEMESTER_KANJI_COUNT = 50;
 
 let sp = null;
 let spBrowseKind = "vocab";
 let spBrowseIndex = 0;
 let spBrowseFlipped = false;
+let spQuizMode = "session"; // "session" | "exam" | "semester"
+let spQuizExamMeta = null;  // snapshot of sp.pendingExam saat kuis exam/semester dimulai
 let spQuizKey = null;
 let spQuizPhase = "vocab";
 let spQuizQuestions = { vocab: [], kanji: [] };
@@ -825,6 +843,11 @@ function spLoad() {
   if (!sp) {
     sp = { day: 1, sessions: spEmptySessions(), weaknessVocab: {}, weaknessKanji: {}, history: [] };
   }
+  // Migrasi: isi field fitur Ujian untuk data lama (sebelum fitur ini ada) yang belum punya.
+  if (sp.examNumber === undefined) sp.examNumber = 0;
+  if (!sp.examHistory) sp.examHistory = [];
+  if (!sp.semesterHistory) sp.semesterHistory = [];
+  if (sp.pendingExam === undefined) sp.pendingExam = null;
 }
 
 function spSave() {
@@ -970,6 +993,37 @@ function spBuildPhaseQuestions(entries, kind) {
   return spInterleaveQuestions(perEntryQuestions);
 }
 
+// --- Ujian & Ujian Semester: soal sampel (bukan tiap kata seperti sesi harian) ---
+
+function spExamPool(dayFrom, dayTo, kind) {
+  const pool = kind === "vocab" ? spVocabPool() : spKanjiPool();
+  const chunkSize = kind === "vocab" ? SP_VOCAB_CHUNK : SP_KANJI_CHUNK;
+  return pool.slice((dayFrom - 1) * chunkSize, dayTo * chunkSize);
+}
+
+function spSampleUnweighted(pool, count) {
+  const copy = [...pool];
+  shuffle(copy);
+  return copy.slice(0, count);
+}
+
+// Beda dari spBuildPhaseQuestions: item sudah unik (hasil sampel tanpa duplikat) dan
+// cuma 1 soal per item, jadi tidak perlu spInterleaveQuestions -- shuffle biasa cukup.
+function spBuildExamQuestions(items, kind) {
+  const pool = kind === "vocab" ? spVocabPool() : spKanjiPool();
+  const allPairs = [];
+  SP_FORMATS.forEach(qf => SP_FORMATS.forEach(af => { if (qf !== af) allPairs.push([qf, af]); }));
+
+  const questions = items.map(entry => {
+    const pairs = spValidFormatPairs(entry, kind, allPairs);
+    const [qFormat, aFormat] = pairs[Math.floor(Math.random() * pairs.length)];
+    return spMakeQuestion(entry, qFormat, aFormat, kind, pool);
+  });
+
+  shuffle(questions);
+  return questions;
+}
+
 function spEnsureLoaded() {
   if (!sp) spLoad();
 }
@@ -978,12 +1032,35 @@ function spCheckDayAdvance() {
   const allDone = SP_SESSION_KEYS.every(k => sp.sessions[k].done);
   if (!allDone) return;
 
+  // Hari kelipatan SP_EXAM_INTERVAL: buka gerbang Ujian (dan Ujian Semester tiap
+  // kelipatan SP_SEMESTER_INTERVAL Ujian) dulu, jangan lanjut ke hari berikutnya.
+  if (sp.day % SP_EXAM_INTERVAL === 0 && !sp.pendingExam) {
+    const examNumber = sp.examNumber + 1;
+    const needsSemester = examNumber % SP_SEMESTER_INTERVAL === 0;
+    sp.pendingExam = {
+      examNumber,
+      dayFrom: sp.day - SP_EXAM_INTERVAL + 1,
+      dayTo: sp.day,
+      examDone: false,
+      needsSemester,
+      semesterDone: !needsSemester,
+    };
+    spSave();
+    return;
+  }
+
+  if (sp.pendingExam && !(sp.pendingExam.examDone && sp.pendingExam.semesterDone)) {
+    spSave();
+    return;
+  }
+
   sp.history.push({
     day: sp.day,
     vocabLabel: spLevelLabel((sp.day - 1) * SP_VOCAB_CHUNK, vocabByLevel.N5.length),
     kanjiLabel: spLevelLabel((sp.day - 1) * SP_KANJI_CHUNK, kanjiListN5.length),
     sessions: JSON.parse(JSON.stringify(sp.sessions)),
   });
+  sp.pendingExam = null;
   sp.day += 1;
   sp.sessions = spEmptySessions();
   spSave();
@@ -1001,19 +1078,85 @@ function spRenderOverview() {
   el.spDayNumber.textContent = sp.day;
   el.spDaySub.textContent = spDaySubLabel(sp.day);
 
-  SP_SESSION_KEYS.forEach(key => {
-    const s = sp.sessions[key];
-    const statusEl = document.getElementById(`spStatus_${key}`);
-    if (s.done) {
-      statusEl.textContent = key === "s1" ? "✓ Selesai" : `✓ ${s.correct} benar, ${s.wrong} salah`;
-      statusEl.classList.add("done");
-    } else {
-      statusEl.textContent = "Belum dikerjakan";
-      statusEl.classList.remove("done");
-    }
-  });
+  const gateActive = !!sp.pendingExam;
+  el.spSessionList.classList.toggle("hidden", gateActive);
+  el.spExamGate.classList.toggle("hidden", !gateActive);
+
+  if (gateActive) {
+    spRenderExamGate();
+  } else {
+    SP_SESSION_KEYS.forEach(key => {
+      const s = sp.sessions[key];
+      const statusEl = document.getElementById(`spStatus_${key}`);
+      if (s.done) {
+        statusEl.textContent = key === "s1" ? "✓ Selesai" : `✓ ${s.correct} benar, ${s.wrong} salah`;
+        statusEl.classList.add("done");
+      } else {
+        statusEl.textContent = "Belum dikerjakan";
+        statusEl.classList.remove("done");
+      }
+    });
+  }
 
   spRenderHistory();
+  spRenderExamHistory();
+}
+
+function spRenderExamGate() {
+  const meta = sp.pendingExam;
+  if (!meta) return;
+
+  el.spExamRange.textContent = `Materi Hari ${meta.dayFrom}-${meta.dayTo}`;
+  el.spExamStatus.textContent = meta.examDone ? "✓ Selesai" : "Belum dikerjakan";
+  el.spExamStatus.classList.toggle("done", meta.examDone);
+  el.spStartExamBtn.disabled = meta.examDone;
+  el.spStartExamBtn.textContent = meta.examDone ? "Sudah selesai" : "Mulai Ujian";
+
+  el.spSemesterCard.classList.toggle("hidden", !meta.needsSemester);
+  if (meta.needsSemester) {
+    const examFrom = meta.examNumber - SP_SEMESTER_INTERVAL + 1;
+    el.spSemesterRange.textContent = `Materi Ujian ${examFrom}-${meta.examNumber}`;
+    el.spSemesterStatus.textContent = meta.semesterDone ? "✓ Selesai" : "Belum dikerjakan";
+    el.spSemesterStatus.classList.toggle("done", meta.semesterDone);
+    el.spStartSemesterBtn.disabled = meta.semesterDone || !meta.examDone;
+    el.spStartSemesterBtn.textContent = meta.semesterDone
+      ? "Sudah selesai"
+      : (meta.examDone ? "Mulai Ujian Semester" : "Selesaikan Ujian dulu");
+  }
+}
+
+function spRenderExamHistory() {
+  el.spExamHistoryBody.textContent = "";
+  const frag = document.createDocumentFragment();
+
+  const combined = [
+    ...sp.examHistory.map(e => ({
+      type: "Ujian",
+      cakupan: `Hari ${e.dayFrom}-${e.dayTo}`,
+      correct: e.correct,
+      total: e.total,
+      sortKey: e.dayTo,
+    })),
+    ...sp.semesterHistory.map(e => ({
+      type: "Ujian Semester",
+      cakupan: `Ujian ${e.examFrom}-${e.examTo}`,
+      correct: e.correct,
+      total: e.total,
+      sortKey: e.examTo * SP_EXAM_INTERVAL + 0.5, // tampil setelah Ujian terakhirnya di hari yang sama
+    })),
+  ].sort((a, b) => b.sortKey - a.sortKey);
+
+  combined.forEach(rec => {
+    const tr = document.createElement("tr");
+    [rec.type, rec.cakupan, `${rec.correct}/${rec.total}`].forEach(text => {
+      const td = document.createElement("td");
+      td.textContent = text;
+      tr.appendChild(td);
+    });
+    frag.appendChild(tr);
+  });
+
+  el.spExamHistoryBody.appendChild(frag);
 }
 
 function spScoreText(s) {
@@ -1179,6 +1322,8 @@ function spCurrentPhaseQuestions() {
 }
 
 function spStartQuiz(key) {
+  spQuizMode = "session";
+  spQuizExamMeta = null;
   spQuizKey = key;
   spQuizCorrect = 0;
   spQuizWrong = 0;
@@ -1194,6 +1339,50 @@ function spStartQuiz(key) {
 
   spQuizQuestions.vocab = vocabEntries.length ? spBuildPhaseQuestions(vocabEntries, "vocab") : [];
   spQuizQuestions.kanji = kanjiEntries.length ? spBuildPhaseQuestions(kanjiEntries, "kanji") : [];
+  spQuizPhase = spQuizQuestions.vocab.length ? "vocab" : "kanji";
+  spQuizIndex = 0;
+
+  el.spOverview.classList.add("hidden");
+  el.spBrowse.classList.add("hidden");
+  el.spQuiz.classList.remove("hidden");
+
+  spShowQuizQuestion();
+}
+
+function spStartExamQuiz(mode) {
+  const meta = sp.pendingExam;
+  if (!meta) return;
+
+  spQuizMode = mode;
+  spQuizExamMeta = { ...meta };
+  spQuizKey = null;
+  spQuizCorrect = 0;
+  spQuizWrong = 0;
+  el.spCorrect.textContent = "0";
+  el.spWrong.textContent = "0";
+
+  let dayFrom = meta.dayFrom;
+  let dayTo = meta.dayTo;
+  let vocabCount = SP_EXAM_VOCAB_COUNT;
+  let kanjiCount = SP_EXAM_KANJI_COUNT;
+
+  if (mode === "semester") {
+    dayFrom = Math.max(1, (meta.examNumber - SP_SEMESTER_INTERVAL) * SP_EXAM_INTERVAL + 1);
+    vocabCount = SP_SEMESTER_VOCAB_COUNT;
+    kanjiCount = SP_SEMESTER_KANJI_COUNT;
+  }
+
+  const vocabPool = spExamPool(dayFrom, dayTo, "vocab");
+  const kanjiPool = spExamPool(dayFrom, dayTo, "kanji");
+  const vocabItems = mode === "semester"
+    ? spWeightedSample(vocabPool, sp.weaknessVocab, Math.min(vocabCount, vocabPool.length))
+    : spSampleUnweighted(vocabPool, Math.min(vocabCount, vocabPool.length));
+  const kanjiItems = mode === "semester"
+    ? spWeightedSample(kanjiPool, sp.weaknessKanji, Math.min(kanjiCount, kanjiPool.length))
+    : spSampleUnweighted(kanjiPool, Math.min(kanjiCount, kanjiPool.length));
+
+  spQuizQuestions.vocab = vocabItems.length ? spBuildExamQuestions(vocabItems, "vocab") : [];
+  spQuizQuestions.kanji = kanjiItems.length ? spBuildExamQuestions(kanjiItems, "kanji") : [];
   spQuizPhase = spQuizQuestions.vocab.length ? "vocab" : "kanji";
   spQuizIndex = 0;
 
@@ -1272,14 +1461,39 @@ function spSelectAnswer(choice, btnEl) {
 }
 
 function spFinishQuiz() {
-  sp.sessions[spQuizKey] = { done: true, correct: spQuizCorrect, wrong: spQuizWrong };
+  const total = spQuizCorrect + spQuizWrong;
+
+  if (spQuizMode === "session") {
+    sp.sessions[spQuizKey] = { done: true, correct: spQuizCorrect, wrong: spQuizWrong };
+  } else if (spQuizMode === "exam") {
+    sp.examNumber = spQuizExamMeta.examNumber;
+    sp.examHistory.push({
+      examNumber: spQuizExamMeta.examNumber,
+      dayFrom: spQuizExamMeta.dayFrom,
+      dayTo: spQuizExamMeta.dayTo,
+      correct: spQuizCorrect,
+      wrong: spQuizWrong,
+      total,
+    });
+    if (sp.pendingExam) sp.pendingExam.examDone = true;
+  } else if (spQuizMode === "semester") {
+    sp.semesterHistory.push({
+      semesterNumber: spQuizExamMeta.examNumber / SP_SEMESTER_INTERVAL,
+      examFrom: spQuizExamMeta.examNumber - SP_SEMESTER_INTERVAL + 1,
+      examTo: spQuizExamMeta.examNumber,
+      correct: spQuizCorrect,
+      wrong: spQuizWrong,
+      total,
+    });
+    if (sp.pendingExam) sp.pendingExam.semesterDone = true;
+  }
+
   spSave();
   spCheckDayAdvance();
 
   el.spQuestion.classList.add("hidden");
   el.spChoices.classList.add("hidden");
   el.spQuizDone.classList.remove("hidden");
-  const total = spQuizCorrect + spQuizWrong;
   el.spQuizDoneSummary.textContent = total
     ? `Benar ${spQuizCorrect} dari ${total} (salah ${spQuizWrong}).`
     : "Tidak ada soal untuk sesi ini.";
@@ -1468,6 +1682,9 @@ function init() {
   el.spFinishBrowseBtn.addEventListener("click", spFinishBrowse);
   el.spBackFromBrowseBtn.addEventListener("click", spBackFromBrowse);
   el.spBackFromQuizBtn.addEventListener("click", spBackFromQuiz);
+
+  el.spStartExamBtn.addEventListener("click", () => spStartExamQuiz("exam"));
+  el.spStartSemesterBtn.addEventListener("click", () => spStartExamQuiz("semester"));
 }
 
 init();
