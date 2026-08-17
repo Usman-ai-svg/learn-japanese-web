@@ -800,7 +800,11 @@ function pqSelectAnswer(idx, btnEl) {
 const SP_STORAGE_KEY = "study-plan-v1";
 const SP_VOCAB_CHUNK = 10;
 const SP_KANJI_CHUNK = 5;
-const SP_SESSION_KEYS = ["s1", "s2", "s3", "s4"];
+// Urutan tampil, bukan urutan histori: key s1-s4 sengaja dipertahankan apa adanya
+// (artinya tidak berubah) supaya riwayat hari-hari lama tetap terbaca benar, sementara
+// dua sesi review yang ditambahkan belakangan memakai key baru r1/r2 dan diselipkan
+// di posisi tampilnya. Nomor "Sesi 1-6" yang dilihat pengguna mengikuti urutan array ini.
+const SP_SESSION_KEYS = ["s1", "r1", "s2", "r2", "s3", "s4"];
 const SP_FORMATS = ["kanji", "kana", "english"];
 const SP_EXAM_INTERVAL = 10;        // Ujian tiap 10 hari
 const SP_SEMESTER_INTERVAL = 5;     // Ujian Semester tiap 5 Ujian (= 50 hari)
@@ -827,7 +831,9 @@ let spQuizCurrentQuestion = null;
 function spEmptySessions() {
   return {
     s1: { done: false },
+    r1: { done: false, correct: 0, wrong: 0 },
     s2: { done: false, correct: 0, wrong: 0 },
+    r2: { done: false, correct: 0, wrong: 0 },
     s3: { done: false, correct: 0, wrong: 0 },
     s4: { done: false, correct: 0, wrong: 0 },
   };
@@ -843,6 +849,12 @@ function spLoad() {
   if (!sp) {
     sp = { day: 1, sessions: spEmptySessions(), weaknessVocab: {}, weaknessKanji: {}, history: [] };
   }
+  // Migrasi: sesi yang ditambahkan setelah rilis awal (mis. r1/r2) belum ada di data lama.
+  // sp.history sengaja TIDAK ikut diisi -- hari-hari lama memang tidak punya sesi itu,
+  // jadi biarkan tampil "-" di tabel Riwayat alih-alih mengarang 0/0.
+  SP_SESSION_KEYS.forEach(key => {
+    if (!sp.sessions[key]) sp.sessions[key] = { done: false, correct: 0, wrong: 0 };
+  });
   // Migrasi: isi field fitur Ujian untuk data lama (sebelum fitur ini ada) yang belum punya.
   if (sp.examNumber === undefined) sp.examNumber = 0;
   if (!sp.examHistory) sp.examHistory = [];
@@ -1043,7 +1055,7 @@ function spSyncPendingExam() {
   const examNumber = sp.examNumber + 1;
   const checkpointDay = examNumber * SP_EXAM_INTERVAL;
 
-  // Kalau hari ini PERSIS checkpoint-nya, tunggu sampai ke-4 sesi hari itu selesai
+  // Kalau hari ini PERSIS checkpoint-nya, tunggu sampai semua sesi hari itu selesai
   // dulu -- jangan memblokir sebelum kontennya sendiri dipelajari. Kalau hari
   // sekarang sudah LEWAT checkpoint itu (kasus retroaktif), langsung buka gerbang.
   if (sp.day === checkpointDay) {
@@ -1213,10 +1225,14 @@ function spScoreText(s) {
 function spBuildHistoryRow(dayLabel, levelLabel, sessions, isCurrent) {
   const tr = document.createElement("tr");
   if (isCurrent) tr.className = "sp-history-current";
+  // Urutan kolom mengikuti SP_SESSION_KEYS (s1 dilewati karena tidak dinilai).
+  // Hari-hari lama yang belum punya r1/r2 otomatis tampil "-" lewat spScoreText.
   const cells = [
     dayLabel,
     levelLabel,
+    spScoreText(sessions.r1),
     spScoreText(sessions.s2),
+    spScoreText(sessions.r2),
     spScoreText(sessions.s3),
     spScoreText(sessions.s4),
   ];
@@ -1233,7 +1249,7 @@ function spRenderHistory() {
   const frag = document.createDocumentFragment();
 
   // Hari yang sedang berjalan: tampilkan segera begitu ada sesi yang selesai,
-  // jangan tunggu sampai ke-4 sesi kelar (itu baru masuk sp.history).
+  // jangan tunggu sampai semua sesi kelar (itu baru masuk sp.history).
   const anySessionDone = SP_SESSION_KEYS.some(k => sp.sessions[k].done);
   if (anySessionDone) {
     frag.appendChild(spBuildHistoryRow(
@@ -1377,8 +1393,11 @@ function spStartQuiz(key) {
   el.spCorrect.textContent = "0";
   el.spWrong.textContent = "0";
 
-  let vocabEntries = spDayVocab(sp.day);
-  let kanjiEntries = spDayKanji(sp.day);
+  // r2 = sesi siang khusus mengulang materi HARI KEMARIN. Di hari ke-1 belum ada
+  // kemarin, jadi soalnya kosong dan kuis langsung selesai (ditangani spShowQuizQuestion).
+  const sourceDay = key === "r2" ? sp.day - 1 : sp.day;
+  let vocabEntries = sourceDay >= 1 ? spDayVocab(sourceDay) : [];
+  let kanjiEntries = sourceDay >= 1 ? spDayKanji(sourceDay) : [];
   if (key === "s4") {
     vocabEntries = vocabEntries.concat(spReviewEntries("vocab", 5));
     kanjiEntries = kanjiEntries.concat(spReviewEntries("kanji", 3));
