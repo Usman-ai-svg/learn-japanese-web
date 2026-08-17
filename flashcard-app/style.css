@@ -590,31 +590,31 @@ main {
 /* Kanji Quizzer question card: flips to reveal full kanji info after answering */
 .kq-card-flip {
   width: 100%;
-  min-height: 220px;
   margin-bottom: 20px;
   perspective: 1200px;
 }
+/* Kedua sisi kartu ditumpuk pada sel grid yang sama, bukan position:absolute.
+   Dengan absolute + inset:0 tinggi kartu terkunci di min-height, sehingga isi sisi
+   belakang -- yang di layar HP menumpuk vertikal jadi jauh lebih tinggi -- terpotong
+   oleh overflow:hidden. Lewat grid, tinggi kartu otomatis mengikuti sisi tertinggi. */
 .kq-card-flip-inner {
-  position: relative;
+  display: grid;
   width: 100%;
-  height: 100%;
   min-height: 220px;
   transition: transform 0.5s cubic-bezier(.4,.2,.2,1);
   transform-style: preserve-3d;
 }
 .kq-card-flip-inner.flipped { transform: rotateY(180deg); }
 
-.kq-card-flip .kq-question {
-  position: absolute;
-  inset: 0;
+.kq-card-flip .kq-question,
+.kq-answer-back {
+  grid-area: 1 / 1;
   backface-visibility: hidden;
-  margin-bottom: 0;
 }
 
+.kq-card-flip .kq-question { margin-bottom: 0; }
+
 .kq-answer-back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
   transform: rotateY(180deg);
   border-radius: 18px;
   overflow: hidden;
@@ -667,7 +667,14 @@ main {
   .kq-answer-back { flex-direction: column; }
   .kqb-kanji-panel { width: 100%; padding: 14px; }
   .kqb-kanji { font-size: 3rem; }
-  .kqb-info-panel { padding: 14px 18px; gap: 10px; }
+  .kqb-info-panel { padding: 14px 18px 16px; gap: 10px; }
+  /* Ikut alur normal di layar sempit; kalau tetap absolute, petunjuk ini menimpa
+     baris On Yomi karena panelnya tidak lagi punya ruang kosong di bawah. */
+  .kqb-hint {
+    position: static;
+    align-self: flex-end;
+    margin-top: 2px;
+  }
 }
 
 #kqDone {
