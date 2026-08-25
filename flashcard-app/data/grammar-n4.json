@@ -1,0 +1,926 @@
+[
+ {
+  "id": "n4-1",
+  "grammar": "間（あいだ）",
+  "romaji": "aida",
+  "meaning": "while; during; between ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-2",
+  "grammar": "間に（あいだに）",
+  "romaji": "aida ni",
+  "meaning": "while; during~ something happened",
+  "level": "N4"
+ },
+ {
+  "id": "n4-3",
+  "grammar": "あまり～ない",
+  "romaji": "amari~nai",
+  "meaning": "not very, not much ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-4",
+  "grammar": "後で（あとで）",
+  "romaji": "ato de",
+  "meaning": "after~; later",
+  "level": "N4"
+ },
+ {
+  "id": "n4-5",
+  "grammar": "ば",
+  "romaji": "ba",
+  "meaning": "conditional form; If [A] then [B]",
+  "level": "N4"
+ },
+ {
+  "id": "n4-6",
+  "grammar": "場合は（ばあいは）",
+  "romaji": "baai wa",
+  "meaning": "in the event of; in the case that ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-7",
+  "grammar": "ばかり",
+  "romaji": "bakari",
+  "meaning": "only; nothing but ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-8",
+  "grammar": "だけで",
+  "romaji": "dake de",
+  "meaning": "just by; just by doing",
+  "level": "N4"
+ },
+ {
+  "id": "n4-9",
+  "grammar": "出す（だす）",
+  "romaji": "dasu",
+  "meaning": "to begin to; to start to; to burst into; ... out",
+  "level": "N4"
+ },
+ {
+  "id": "n4-10",
+  "grammar": "でございます",
+  "romaji": "de gozaimasu",
+  "meaning": "to be (honorific)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-11",
+  "grammar": "でも",
+  "romaji": "demo",
+  "meaning": "... or something; how about~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-12",
+  "grammar": "ではないか",
+  "romaji": "dewa nai ka",
+  "meaning": "right?; isn't it?",
+  "level": "N4"
+ },
+ {
+  "id": "n4-13",
+  "grammar": "が必要（がひつよう）",
+  "romaji": "ga hitsuyou",
+  "meaning": "need; necessary",
+  "level": "N4"
+ },
+ {
+  "id": "n4-14",
+  "grammar": "がする",
+  "romaji": "ga suru",
+  "meaning": "to smell; hear; taste",
+  "level": "N4"
+ },
+ {
+  "id": "n4-15",
+  "grammar": "がり",
+  "romaji": "gari",
+  "meaning": "personality (someone tends to; has a tendency to; has a sensitivity to ~)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-16",
+  "grammar": "がる / がっている",
+  "romaji": "garu / gatteiru",
+  "meaning": "to show signs of; to appear; to feel, to think ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-17",
+  "grammar": "ございます",
+  "romaji": "gozaimasu",
+  "meaning": "to be, to exist (the polite form of いる/ある)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-18",
+  "grammar": "始める（はじめる）",
+  "romaji": "hajimeru",
+  "meaning": "to start; to begin to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-19",
+  "grammar": "はずだ",
+  "romaji": "hazu da",
+  "meaning": "it must be; it should be (expectation)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-20",
+  "grammar": "はずがない",
+  "romaji": "hazu ga nai",
+  "meaning": "cannot be (impossible)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-21",
+  "grammar": "必要がある（ひつようがある）",
+  "romaji": "hitsuyou ga aru",
+  "meaning": "need to; it is necessary to",
+  "level": "N4"
+ },
+ {
+  "id": "n4-22",
+  "grammar": "意向形（いこうけい）",
+  "romaji": "ikou kei",
+  "meaning": "volitional form; let's do ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-23",
+  "grammar": "いらっしゃる",
+  "romaji": "irassharu",
+  "meaning": "to be; to come; to go (polite version)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-24",
+  "grammar": "いたします",
+  "romaji": "itashimasu",
+  "meaning": "to do (polite form of する)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-25",
+  "grammar": "じゃないか",
+  "romaji": "janai ka",
+  "meaning": "right? isn't it? let's~; confirmation",
+  "level": "N4"
+ },
+ {
+  "id": "n4-26",
+  "grammar": "かどうか",
+  "romaji": "ka dou ka",
+  "meaning": "whether or not ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-27",
+  "grammar": "かしら",
+  "romaji": "ka shira",
+  "meaning": "I wonder (feminine)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-28",
+  "grammar": "かい",
+  "romaji": "kai",
+  "meaning": "turns a sentence into a yes/no question",
+  "level": "N4"
+ },
+ {
+  "id": "n4-29",
+  "grammar": "かもしれない",
+  "romaji": "kamo shirenai",
+  "meaning": "might; perhaps; indicates possibility",
+  "level": "N4"
+ },
+ {
+  "id": "n4-30",
+  "grammar": "かな",
+  "romaji": "kana",
+  "meaning": "I wonder; should I?",
+  "level": "N4"
+ },
+ {
+  "id": "n4-31",
+  "grammar": "から作る（からつくる）",
+  "romaji": "kara tsukuru",
+  "meaning": "made from; made with",
+  "level": "N4"
+ },
+ {
+  "id": "n4-32",
+  "grammar": "きっと",
+  "romaji": "kitto",
+  "meaning": "surely; undoubtedly; almost certainly; most likely",
+  "level": "N4"
+ },
+ {
+  "id": "n4-33",
+  "grammar": "頃（ころ / ごろ）",
+  "romaji": "koro / goro",
+  "meaning": "around; about; when",
+  "level": "N4"
+ },
+ {
+  "id": "n4-34",
+  "grammar": "こと",
+  "romaji": "koto",
+  "meaning": "Verb nominalizer",
+  "level": "N4"
+ },
+ {
+  "id": "n4-35",
+  "grammar": "ことがある",
+  "romaji": "koto ga aru",
+  "meaning": "there are times when",
+  "level": "N4"
+ },
+ {
+  "id": "n4-36",
+  "grammar": "ことができる",
+  "romaji": "koto ga dekiru",
+  "meaning": "can; able to",
+  "level": "N4"
+ },
+ {
+  "id": "n4-37",
+  "grammar": "ことになる",
+  "romaji": "koto ni naru",
+  "meaning": "It has been decided that..; it turns out that..",
+  "level": "N4"
+ },
+ {
+  "id": "n4-38",
+  "grammar": "ことにする",
+  "romaji": "koto ni suru",
+  "meaning": "to decide on",
+  "level": "N4"
+ },
+ {
+  "id": "n4-39",
+  "grammar": "くする",
+  "romaji": "ku suru",
+  "meaning": "to make something ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-40",
+  "grammar": "急に（きゅうに）",
+  "romaji": "kyuu ni",
+  "meaning": "quickly; immediately; hastily; suddenly; abruptly; unexpectedly ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-41",
+  "grammar": "までに",
+  "romaji": "made ni",
+  "meaning": "by; by the time; indicates time limit",
+  "level": "N4"
+ },
+ {
+  "id": "n4-42",
+  "grammar": "まま",
+  "romaji": "mama",
+  "meaning": "as it is; current state; without changing",
+  "level": "N4"
+ },
+ {
+  "id": "n4-43",
+  "grammar": "または",
+  "romaji": "matawa",
+  "meaning": "both; or; otherwise; choice between [A] or [B]",
+  "level": "N4"
+ },
+ {
+  "id": "n4-44",
+  "grammar": "みたいだ",
+  "romaji": "mitai da",
+  "meaning": "like; similar to; resembling ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-45",
+  "grammar": "みたいな",
+  "romaji": "mitai na",
+  "meaning": "like, similar to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-46",
+  "grammar": "みたいに",
+  "romaji": "mitai ni",
+  "meaning": "like; similar to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-47",
+  "grammar": "も",
+  "romaji": "mo",
+  "meaning": "as many as; as much as; up to; nearly ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-48",
+  "grammar": "な",
+  "romaji": "na",
+  "meaning": "don't ~ (order somebody to not do something)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-49",
+  "grammar": "など",
+  "romaji": "nado",
+  "meaning": "such as; things like ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-50",
+  "grammar": "ながら",
+  "romaji": "nagara",
+  "meaning": "while; during; as; simultaneously",
+  "level": "N4"
+ },
+ {
+  "id": "n4-51",
+  "grammar": "なかなか～ない",
+  "romaji": "nakanaka~nai",
+  "meaning": "not easy to; struggling to; not able to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-52",
+  "grammar": "なければいけない",
+  "romaji": "nakereba ikenai",
+  "meaning": "must do something; have to do something",
+  "level": "N4"
+ },
+ {
+  "id": "n4-53",
+  "grammar": "なければならない",
+  "romaji": "nakereba naranai",
+  "meaning": "must do something; have to do something",
+  "level": "N4"
+ },
+ {
+  "id": "n4-54",
+  "grammar": "なら",
+  "romaji": "nara",
+  "meaning": "if; in the case that ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-55",
+  "grammar": "なさい",
+  "romaji": "nasai",
+  "meaning": "do this (soft/firm command)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-56",
+  "grammar": "なさる",
+  "romaji": "nasaru",
+  "meaning": "to do (honorific)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-57",
+  "grammar": "に気がつく",
+  "romaji": "ni ki ga tsuku",
+  "meaning": "to notice; to realize",
+  "level": "N4"
+ },
+ {
+  "id": "n4-58",
+  "grammar": "に見える",
+  "romaji": "ni mieru",
+  "meaning": "to look; to seem; to appear",
+  "level": "N4"
+ },
+ {
+  "id": "n4-59",
+  "grammar": "にする",
+  "romaji": "ni suru",
+  "meaning": "to make something ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-60",
+  "grammar": "にくい",
+  "romaji": "nikui",
+  "meaning": "difficult to do ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-61",
+  "grammar": "の中で",
+  "romaji": "no naka de",
+  "meaning": "in; among ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-62",
+  "grammar": "のに",
+  "romaji": "noni",
+  "meaning": "although, in spite of, even though ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-63",
+  "grammar": "のに",
+  "romaji": "noni",
+  "meaning": "to (do something); in order to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-64",
+  "grammar": "のは〜だ",
+  "romaji": "nowa~da",
+  "meaning": "[A] is [B]; the reason for [A] is [B]",
+  "level": "N4"
+ },
+ {
+  "id": "n4-65",
+  "grammar": "お～ください",
+  "romaji": "o~kudasai",
+  "meaning": "please do ~ (honorific)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-66",
+  "grammar": "お～になる",
+  "romaji": "o~ni naru",
+  "meaning": "to do (honorific)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-67",
+  "grammar": "おきに",
+  "romaji": "oki ni",
+  "meaning": "repeated at intervals, every ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-68",
+  "grammar": "終わる",
+  "romaji": "owaru",
+  "meaning": "to finish; to end~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-69",
+  "grammar": "られる",
+  "romaji": "rareru",
+  "meaning": "potential form; ability or inability to do something",
+  "level": "N4"
+ },
+ {
+  "id": "n4-70",
+  "grammar": "らしい",
+  "romaji": "rashii",
+  "meaning": "it seems like; I heard; apparently ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-71",
+  "grammar": "さ",
+  "romaji": "sa",
+  "meaning": "-ness; nominalizer for adjective",
+  "level": "N4"
+ },
+ {
+  "id": "n4-72",
+  "grammar": "さっき",
+  "romaji": "sakki",
+  "meaning": "some time ago; just now",
+  "level": "N4"
+ },
+ {
+  "id": "n4-73",
+  "grammar": "させられる",
+  "romaji": "saserareru",
+  "meaning": "causative-passive; to be made to do something",
+  "level": "N4"
+ },
+ {
+  "id": "n4-74",
+  "grammar": "させる",
+  "romaji": "saseru",
+  "meaning": "causative form; to make/let somebody do something",
+  "level": "N4"
+ },
+ {
+  "id": "n4-75",
+  "grammar": "させてください",
+  "romaji": "sasete kudasai",
+  "meaning": "please let me do",
+  "level": "N4"
+ },
+ {
+  "id": "n4-76",
+  "grammar": "さすが",
+  "romaji": "sasuga",
+  "meaning": "as one would expect; as is to be expected; even ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-77",
+  "grammar": "し",
+  "romaji": "shi",
+  "meaning": "and; and what's more ~ (emphasis)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-78",
+  "grammar": "そんなに",
+  "romaji": "sonna ni",
+  "meaning": "so much; so; like that",
+  "level": "N4"
+ },
+ {
+  "id": "n4-79",
+  "grammar": "それでも",
+  "romaji": "sore demo",
+  "meaning": "but still; and yet; even so ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-80",
+  "grammar": "それに",
+  "romaji": "sore ni",
+  "meaning": "besides; in addition; also; moreover ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-81",
+  "grammar": "そうだ",
+  "romaji": "sou da [1]",
+  "meaning": "I heard that; it is said that",
+  "level": "N4"
+ },
+ {
+  "id": "n4-82",
+  "grammar": "そうだ",
+  "romaji": "sou da [2]",
+  "meaning": "looks like; appears like; seeming",
+  "level": "N4"
+ },
+ {
+  "id": "n4-83",
+  "grammar": "そうに / そうな",
+  "romaji": "sou ni / sou na",
+  "meaning": "seems like; looks like",
+  "level": "N4"
+ },
+ {
+  "id": "n4-84",
+  "grammar": "たばかり",
+  "romaji": "ta bakari",
+  "meaning": "just finished; something just occurred",
+  "level": "N4"
+ },
+ {
+  "id": "n4-85",
+  "grammar": "たところ",
+  "romaji": "ta tokoro",
+  "meaning": "just finished doing, was just doing",
+  "level": "N4"
+ },
+ {
+  "id": "n4-86",
+  "grammar": "他動詞 & 自動詞",
+  "romaji": "tadoushi & jidoushi",
+  "meaning": "Transitive & Intransitive Verbs",
+  "level": "N4"
+ },
+ {
+  "id": "n4-87",
+  "grammar": "たがる",
+  "romaji": "tagaru",
+  "meaning": "wants to do (third person)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-88",
+  "grammar": "たら",
+  "romaji": "tara",
+  "meaning": "if; after; when",
+  "level": "N4"
+ },
+ {
+  "id": "n4-89",
+  "grammar": "たらどう",
+  "romaji": "tara dou",
+  "meaning": "why don't you; how about (advice)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-90",
+  "grammar": "たらいいですか",
+  "romaji": "tara ii desu ka",
+  "meaning": "what should I do?; seeking instructions",
+  "level": "N4"
+ },
+ {
+  "id": "n4-91",
+  "grammar": "て / で",
+  "romaji": "te / de",
+  "meaning": "conjunctive particle; so; because",
+  "level": "N4"
+ },
+ {
+  "id": "n4-92",
+  "grammar": "てあげる",
+  "romaji": "te ageru",
+  "meaning": "to do for; to do a favor",
+  "level": "N4"
+ },
+ {
+  "id": "n4-93",
+  "grammar": "てほしい",
+  "romaji": "te hoshii",
+  "meaning": "I want you to; need you to",
+  "level": "N4"
+ },
+ {
+  "id": "n4-94",
+  "grammar": "ていく",
+  "romaji": "te iku",
+  "meaning": "to start; to continue; to go on",
+  "level": "N4"
+ },
+ {
+  "id": "n4-95",
+  "grammar": "ていた",
+  "romaji": "te ita",
+  "meaning": "was doing something (past continuous)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-96",
+  "grammar": "ていただけませんか",
+  "romaji": "te itadakemasen ka",
+  "meaning": "could you please",
+  "level": "N4"
+ },
+ {
+  "id": "n4-97",
+  "grammar": "てくれる",
+  "romaji": "te kureru",
+  "meaning": "to do a favor; do for someone",
+  "level": "N4"
+ },
+ {
+  "id": "n4-98",
+  "grammar": "てくる",
+  "romaji": "te kuru",
+  "meaning": "to do and come back; to become; to continue",
+  "level": "N4"
+ },
+ {
+  "id": "n4-99",
+  "grammar": "てみる",
+  "romaji": "te miru",
+  "meaning": "try doing",
+  "level": "N4"
+ },
+ {
+  "id": "n4-100",
+  "grammar": "てもらう",
+  "romaji": "te morau",
+  "meaning": "to get somebody to do something",
+  "level": "N4"
+ },
+ {
+  "id": "n4-101",
+  "grammar": "ておく",
+  "romaji": "te oku",
+  "meaning": "to do something in advance",
+  "level": "N4"
+ },
+ {
+  "id": "n4-102",
+  "grammar": "てしまう / ちゃう",
+  "romaji": "te shimau / chau",
+  "meaning": "to do by accident, to finish completely",
+  "level": "N4"
+ },
+ {
+  "id": "n4-103",
+  "grammar": "てすみません",
+  "romaji": "te sumimasen",
+  "meaning": "I'm sorry for",
+  "level": "N4"
+ },
+ {
+  "id": "n4-104",
+  "grammar": "てやる",
+  "romaji": "te yaru",
+  "meaning": "to do for; to do a favor (casual)",
+  "level": "N4"
+ },
+ {
+  "id": "n4-105",
+  "grammar": "てよかった",
+  "romaji": "te yokatta",
+  "meaning": "I'm glad that",
+  "level": "N4"
+ },
+ {
+  "id": "n4-106",
+  "grammar": "ているところ",
+  "romaji": "teiru tokoro",
+  "meaning": "in the process of doing",
+  "level": "N4"
+ },
+ {
+  "id": "n4-107",
+  "grammar": "ても",
+  "romaji": "temo",
+  "meaning": "even; even if; even though",
+  "level": "N4"
+ },
+ {
+  "id": "n4-108",
+  "grammar": "と",
+  "romaji": "to",
+  "meaning": "whenever [A] happens, [B] also happens",
+  "level": "N4"
+ },
+ {
+  "id": "n4-109",
+  "grammar": "と言ってもいい",
+  "romaji": "to ittemo ii",
+  "meaning": "you could say; one might say",
+  "level": "N4"
+ },
+ {
+  "id": "n4-110",
+  "grammar": "という",
+  "romaji": "to iu",
+  "meaning": "called; named; that",
+  "level": "N4"
+ },
+ {
+  "id": "n4-111",
+  "grammar": "ということ",
+  "romaji": "to iu koto",
+  "meaning": "convert phrase into noun",
+  "level": "N4"
+ },
+ {
+  "id": "n4-112",
+  "grammar": "と言われている",
+  "romaji": "to iwarete iru",
+  "meaning": "it is said that",
+  "level": "N4"
+ },
+ {
+  "id": "n4-113",
+  "grammar": "と聞いた",
+  "romaji": "to kiita",
+  "meaning": "I heard",
+  "level": "N4"
+ },
+ {
+  "id": "n4-114",
+  "grammar": "と思う",
+  "romaji": "to omou",
+  "meaning": "to think; I think; you think",
+  "level": "N4"
+ },
+ {
+  "id": "n4-115",
+  "grammar": "とか～とか",
+  "romaji": "toka~toka",
+  "meaning": "among other things; such as; like",
+  "level": "N4"
+ },
+ {
+  "id": "n4-116",
+  "grammar": "ところ",
+  "romaji": "tokoro",
+  "meaning": "just about to; on the verge of doing",
+  "level": "N4"
+ },
+ {
+  "id": "n4-117",
+  "grammar": "続ける",
+  "romaji": "tsuzukeru",
+  "meaning": "continue to; keen on",
+  "level": "N4"
+ },
+ {
+  "id": "n4-118",
+  "grammar": "って",
+  "romaji": "tte",
+  "meaning": "named; called",
+  "level": "N4"
+ },
+ {
+  "id": "n4-119",
+  "grammar": "受身形",
+  "romaji": "ukemi kei",
+  "meaning": "passive form; passive voice",
+  "level": "N4"
+ },
+ {
+  "id": "n4-120",
+  "grammar": "は〜が… は",
+  "romaji": "wa~ga… wa",
+  "meaning": "[A] but [B]; however; comparison",
+  "level": "N4"
+ },
+ {
+  "id": "n4-121",
+  "grammar": "やすい",
+  "romaji": "yasui",
+  "meaning": "easy to; likely to; prone to; have a tendency to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-122",
+  "grammar": "やっと",
+  "romaji": "yatto",
+  "meaning": "at last; finally; barely; narrowly ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-123",
+  "grammar": "より",
+  "romaji": "yori",
+  "meaning": "than; rather than; more than ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-124",
+  "grammar": "予定だ（よていだ）",
+  "romaji": "yotei da",
+  "meaning": "plan to, intend to",
+  "level": "N4"
+ },
+ {
+  "id": "n4-125",
+  "grammar": "ようだ",
+  "romaji": "you da",
+  "meaning": "appears; seems; looks as if ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-126",
+  "grammar": "ように / ような",
+  "romaji": "you ni / you na",
+  "meaning": "like; as; similar to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-127",
+  "grammar": "ようになる",
+  "romaji": "you ni naru",
+  "meaning": "to reach the point that; to come to be that; to turn into ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-128",
+  "grammar": "ようにする",
+  "romaji": "you ni suru",
+  "meaning": "to try to; to make sure that ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-129",
+  "grammar": "ようと思う（ようとおもう）",
+  "romaji": "you to omou",
+  "meaning": "thinking of doing; planning to ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-130",
+  "grammar": "ぜひ",
+  "romaji": "zehi",
+  "meaning": "by all means; certainly; definitely ~",
+  "level": "N4"
+ },
+ {
+  "id": "n4-131",
+  "grammar": "全然～ない（ぜんぜん～ない）",
+  "romaji": "zenzen~nai",
+  "meaning": "(not) at all",
+  "level": "N4"
+ },
+ {
+  "id": "n4-132",
+  "grammar": "づらい",
+  "romaji": "zurai",
+  "meaning": "difficult to do ~",
+  "level": "N4"
+ }
+]

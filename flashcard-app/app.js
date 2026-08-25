@@ -839,6 +839,14 @@ function spEmptySessions() {
   };
 }
 
+function spPrefixWeaknessKeys(map) {
+  const out = {};
+  Object.keys(map || {}).forEach(key => {
+    out[/^n[45]-/.test(key) ? key : "n5-" + key] = map[key];
+  });
+  return out;
+}
+
 function spLoad() {
   try {
     const raw = localStorage.getItem(SP_STORAGE_KEY);
@@ -848,6 +856,16 @@ function spLoad() {
   }
   if (!sp) {
     sp = { day: 1, sessions: spEmptySessions(), weaknessVocab: {}, weaknessKanji: {}, history: [] };
+  }
+  // Migrasi: kunci weakness dulu memakai id polos dataset, yang bertabrakan antara N5 dan
+  // N4 (lihat catatan di spVocabPool). Kunci lama pasti berasal dari N5: materi N4 baru
+  // muncul di hari ke-17 untuk kanji dan ke-65 untuk vocab, dan pengguna yang sudah sejauh
+  // itu pun datanya memang sudah tercampur sejak awal -- jadi tidak ada yang bisa
+  // diselamatkan lebih baik daripada menganggapnya N5.
+  if (sp.weaknessKeyVersion !== 2) {
+    sp.weaknessVocab = spPrefixWeaknessKeys(sp.weaknessVocab);
+    sp.weaknessKanji = spPrefixWeaknessKeys(sp.weaknessKanji);
+    sp.weaknessKeyVersion = 2;
   }
   // Migrasi: sesi yang ditambahkan setelah rilis awal (mis. r1/r2) belum ada di data lama.
   // sp.history sengaja TIDAK ikut diisi -- hari-hari lama memang tidak punya sesi itu,
@@ -866,12 +884,44 @@ function spSave() {
   localStorage.setItem(SP_STORAGE_KEY, JSON.stringify(sp));
 }
 
+// Dataset N5 dan N4 sama-sama menomori id mulai dari 1, padahal kedua pool di bawah
+// menggabungkan keduanya. Tanpa awalan level, kanji N5 #1 dan N4 #1 jadi satu identitas:
+// catatan salah-jawab keduanya tertumpuk, dan spWeightedSample (yang membuang id kembar)
+// membuat salah satunya tidak pernah bisa terpilih. Awalan dipasang HANYA di sini --
+// dataset mentah, Kanji Quizzer, dan progres Flashcard (disimpan terpisah per level dengan
+// id polos, jadi tidak pernah bertabrakan) sengaja dibiarkan apa adanya.
+let spVocabPoolCache = null;
+let spKanjiPoolCache = null;
+
+function spNamespaced(list, prefix) {
+  return list.map(item => ({ ...item, id: prefix + "-" + item.id }));
+}
+
+// Dipanggil tiap dataset selesai dimuat; kanji N5 dan N4 datang lewat fetch terpisah,
+// jadi cache harus dibuang lagi saat yang kedua menyusul.
+function spInvalidatePools() {
+  spVocabPoolCache = null;
+  spKanjiPoolCache = null;
+}
+
 function spVocabPool() {
-  return [...vocabLevelOrder.N5, ...vocabLevelOrder.N4];
+  if (spVocabPoolCache) return spVocabPoolCache;
+  const pool = [
+    ...spNamespaced(vocabLevelOrder.N5, "n5"),
+    ...spNamespaced(vocabLevelOrder.N4, "n4"),
+  ];
+  if (pool.length) spVocabPoolCache = pool; // jangan cache hasil kosong (data belum dimuat)
+  return pool;
 }
 
 function spKanjiPool() {
-  return [...kanjiListN5, ...kanjiListN4];
+  if (spKanjiPoolCache) return spKanjiPoolCache;
+  const pool = [
+    ...spNamespaced(kanjiListN5, "n5"),
+    ...spNamespaced(kanjiListN4, "n4"),
+  ];
+  if (pool.length) spKanjiPoolCache = pool;
+  return pool;
 }
 
 function spDayVocab(day) {
@@ -1602,6 +1652,7 @@ function init() {
       vocabByLevel.N4 = n4;
       vocabLevelOrder.N5 = seededShuffle(n5, 20260722);
       vocabLevelOrder.N4 = seededShuffle(n4, 20260723);
+      spInvalidatePools();
       vocab = activeVocabList();
       renderVocabLevelSelect();
       buildQueue();
@@ -1616,6 +1667,7 @@ function init() {
     .then(r => r.json())
     .then(data => {
       kanjiListN5 = data;
+      spInvalidatePools();
       kqRenderLevelSelect();
       if (!el.viewKanji.classList.contains("hidden") && kqQueue.length === 0) {
         kqBuildQueue();
@@ -1627,6 +1679,7 @@ function init() {
     .then(r => r.json())
     .then(data => {
       kanjiListN4 = data;
+      spInvalidatePools();
       if (kqLevel === "N4" && !el.viewKanji.classList.contains("hidden") && kqQueue.length === 0) {
         kqBuildQueue();
       }
