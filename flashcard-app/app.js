@@ -156,6 +156,39 @@ const el = {
   vocabLevelSelect: document.getElementById("vocabLevelSelect"),
   kqLevelSelect: document.getElementById("kqLevelSelect"),
 
+  // Tata Bahasa
+  viewGrammar: document.getElementById("view-grammar"),
+  grLevelToggle: document.getElementById("grLevelToggle"),
+  grLevelSelect: document.getElementById("grLevelSelect"),
+  grModeToggle: document.getElementById("grModeToggle"),
+  grScore: document.getElementById("grScore"),
+  grCorrect: document.getElementById("grCorrect"),
+  grWrong: document.getElementById("grWrong"),
+  grLoading: document.getElementById("grLoading"),
+  grBrowse: document.getElementById("grBrowse"),
+  grBrowseLabel: document.getElementById("grBrowseLabel"),
+  grBrowsePosition: document.getElementById("grBrowsePosition"),
+  grExpr: document.getElementById("grExpr"),
+  grRomaji: document.getElementById("grRomaji"),
+  grMeaning: document.getElementById("grMeaning"),
+  grFormationWrap: document.getElementById("grFormationWrap"),
+  grFormation: document.getElementById("grFormation"),
+  grNote: document.getElementById("grNote"),
+  grExampleCount: document.getElementById("grExampleCount"),
+  grToggleReading: document.getElementById("grToggleReading"),
+  grExamples: document.getElementById("grExamples"),
+  grPrevBtn: document.getElementById("grPrevBtn"),
+  grNextBtn: document.getElementById("grNextBtn"),
+  grQuiz: document.getElementById("grQuiz"),
+  grQuizTypeLabel: document.getElementById("grQuizTypeLabel"),
+  grQuizPosition: document.getElementById("grQuizPosition"),
+  grQuestion: document.getElementById("grQuestion"),
+  grChoices: document.getElementById("grChoices"),
+  grReveal: document.getElementById("grReveal"),
+  grDone: document.getElementById("grDone"),
+  grDoneSummary: document.getElementById("grDoneSummary"),
+  grRestartBtn: document.getElementById("grRestartBtn"),
+
   // Rencana Belajar
   viewPlan: document.getElementById("view-plan"),
   spOverview: document.getElementById("spOverview"),
@@ -468,6 +501,7 @@ function switchView(view) {
   el.viewFlashcard.classList.toggle("hidden", view !== "flashcard");
   el.viewList.classList.toggle("hidden", view !== "list");
   el.viewKanji.classList.toggle("hidden", view !== "kanji");
+  el.viewGrammar.classList.toggle("hidden", view !== "grammar");
   el.viewQuiz.classList.toggle("hidden", view !== "quiz");
   el.viewPlan.classList.toggle("hidden", view !== "plan");
 
@@ -475,6 +509,8 @@ function switchView(view) {
     renderVocabList(el.vocabSearch.value);
   } else if (view === "kanji" && kqQueue.length === 0 && kqActiveList().length > 0) {
     kqBuildQueue();
+  } else if (view === "grammar") {
+    grOpen();
   } else if (view === "quiz" && pqQueue.length === 0 && pqActiveList().length > 0) {
     pqBuildQueue();
   } else if (view === "plan") {
@@ -1619,6 +1655,448 @@ function spBackFromQuiz() {
   spShowOverview();
 }
 
+// ===================== Tata Bahasa (Grammar) =====================
+
+const GR_CHUNK = 10;
+const GR_BLANK = "＿＿＿";
+const GR_CLOZE_BIAS = 0.7; // sisanya soal arti, biar variasinya tidak monoton
+
+let grammarByLevel = { N5: [], N4: [] };
+let grLevel = "N5";
+let grLevelIndex = null;   // null = semua pola di level ini
+let grMode = "belajar";    // "belajar" | "kuis"
+let grBrowseIndex = 0;
+let grShowReading = true;
+let grLoadState = "idle";  // "idle" | "loading" | "ready" | "error"
+
+let grQueue = [];
+let grQIndex = 0;
+let grCorrect = 0;
+let grWrong = 0;
+let grAnswered = false;
+let grCurrent = null;
+
+function grFullList() {
+  return grammarByLevel[grLevel] || [];
+}
+
+function grActiveList() {
+  const full = grFullList();
+  if (grLevelIndex === null) return full;
+  return chunk(full, GR_CHUNK)[grLevelIndex] || full;
+}
+
+// Data grammar besar (~600 KB untuk dua level), jadi baru diambil saat view-nya
+// dibuka pertama kali -- bukan saat aplikasi mulai seperti dataset lain.
+function grOpen() {
+  if (grLoadState === "ready") {
+    grRender();
+    return;
+  }
+  if (grLoadState === "loading") return;
+
+  grLoadState = "loading";
+  el.grLoading.textContent = "Memuat data tata bahasa…";
+  el.grLoading.classList.remove("hidden");
+  el.grBrowse.classList.add("hidden");
+  el.grQuiz.classList.add("hidden");
+
+  Promise.all([
+    fetch("data/grammar-n5.json").then(r => r.json()),
+    fetch("data/grammar-n4.json").then(r => r.json()),
+  ])
+    .then(([n5, n4]) => {
+      grammarByLevel.N5 = n5;
+      grammarByLevel.N4 = n4;
+      grLoadState = "ready";
+      el.grLoading.classList.add("hidden");
+      grRenderLevelSelect();
+      grRender();
+    })
+    .catch(err => {
+      grLoadState = "error";
+      el.grLoading.textContent = "⚠ Gagal memuat data tata bahasa.";
+      console.error("Gagal memuat data grammar:", err);
+    });
+}
+
+function grRender() {
+  grRenderLevelToggle();
+  grRenderModeToggle();
+  el.grScore.classList.toggle("hidden", grMode !== "kuis");
+
+  if (grMode === "belajar") {
+    el.grBrowse.classList.remove("hidden");
+    el.grQuiz.classList.add("hidden");
+    grRenderBrowse();
+  } else {
+    el.grBrowse.classList.add("hidden");
+    el.grQuiz.classList.remove("hidden");
+    if (grQueue.length === 0) grBuildQuiz();
+  }
+}
+
+function grRenderLevelToggle() {
+  el.grLevelToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.grlevel === grLevel);
+  });
+}
+
+function grRenderModeToggle() {
+  el.grModeToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.grmode === grMode);
+  });
+}
+
+function grRenderLevelSelect() {
+  const sel = el.grLevelSelect;
+  sel.textContent = "";
+  const all = document.createElement("option");
+  all.value = "";
+  all.textContent = `Semua pola (${grFullList().length})`;
+  sel.appendChild(all);
+
+  chunk(grFullList(), GR_CHUNK).forEach((group, i) => {
+    const opt = document.createElement("option");
+    opt.value = String(i);
+    opt.textContent = `Kelompok ${i + 1} (${group.length} pola)`;
+    sel.appendChild(opt);
+  });
+  sel.value = grLevelIndex === null ? "" : String(grLevelIndex);
+}
+
+function grSetLevel(level) {
+  if (level === grLevel || !grammarByLevel[level] || grammarByLevel[level].length === 0) return;
+  grLevel = level;
+  grLevelIndex = null;
+  grBrowseIndex = 0;
+  grQueue = [];
+  grRenderLevelSelect();
+  grRender();
+}
+
+function grSetLevelIndex(value) {
+  grLevelIndex = value === "" ? null : Number(value);
+  grBrowseIndex = 0;
+  grQueue = [];
+  grRender();
+}
+
+function grSetMode(mode) {
+  if (mode === grMode) return;
+  grMode = mode;
+  grRender();
+}
+
+// --- Mode Belajar ---
+
+// Merangkai kalimat dari potongan: indeks ganjil = bagian yang disorot situs
+// (pola grammar-nya). Kalau `parts` tidak ada, tampilkan kalimat apa adanya.
+function grBuildSentence(example, mode) {
+  const frag = document.createDocumentFragment();
+  if (!example.parts) {
+    frag.appendChild(document.createTextNode(example.jp));
+    return frag;
+  }
+  example.parts.forEach((piece, i) => {
+    if (i % 2 === 0) {
+      frag.appendChild(document.createTextNode(piece));
+      return;
+    }
+    if (mode === "blank") {
+      const b = document.createElement("span");
+      b.className = "gr-blank";
+      b.textContent = GR_BLANK;
+      frag.appendChild(b);
+    } else {
+      const hl = document.createElement("span");
+      hl.className = "gr-hl";
+      hl.textContent = piece;
+      frag.appendChild(hl);
+    }
+  });
+  return frag;
+}
+
+function grRenderBrowse() {
+  const list = grActiveList();
+  if (list.length === 0) return;
+
+  grBrowseIndex = Math.max(0, Math.min(grBrowseIndex, list.length - 1));
+  const entry = list[grBrowseIndex];
+
+  el.grBrowseLabel.textContent = grLevelIndex === null
+    ? `${grLevel} · semua pola`
+    : `${grLevel} · kelompok ${grLevelIndex + 1}`;
+  el.grBrowsePosition.textContent = `${grBrowseIndex + 1} of ${list.length}`;
+
+  el.grExpr.textContent = entry.grammar;
+  el.grRomaji.textContent = entry.romaji;
+  el.grMeaning.textContent = entry.meaning;
+
+  const hasFormation = !!(entry.formation && entry.formation.trim());
+  el.grFormationWrap.classList.toggle("hidden", !hasFormation);
+  if (hasFormation) el.grFormation.textContent = entry.formation;
+
+  el.grNote.classList.toggle("hidden", !entry.note);
+  if (entry.note) el.grNote.textContent = `⚠ ${entry.note}`;
+
+  el.grExampleCount.textContent = entry.examples.length;
+  el.grToggleReading.textContent = grShowReading ? "Sembunyikan arti" : "Tampilkan arti";
+
+  el.grExamples.textContent = "";
+  const frag = document.createDocumentFragment();
+  entry.examples.forEach(ex => {
+    const box = document.createElement("div");
+    box.className = "gr-example";
+
+    const jp = document.createElement("div");
+    jp.className = "gr-example-jp";
+    jp.appendChild(grBuildSentence(ex, "highlight"));
+    box.appendChild(jp);
+
+    if (grShowReading) {
+      const sub = document.createElement("div");
+      sub.className = "gr-example-sub";
+      sub.textContent = [ex.kana, ex.romaji].filter(Boolean).join(" · ");
+      box.appendChild(sub);
+
+      const en = document.createElement("div");
+      en.className = "gr-example-en";
+      en.textContent = ex.english;
+      box.appendChild(en);
+    }
+    frag.appendChild(box);
+  });
+
+  if (entry.examples.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "gr-example-sub";
+    empty.textContent = "Belum ada contoh kalimat untuk pola ini.";
+    frag.appendChild(empty);
+  }
+
+  el.grExamples.appendChild(frag);
+
+  el.grPrevBtn.disabled = grBrowseIndex === 0;
+  el.grNextBtn.disabled = grBrowseIndex >= list.length - 1;
+}
+
+function grStep(delta) {
+  grBrowseIndex += delta;
+  grRenderBrowse();
+  el.grExamples.scrollIntoView({ block: "nearest" });
+}
+
+// --- Mode Kuis ---
+
+// Pola yang mirip (mis. なくてはいけない vs なくてはならない) tidak dipakai sebagai
+// pengecoh soal rumpang: keduanya bisa sama-sama benar di kalimat itu.
+function grTooSimilar(a, b) {
+  return a.includes(b) || b.includes(a);
+}
+
+function grMakeChoices(correct, pool, textOf, avoidSimilar) {
+  const seen = new Set([textOf(correct)]);
+  const picks = [correct];
+  const candidates = pool.filter(e => e.id !== correct.id);
+  shuffle(candidates);
+
+  for (const c of candidates) {
+    if (picks.length >= 4) break;
+    const text = textOf(c);
+    if (seen.has(text)) continue;
+    if (avoidSimilar && grTooSimilar(textOf(correct), text)) continue;
+    seen.add(text);
+    picks.push(c);
+  }
+  // kalau pengecoh kurang karena filter kemiripan, longgarkan syaratnya
+  if (picks.length < 4 && avoidSimilar) {
+    for (const c of candidates) {
+      if (picks.length >= 4) break;
+      const text = textOf(c);
+      if (seen.has(text)) continue;
+      seen.add(text);
+      picks.push(c);
+    }
+  }
+  shuffle(picks);
+  return picks;
+}
+
+function grBuildQuiz() {
+  const list = grActiveList();
+  const pool = grFullList();
+  if (list.length === 0) return;
+
+  const questions = [];
+  list.forEach(entry => {
+    const cloze = entry.examples.filter(ex => ex.parts);
+    const useCloze = cloze.length > 0 && Math.random() < GR_CLOZE_BIAS;
+
+    if (useCloze) {
+      const example = cloze[Math.floor(Math.random() * cloze.length)];
+      questions.push({
+        type: "cloze",
+        entry,
+        example,
+        choices: grMakeChoices(entry, pool, e => e.grammar, true),
+      });
+    } else {
+      questions.push({
+        type: "meaning",
+        entry,
+        example: entry.examples.find(ex => ex.parts) || entry.examples[0] || null,
+        choices: grMakeChoices(entry, pool, e => e.meaning, false),
+      });
+    }
+  });
+
+  shuffle(questions);
+  grQueue = questions;
+  grQIndex = 0;
+  grCorrect = 0;
+  grWrong = 0;
+  el.grCorrect.textContent = "0";
+  el.grWrong.textContent = "0";
+  grShowQuestion();
+}
+
+function grShowQuestion() {
+  if (grQIndex >= grQueue.length) {
+    grFinishQuiz();
+    return;
+  }
+
+  grAnswered = false;
+  grCurrent = grQueue[grQIndex];
+
+  el.grDone.classList.add("hidden");
+  el.grReveal.classList.add("hidden");
+  el.grQuestion.classList.remove("hidden");
+  el.grChoices.classList.remove("hidden");
+
+  el.grQuizTypeLabel.textContent = grCurrent.type === "cloze"
+    ? "Lengkapi kalimat"
+    : "Arti pola";
+  el.grQuizPosition.textContent = `${grQIndex + 1} of ${grQueue.length}`;
+
+  el.grQuestion.textContent = "";
+  el.grQuestion.className = "gr-question";
+  if (grCurrent.type === "cloze") {
+    el.grQuestion.appendChild(grBuildSentence(grCurrent.example, "blank"));
+  } else {
+    el.grQuestion.classList.add("gr-q-meaning");
+    el.grQuestion.textContent = grCurrent.entry.grammar;
+  }
+
+  const textOf = grCurrent.type === "cloze" ? (e => e.grammar) : (e => e.meaning);
+  el.grChoices.textContent = "";
+  grCurrent.choices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.className = "kq-choice";
+    btn.textContent = textOf(choice);
+    btn.addEventListener("click", () => grSelectAnswer(choice, btn));
+    el.grChoices.appendChild(btn);
+  });
+}
+
+function grSelectAnswer(choice, btnEl) {
+  if (grAnswered) return;
+  grAnswered = true;
+
+  const correct = choice.id === grCurrent.entry.id;
+  if (correct) {
+    grCorrect++;
+    el.grCorrect.textContent = grCorrect;
+    btnEl.classList.add("correct");
+  } else {
+    grWrong++;
+    el.grWrong.textContent = grWrong;
+    btnEl.classList.add("wrong");
+  }
+
+  const textOf = grCurrent.type === "cloze" ? (e => e.grammar) : (e => e.meaning);
+  [...el.grChoices.querySelectorAll(".kq-choice")].forEach((b, i) => {
+    b.disabled = true;
+    if (b !== btnEl && grCurrent.choices[i].id === grCurrent.entry.id) {
+      b.classList.add("correct");
+    }
+    void textOf;
+  });
+
+  grShowReveal();
+}
+
+function grShowReveal() {
+  const entry = grCurrent.entry;
+  const example = grCurrent.example;
+
+  el.grReveal.textContent = "";
+
+  const top = document.createElement("div");
+  top.className = "gr-reveal-top";
+  const expr = document.createElement("div");
+  expr.className = "gr-reveal-expr";
+  expr.textContent = entry.grammar;
+  const rom = document.createElement("div");
+  rom.className = "gr-reveal-romaji";
+  rom.textContent = `${entry.romaji} — ${entry.meaning}`;
+  top.appendChild(expr);
+  top.appendChild(rom);
+  el.grReveal.appendChild(top);
+
+  const body = document.createElement("div");
+  body.className = "gr-reveal-body";
+
+  if (example) {
+    const jp = document.createElement("div");
+    jp.className = "gr-reveal-jp";
+    jp.appendChild(grBuildSentence(example, "highlight"));
+    body.appendChild(jp);
+
+    const sub = document.createElement("div");
+    sub.className = "gr-reveal-sub";
+    sub.textContent = [example.kana, example.romaji].filter(Boolean).join(" · ");
+    body.appendChild(sub);
+
+    const en = document.createElement("div");
+    en.className = "gr-reveal-en";
+    en.textContent = example.english;
+    body.appendChild(en);
+  } else if (entry.formation) {
+    const f = document.createElement("div");
+    f.className = "gr-reveal-sub";
+    f.textContent = entry.formation;
+    body.appendChild(f);
+  }
+
+  const hint = document.createElement("div");
+  hint.className = "gr-reveal-hint";
+  hint.textContent = "Klik untuk lanjut →";
+  body.appendChild(hint);
+
+  el.grReveal.appendChild(body);
+  el.grReveal.classList.remove("hidden");
+}
+
+function grAdvance() {
+  if (!grAnswered) return;
+  grQIndex++;
+  grShowQuestion();
+}
+
+function grFinishQuiz() {
+  const total = grCorrect + grWrong;
+  el.grQuestion.classList.add("hidden");
+  el.grChoices.classList.add("hidden");
+  el.grReveal.classList.add("hidden");
+  el.grDone.classList.remove("hidden");
+  el.grDoneSummary.textContent = total
+    ? `Benar ${grCorrect} dari ${total} (salah ${grWrong}).`
+    : "Tidak ada soal untuk kelompok ini.";
+}
+
 function openSidebar() {
   el.sidebar.classList.add("open");
   el.sidebarOverlay.classList.remove("hidden");
@@ -1786,6 +2264,23 @@ function init() {
 
   el.vocabLevelSelect.addEventListener("change", () => setVocabLevelIndex(el.vocabLevelSelect.value));
   el.kqLevelSelect.addEventListener("change", () => kqSetLevelIndex(el.kqLevelSelect.value));
+
+  // Tata Bahasa
+  el.grLevelToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.addEventListener("click", () => grSetLevel(btn.dataset.grlevel));
+  });
+  el.grModeToggle.querySelectorAll(".fmt-btn").forEach(btn => {
+    btn.addEventListener("click", () => grSetMode(btn.dataset.grmode));
+  });
+  el.grLevelSelect.addEventListener("change", () => grSetLevelIndex(el.grLevelSelect.value));
+  el.grPrevBtn.addEventListener("click", () => grStep(-1));
+  el.grNextBtn.addEventListener("click", () => grStep(1));
+  el.grToggleReading.addEventListener("click", () => {
+    grShowReading = !grShowReading;
+    grRenderBrowse();
+  });
+  el.grReveal.addEventListener("click", grAdvance);
+  el.grRestartBtn.addEventListener("click", grBuildQuiz);
 
   document.querySelectorAll("[data-start]").forEach(btn => {
     btn.addEventListener("click", () => spStartSession(btn.dataset.start));

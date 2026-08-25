@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn Japanese</title>
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
   <div class="app-shell">
@@ -22,6 +22,9 @@
         </button>
         <button class="nav-item" data-view="kanji">
           <span class="nav-icon">🀄</span><span>Kanji Quizzer</span>
+        </button>
+        <button class="nav-item" data-view="grammar">
+          <span class="nav-icon">📖</span><span>Tata Bahasa</span>
         </button>
         <button class="nav-item" data-view="quiz">
           <span class="nav-icon">📝</span><span>Latihan Soal</span>
@@ -183,6 +186,81 @@
             <h2>🎉 Kuis selesai!</h2>
             <p id="kqDoneSummary"></p>
             <button id="kqRestartBtn" class="primary">Main lagi</button>
+          </div>
+        </section>
+
+        <section id="view-grammar" class="view hidden">
+          <div class="kq-header">
+            <div class="fmt-toggle" id="grLevelToggle">
+              <button data-grlevel="N5" class="fmt-btn">N5</button>
+              <button data-grlevel="N4" class="fmt-btn">N4</button>
+            </div>
+            <select id="grLevelSelect" class="level-select">
+              <option value="">Semua pola</option>
+            </select>
+            <div class="kq-score hidden" id="grScore">
+              <span class="kq-score-correct">✓ <b id="grCorrect">0</b></span>
+              <span class="kq-score-wrong">✘ <b id="grWrong">0</b></span>
+            </div>
+          </div>
+
+          <div class="kq-header">
+            <div class="fmt-toggle" id="grModeToggle">
+              <button data-grmode="belajar" class="fmt-btn">Belajar</button>
+              <button data-grmode="kuis" class="fmt-btn">Kuis</button>
+            </div>
+          </div>
+
+          <div id="grLoading" class="gr-loading">Memuat data tata bahasa…</div>
+
+          <div id="grBrowse" class="hidden">
+            <div class="kq-meta">
+              <span id="grBrowseLabel"></span>
+              <span id="grBrowsePosition"></span>
+            </div>
+
+            <div class="gr-card">
+              <div class="gr-card-head">
+                <div class="gr-expr" id="grExpr"></div>
+                <div class="gr-romaji" id="grRomaji"></div>
+              </div>
+              <div class="gr-meaning" id="grMeaning"></div>
+
+              <div class="gr-block hidden" id="grFormationWrap">
+                <div class="gr-label">Cara pakai</div>
+                <div class="gr-formation" id="grFormation"></div>
+              </div>
+
+              <div class="gr-note hidden" id="grNote"></div>
+
+              <div class="gr-examples-head">
+                <div class="gr-label">Contoh kalimat · <span id="grExampleCount">0</span></div>
+                <button class="ghost gr-reading-btn" id="grToggleReading">Sembunyikan arti</button>
+              </div>
+              <div class="gr-examples" id="grExamples"></div>
+            </div>
+
+            <div class="gr-nav">
+              <button class="ghost" id="grPrevBtn">← Sebelumnya</button>
+              <button class="primary" id="grNextBtn">Berikutnya →</button>
+            </div>
+          </div>
+
+          <div id="grQuiz" class="hidden">
+            <div class="kq-meta">
+              <span id="grQuizTypeLabel"></span>
+              <span id="grQuizPosition"></span>
+            </div>
+
+            <div class="gr-question" id="grQuestion"></div>
+            <div class="kq-choices" id="grChoices"></div>
+            <div class="gr-reveal hidden" id="grReveal"></div>
+
+            <div id="grDone" class="hidden">
+              <h2>🎉 Kuis selesai!</h2>
+              <p id="grDoneSummary"></p>
+              <button id="grRestartBtn" class="primary">Main lagi</button>
+            </div>
           </div>
         </section>
 
@@ -366,6 +444,6 @@
     </div>
   </div>
 
-<script src="app.js?v=18"></script>
+<script src="app.js?v=19"></script>
 </body>
 </html>
