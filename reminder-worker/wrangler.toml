@@ -1,0 +1,23 @@
+name = "pengingat-belajar"
+main = "src/index.js"
+compatibility_date = "2026-05-01"
+
+# Cron tiap 15 menit. Worker mengecek tiap pelanggan: kalau sudah lewat jam pengingatnya
+# dan hari itu belum ada sesi, notifikasi dikirim. Jendela pengecekan di kode 20 menit,
+# sengaja lebih lebar dari jeda ini supaya tidak ada jadwal yang terlewat.
+[triggers]
+crons = ["*/15 * * * *"]
+
+# Ganti id di bawah dengan id namespace milikmu sendiri (lihat README, langkah 2).
+[[kv_namespaces]]
+binding = "REMINDERS"
+id = "ISI_DENGAN_ID_KV_NAMESPACE_MU"
+
+[vars]
+# Batasi origin yang boleh memanggil worker ini. Kalau dibiarkan "*", siapa pun bisa
+# mendaftarkan langganan ke worker-mu.
+ALLOWED_ORIGIN = "https://usman-ai-svg.github.io"
+APP_URL = "https://usman-ai-svg.github.io/learn-japanese-web/flashcard-app/index.html"
+
+# VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, dan VAPID_SUBJECT TIDAK ditulis di sini.
+# Ketiganya diset sebagai secret (lihat README langkah 3) supaya tidak ikut masuk git.

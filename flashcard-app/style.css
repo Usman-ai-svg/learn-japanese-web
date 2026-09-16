@@ -1026,3 +1026,180 @@ main {
   .gr-question.gr-q-meaning { font-size: 1.05rem; }
   .gr-nav { flex-direction: column; }
 }
+
+/* #spOverview adalah flex item di dalam .view yang memakai align-items:center, jadi
+   lebarnya mengikuti isi. Tabel Riwayat yang kini 7 kolom membuat lebar minimumnya
+   melewati layar HP, sehingga seluruh halaman ikut melar dan overflow-x:auto pada
+   pembungkus tabel tidak pernah aktif. Dikunci ke lebar induk supaya yang menggulir
+   cukup tabelnya saja. */
+#spOverview {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ===================== Streak & pengingat harian ===================== */
+
+.sp-streak-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+}
+.sp-streak-main { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.sp-streak-flame { font-size: 2rem; line-height: 1; filter: grayscale(1); opacity: 0.4; }
+.sp-streak-flame.alive { filter: none; opacity: 1; }
+.sp-streak-text { min-width: 0; }
+.sp-streak-count { font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+.sp-streak-count span { color: var(--red); font-size: 1.6rem; }
+.sp-streak-sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+.sp-streak-stats { display: flex; gap: 20px; }
+.sp-streak-stat { text-align: center; }
+.sp-streak-stat span {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.sp-streak-stat label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sp-nudge {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  border: 1px solid #efd9b4;
+  background: #fdf3e3;
+  color: #7a5312;
+}
+.sp-nudge.safe {
+  border-color: #b9dfbb;
+  background: #eef8ee;
+  color: #24601f;
+}
+
+.sp-heatmap-wrap { width: 100%; margin-bottom: 22px; }
+.sp-heatmap {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  gap: 3px;
+}
+.sp-hm-cell {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: var(--line);
+}
+.sp-hm-cell.lvl0 { background: var(--line); }
+.sp-hm-cell.lvl1 { background: #bcdcb3; }
+.sp-hm-cell.lvl2 { background: #6aa84f; }
+.sp-hm-cell.lvl3 { background: #355e3b; }
+.sp-hm-cell.today { box-shadow: 0 0 0 2px var(--red); }
+
+.sp-heatmap-legend {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.sp-hm-key { display: inline-flex; align-items: center; gap: 3px; }
+.sp-hm-key .sp-hm-cell { width: 10px; height: 10px; aspect-ratio: auto; }
+
+.sp-reminder {
+  width: 100%;
+  margin-top: 28px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+}
+.sp-reminder-head { font-size: 1rem; font-weight: 700; }
+.sp-reminder-desc {
+  margin: 8px 0 14px;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.sp-reminder-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.sp-reminder-row input[type="time"] {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+.sp-reminder-row input[type="time"]:focus { outline: none; border-color: var(--red); }
+.sp-reminder-note {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .sp-streak-bar { padding: 14px 16px; }
+  .sp-streak-stats { width: 100%; justify-content: space-around; }
+  .sp-heatmap { grid-template-columns: repeat(15, 1fr); }
+  .sp-reminder-row { flex-direction: column; }
+  .sp-reminder-row input[type="time"] { width: 100%; }
+}
+
+.sp-reminder-adv {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.sp-reminder-adv summary {
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.sp-reminder-adv summary:hover { color: var(--ink); }
+.sp-reminder-adv .sp-reminder-desc { margin: 10px 0; }
+.sp-reminder-adv code {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.85em;
+}
+.sp-reminder-row input[type="url"] {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+.sp-reminder-row input[type="url"]:focus { outline: none; border-color: var(--red); }
+
+.sp-reminder-fallback {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.sp-reminder-fallback .ghost { margin-top: 8px; }

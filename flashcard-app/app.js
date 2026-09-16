@@ -195,6 +195,22 @@ const el = {
   spDayNumber: document.getElementById("spDayNumber"),
   spDaySub: document.getElementById("spDaySub"),
   spHistoryBody: document.getElementById("spHistoryBody"),
+  spStreakCount: document.getElementById("spStreakCount"),
+  spStreakSub: document.getElementById("spStreakSub"),
+  spStreakBest: document.getElementById("spStreakBest"),
+  spStreakDone: document.getElementById("spStreakDone"),
+  spStreakFlame: document.getElementById("spStreakFlame"),
+  spNudge: document.getElementById("spNudge"),
+  spHeatmap: document.getElementById("spHeatmap"),
+  spReminderTime: document.getElementById("spReminderTime"),
+  spReminderBtn: document.getElementById("spReminderBtn"),
+  spReminderNote: document.getElementById("spReminderNote"),
+  spPushBtn: document.getElementById("spPushBtn"),
+  spPushNote: document.getElementById("spPushNote"),
+  spPushSetup: document.getElementById("spPushSetup"),
+  spWorkerUrl: document.getElementById("spWorkerUrl"),
+  spWorkerSaveBtn: document.getElementById("spWorkerSaveBtn"),
+  spWorkerNote: document.getElementById("spWorkerNote"),
   spSessionList: document.getElementById("spSessionList"),
   spExamGate: document.getElementById("spExamGate"),
   spExamRange: document.getElementById("spExamRange"),
@@ -883,6 +899,372 @@ function spPrefixWeaknessKeys(map) {
   return out;
 }
 
+// --- Streak harian ---
+//
+// Dilacak per TANGGAL KALENDER, bukan lewat sp.day. sp.day adalah penghitung materi:
+// dia hanya maju kalau keenam sesi hari itu selesai, jadi mengerjakan 1 sesi tiap hari
+// selama seminggu tidak menggerakkannya sama sekali. Streak justru harus menghargai
+// kemunculan harian itu, jadi dia butuh sumber tanggalnya sendiri.
+
+const SP_STREAK_WINDOW = 30;   // jumlah kotak di heatmap
+const SP_ACTIVITY_KEEP = 400;  // batas hari yang disimpan, biar localStorage tidak membengkak
+
+// Sengaja TIDAK memakai toISOString(): itu memberi tanggal UTC, yang di Indonesia
+// (UTC+7/+8) masih tanggal kemarin sampai pukul 07.00 pagi -- sesi pagi akan tercatat
+// di hari yang salah dan streak bisa putus padahal tidak.
+function spDateKey(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+function spToday() {
+  return spDateKey(new Date());
+}
+
+function spShiftDateKey(key, deltaDays) {
+  const [y, m, d] = key.split("-").map(Number);
+  const date = new Date(y, m - 1, d);
+  date.setDate(date.getDate() + deltaDays);
+  return spDateKey(date);
+}
+
+function spStreakInfo() {
+  const activity = sp.activity || {};
+  const today = spToday();
+  const todayCount = activity[today] || 0;
+
+  // Kalau hari ini belum ada sesi, hitung mundur mulai dari kemarin: streak belum
+  // dianggap putus selama harinya belum habis -- itu yang bikin orang masih sempat
+  // menyelamatkannya malam hari.
+  let cursor = todayCount > 0 ? today : spShiftDateKey(today, -1);
+  let current = 0;
+  while ((activity[cursor] || 0) > 0) {
+    current += 1;
+    cursor = spShiftDateKey(cursor, -1);
+  }
+
+  return {
+    current,
+    longest: Math.max(sp.streakLongest || 0, current),
+    todayCount,
+    doneToday: todayCount > 0,
+    fullToday: todayCount >= SP_SESSION_KEYS.length,
+  };
+}
+
+// Dipanggil tiap satu sesi apa pun selesai (termasuk Ujian), bukan saat hari materi
+// bergeser -- justru itu inti fiturnya: hadir sebentar tetap dihitung.
+function spRecordActivity() {
+  if (!sp.activity) sp.activity = {};
+  const today = spToday();
+  sp.activity[today] = (sp.activity[today] || 0) + 1;
+
+  const cutoff = spShiftDateKey(today, -SP_ACTIVITY_KEEP);
+  Object.keys(sp.activity).forEach(key => {
+    if (key < cutoff) delete sp.activity[key];
+  });
+
+  const info = spStreakInfo();
+  if (info.current > (sp.streakLongest || 0)) sp.streakLongest = info.current;
+  spSave();
+  spReportActivity(); // beri tahu worker supaya pengingat hari ini tidak jadi dikirim
+}
+
+function spRenderStreak() {
+  const info = spStreakInfo();
+  const activity = sp.activity || {};
+
+  el.spStreakCount.textContent = info.current;
+  el.spStreakBest.textContent = info.longest;
+  el.spStreakDone.textContent = sp.history.length;
+  el.spStreakFlame.classList.toggle("alive", info.doneToday);
+
+  if (info.doneToday) {
+    el.spStreakSub.textContent = info.fullToday
+      ? `Hari ini lengkap — ${info.todayCount} sesi.`
+      : `Hari ini ${info.todayCount} sesi. Streak aman.`;
+  } else if (info.current > 0) {
+    el.spStreakSub.textContent = "Belum ada sesi hari ini.";
+  } else {
+    el.spStreakSub.textContent = "Kerjakan 1 sesi untuk memulai.";
+  }
+
+  // Ajakan hanya muncul kalau memang perlu, dan nadanya beda antara "menyelamatkan
+  // sesuatu" dan "memulai sesuatu" -- yang pertama jauh lebih menggerakkan.
+  if (info.doneToday) {
+    el.spNudge.classList.add("hidden");
+  } else {
+    el.spNudge.classList.remove("hidden");
+    el.spNudge.classList.toggle("safe", info.current === 0);
+    el.spNudge.textContent = info.current > 0
+      ? `Streak ${info.current} hari sedang berjalan. Kerjakan 1 sesi hari ini supaya tidak putus.`
+      : "Mulai streak-mu hari ini — cukup 1 sesi, tidak harus semuanya.";
+  }
+
+  if (sp.reminderTime) el.spReminderTime.value = sp.reminderTime;
+  spRenderPushState();
+
+  el.spHeatmap.textContent = "";
+  const frag = document.createDocumentFragment();
+  const today = spToday();
+  for (let i = SP_STREAK_WINDOW - 1; i >= 0; i--) {
+    const key = spShiftDateKey(today, -i);
+    const count = activity[key] || 0;
+    const cell = document.createElement("i");
+    const level = count === 0 ? 0
+      : count >= SP_SESSION_KEYS.length ? 3
+      : count >= 3 ? 2 : 1;
+    cell.className = `sp-hm-cell lvl${level}${i === 0 ? " today" : ""}`;
+    cell.title = `${key} — ${count} sesi`;
+    frag.appendChild(cell);
+  }
+  el.spHeatmap.appendChild(frag);
+}
+
+// --- Pengingat harian (berkas kalender) ---
+//
+// Situs ini statis di GitHub Pages, jadi notifikasi push betulan tidak mungkin: Web Push
+// selalu butuh server pengirim, dan di iOS hanya jalan untuk PWA yang sudah dipasang.
+// Berkas .ics justru lebih andal -- alarmnya ditangani aplikasi Kalender bawaan HP dan
+// tetap berbunyi walau aplikasi ini tidak pernah dibuka.
+function spFoldIcsLine(line) {
+  // RFC 5545: baris maksimal 75 oktet, sambungannya diawali satu spasi.
+  if (line.length <= 74) return line;
+  const chunks = [line.slice(0, 74)];
+  let rest = line.slice(74);
+  while (rest.length > 73) {
+    chunks.push(" " + rest.slice(0, 73));
+    rest = rest.slice(73);
+  }
+  if (rest) chunks.push(" " + rest);
+  return chunks.join("\r\n");
+}
+
+function spBuildReminderIcs(timeValue) {
+  const [hh, mm] = timeValue.split(":").map(Number);
+  const now = new Date();
+  const start = new Date();
+  start.setHours(hh, mm, 0, 0);
+  if (start <= now) start.setDate(start.getDate() + 1); // jam hari ini sudah lewat
+
+  const pad = n => String(n).padStart(2, "0");
+  // Waktu "mengambang" (tanpa Z maupun TZID): alarm berbunyi pada jam dinding setempat,
+  // jadi tetap benar kalau nanti pindah zona waktu.
+  const local = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+  const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Learn Japanese//Pengingat Belajar//ID",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    `UID:belajar-jepang-${Date.now()}@learn-japanese`,
+    `DTSTAMP:${stamp}`,
+    `DTSTART:${local(start)}`,
+    `DURATION:PT15M`,
+    "RRULE:FREQ=DAILY",
+    "SUMMARY:Belajar Bahasa Jepang",
+    "DESCRIPTION:Minimal 1 sesi hari ini supaya streak tidak putus.",
+    "BEGIN:VALARM",
+    "TRIGGER:PT0M",
+    "ACTION:DISPLAY",
+    "DESCRIPTION:Belajar Bahasa Jepang — minimal 1 sesi hari ini.",
+    "END:VALARM",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ];
+  return lines.map(spFoldIcsLine).join("\r\n") + "\r\n";
+}
+
+function spDownloadReminder() {
+  const time = el.spReminderTime.value || "19:00";
+  const blob = new Blob([spBuildReminderIcs(time)], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "pengingat-belajar-jepang.ics";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+  sp.reminderTime = time;
+  spSave();
+  el.spReminderNote.textContent = `✓ Pengingat pukul ${time} terunduh. Buka berkasnya, lalu pilih “Tambahkan” di aplikasi Kalender.`;
+}
+
+// --- Notifikasi pintar (Web Push) ---
+//
+// Pembagian tugasnya: worker di Cloudflare yang memutuskan APAKAH pengingat dikirim,
+// karena hanya dia yang hidup saat aplikasi tertutup. Aplikasi ini cuma dua tugasnya --
+// mendaftarkan langganan, dan melapor "hari ini sudah ada sesi" tiap sesi selesai.
+// Yang dikirim keluar hanya tanggal; isi belajar dan skor tidak pernah meninggalkan HP.
+
+const SP_PUSH_KEYS = { worker: "reminder-worker-url", client: "reminder-client-id" };
+
+function spWorkerUrl() {
+  const raw = localStorage.getItem(SP_PUSH_KEYS.worker) || "";
+  return raw.replace(/\/+$/, "");
+}
+
+function spClientId() {
+  let id = localStorage.getItem(SP_PUSH_KEYS.client);
+  if (!id) {
+    id = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random())
+      .replace(/[^A-Za-z0-9_-]/g, "");
+    localStorage.setItem(SP_PUSH_KEYS.client, id);
+  }
+  return id;
+}
+
+function spPushSupported() {
+  return "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+}
+
+function b64urlToUint8(base64url) {
+  const pad = "=".repeat((4 - (base64url.length % 4)) % 4);
+  const raw = atob((base64url + pad).replace(/-/g, "+").replace(/_/g, "/"));
+  const out = new Uint8Array(raw.length);
+  for (let i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+  return out;
+}
+
+async function spEnablePush() {
+  const base = spWorkerUrl();
+  if (!base) {
+    el.spPushNote.textContent = "⚠ Isi dulu URL worker di “Pengaturan server pengingat”.";
+    el.spPushSetup.open = true;
+    return;
+  }
+  if (!spPushSupported()) {
+    el.spPushNote.textContent = "⚠ Peramban ini tidak mendukung notifikasi push.";
+    return;
+  }
+  // Di iOS, Web Push HANYA jalan kalau situsnya sudah ditambahkan ke Home Screen.
+  // Dideteksi di sini supaya pesannya jelas, bukan gagal diam-diam.
+  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const standalone = window.navigator.standalone === true
+    || window.matchMedia("(display-mode: standalone)").matches;
+  if (iOS && !standalone) {
+    el.spPushNote.textContent = "⚠ Di iPhone, tambahkan dulu aplikasi ini ke Home Screen (Bagikan → Tambahkan ke Layar Utama), lalu buka dari sana.";
+    return;
+  }
+
+  el.spPushBtn.disabled = true;
+  el.spPushNote.textContent = "Menyiapkan…";
+  try {
+    const izin = await Notification.requestPermission();
+    if (izin !== "granted") {
+      el.spPushNote.textContent = "⚠ Izin notifikasi ditolak. Aktifkan lewat pengaturan peramban.";
+      return;
+    }
+
+    const res = await fetch(`${base}/key`);
+    if (!res.ok) throw new Error(`worker /key -> ${res.status}`);
+    const { publicKey } = await res.json();
+    if (!publicKey) throw new Error("worker belum punya VAPID_PUBLIC_KEY");
+
+    const reg = await navigator.serviceWorker.register("sw.js");
+    await navigator.serviceWorker.ready;
+
+    const sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: b64urlToUint8(publicKey),
+    });
+
+    const [hh, mm] = (el.spReminderTime.value || "19:00").split(":").map(Number);
+    const info = spStreakInfo();
+    const daftar = await fetch(`${base}/subscribe`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        clientId: spClientId(),
+        subscription: sub.toJSON(),
+        reminderMinutes: hh * 60 + mm,
+        tzOffset: new Date().getTimezoneOffset(),
+        lastActive: info.doneToday ? spToday() : null,
+        streak: info.current,
+      }),
+    });
+    if (!daftar.ok) throw new Error(`worker /subscribe -> ${daftar.status}`);
+
+    sp.pushEnabled = true;
+    sp.reminderTime = el.spReminderTime.value;
+    spSave();
+    spRenderPushState();
+    el.spPushNote.textContent = `✓ Aktif. Pengingat pukul ${sp.reminderTime}, hanya kalau hari itu belum ada sesi.`;
+  } catch (err) {
+    console.error("Gagal mengaktifkan push:", err);
+    el.spPushNote.textContent = `⚠ Gagal: ${err.message}`;
+  } finally {
+    el.spPushBtn.disabled = false;
+  }
+}
+
+async function spDisablePush() {
+  const base = spWorkerUrl();
+  el.spPushBtn.disabled = true;
+  try {
+    if (spPushSupported()) {
+      const reg = await navigator.serviceWorker.getRegistration();
+      const sub = reg && (await reg.pushManager.getSubscription());
+      if (sub) await sub.unsubscribe();
+    }
+    if (base) {
+      await fetch(`${base}/unsubscribe`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ clientId: spClientId() }),
+      }).catch(() => {});
+    }
+  } finally {
+    sp.pushEnabled = false;
+    spSave();
+    spRenderPushState();
+    el.spPushNote.textContent = "Notifikasi pintar dimatikan.";
+    el.spPushBtn.disabled = false;
+  }
+}
+
+// Lapor "hari ini sudah ada sesi" -- sengaja tanpa await dan menelan error: kalau sedang
+// offline atau worker mati, itu tidak boleh sampai mengganggu sesi belajar yang berjalan.
+function spReportActivity() {
+  if (!sp.pushEnabled) return;
+  const base = spWorkerUrl();
+  if (!base) return;
+  fetch(`${base}/activity`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      clientId: spClientId(),
+      date: spToday(),
+      streak: spStreakInfo().current,
+    }),
+    keepalive: true,
+  }).catch(() => {});
+}
+
+function spRenderPushState() {
+  const aktif = !!sp.pushEnabled;
+  el.spPushBtn.textContent = aktif ? "Matikan notifikasi pintar" : "Aktifkan notifikasi pintar";
+  el.spWorkerUrl.value = spWorkerUrl();
+  el.spPushSetup.open = !spWorkerUrl() && !aktif;
+}
+
+function spSaveWorkerUrl() {
+  const nilai = el.spWorkerUrl.value.trim().replace(/\/+$/, "");
+  if (nilai && !/^https:\/\/[^\s/]+/.test(nilai)) {
+    el.spWorkerNote.textContent = "⚠ URL harus diawali https://";
+    return;
+  }
+  localStorage.setItem(SP_PUSH_KEYS.worker, nilai);
+  el.spWorkerNote.textContent = nilai ? "✓ URL worker tersimpan." : "URL worker dikosongkan.";
+}
+
 function spLoad() {
   try {
     const raw = localStorage.getItem(SP_STORAGE_KEY);
@@ -910,6 +1292,12 @@ function spLoad() {
     if (!sp.sessions[key]) sp.sessions[key] = { done: false, correct: 0, wrong: 0 };
   });
   // Migrasi: isi field fitur Ujian untuk data lama (sebelum fitur ini ada) yang belum punya.
+  // Migrasi: streak baru ada setelah 30-an hari pemakaian. Riwayat lama tidak menyimpan
+  // tanggal kalender sama sekali, jadi streak memang tidak bisa direkonstruksi -- dia
+  // mulai dari nol. Jumlah hari selesai (sp.history) tetap ditampilkan supaya kerja
+  // sebelumnya tidak hilang dari layar.
+  if (!sp.activity) sp.activity = {};
+  if (sp.streakLongest === undefined) sp.streakLongest = 0;
   if (sp.examNumber === undefined) sp.examNumber = 0;
   if (!sp.examHistory) sp.examHistory = [];
   if (!sp.semesterHistory) sp.semesterHistory = [];
@@ -1243,6 +1631,7 @@ function spRenderOverview() {
     });
   }
 
+  spRenderStreak();
   spRenderHistory();
   spRenderExamHistory();
 }
@@ -1455,7 +1844,7 @@ function spBrowseNext() {
 
 function spFinishBrowse() {
   sp.sessions.s1.done = true;
-  spSave();
+  spRecordActivity();
   spCheckDayAdvance();
   spShowOverview();
 }
@@ -1640,7 +2029,7 @@ function spFinishQuiz() {
     if (sp.pendingExam) sp.pendingExam.semesterDone = true;
   }
 
-  spSave();
+  spRecordActivity();
   spCheckDayAdvance();
 
   el.spQuestion.classList.add("hidden");
@@ -2278,6 +2667,11 @@ function init() {
   el.grToggleReading.addEventListener("click", () => {
     grShowReading = !grShowReading;
     grRenderBrowse();
+  });
+  el.spReminderBtn.addEventListener("click", spDownloadReminder);
+  el.spWorkerSaveBtn.addEventListener("click", spSaveWorkerUrl);
+  el.spPushBtn.addEventListener("click", () => {
+    if (sp.pushEnabled) spDisablePush(); else spEnablePush();
   });
   el.grReveal.addEventListener("click", grAdvance);
   el.grRestartBtn.addEventListener("click", grBuildQuiz);

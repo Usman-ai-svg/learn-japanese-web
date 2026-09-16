@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn Japanese</title>
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c8102e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Learn JP">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
   <div class="app-shell">
@@ -303,6 +309,37 @@
 
         <section id="view-plan" class="view hidden">
           <div id="spOverview">
+            <div class="sp-streak-bar">
+              <div class="sp-streak-main">
+                <div class="sp-streak-flame" id="spStreakFlame">🔥</div>
+                <div class="sp-streak-text">
+                  <div class="sp-streak-count"><span id="spStreakCount">0</span> hari beruntun</div>
+                  <div class="sp-streak-sub" id="spStreakSub"></div>
+                </div>
+              </div>
+              <div class="sp-streak-stats">
+                <div class="sp-streak-stat">
+                  <span id="spStreakBest">0</span><label>Terpanjang</label>
+                </div>
+                <div class="sp-streak-stat">
+                  <span id="spStreakDone">0</span><label>Hari selesai</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="sp-nudge hidden" id="spNudge"></div>
+
+            <div class="sp-heatmap-wrap">
+              <div class="sp-heatmap" id="spHeatmap"></div>
+              <div class="sp-heatmap-legend">
+                <span>30 hari terakhir</span>
+                <span class="sp-hm-key">
+                  <i class="sp-hm-cell lvl0"></i><i class="sp-hm-cell lvl1"></i><i class="sp-hm-cell lvl2"></i><i class="sp-hm-cell lvl3"></i>
+                  kosong → penuh
+                </span>
+              </div>
+            </div>
+
             <div class="sp-daybar">
               <div class="sp-day-title">Hari ke-<span id="spDayNumber">1</span></div>
               <div class="sp-day-sub" id="spDaySub"></div>
@@ -371,6 +408,42 @@
                   </thead>
                   <tbody id="spHistoryBody"></tbody>
                 </table>
+              </div>
+            </div>
+
+            <div class="sp-reminder">
+              <div class="sp-reminder-head">🔔 Pengingat harian</div>
+              <p class="sp-reminder-desc">
+                Pilih jam pengingatmu. Notifikasi pintar hanya berbunyi kalau hari itu
+                kamu memang belum mengerjakan satu sesi pun.
+              </p>
+
+              <div class="sp-reminder-row">
+                <input type="time" id="spReminderTime" value="19:00" aria-label="Jam pengingat">
+                <button class="primary" id="spPushBtn">Aktifkan notifikasi pintar</button>
+              </div>
+              <div class="sp-reminder-note" id="spPushNote"></div>
+
+              <details class="sp-reminder-adv" id="spPushSetup">
+                <summary>Pengaturan server pengingat</summary>
+                <p class="sp-reminder-desc">
+                  Tempel URL Cloudflare Worker-mu di sini (lihat <code>reminder-worker/README.md</code>).
+                  Tanpa ini, notifikasi pintar tidak bisa aktif.
+                </p>
+                <div class="sp-reminder-row">
+                  <input type="url" id="spWorkerUrl" placeholder="https://pengingat-belajar.xxx.workers.dev" aria-label="URL worker">
+                  <button class="ghost" id="spWorkerSaveBtn">Simpan</button>
+                </div>
+                <div class="sp-reminder-note" id="spWorkerNote"></div>
+              </details>
+
+              <div class="sp-reminder-fallback">
+                <div class="sp-reminder-note">
+                  Alternatif tanpa server: pengingat kalender biasa — berbunyi tiap hari
+                  tanpa syarat, termasuk di hari yang sudah kamu kerjakan.
+                </div>
+                <button class="ghost" id="spReminderBtn">Unduh pengingat kalender</button>
+                <div class="sp-reminder-note" id="spReminderNote"></div>
               </div>
             </div>
 
@@ -444,6 +517,6 @@
     </div>
   </div>
 
-<script src="app.js?v=19"></script>
+<script src="app.js?v=21"></script>
 </body>
 </html>
