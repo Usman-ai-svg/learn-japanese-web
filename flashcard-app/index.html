@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="Learn JP">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png" type="image/png">
-<link rel="stylesheet" href="style.css?v=16">
+<link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
   <div class="app-shell">
@@ -447,6 +447,24 @@
               </div>
             </div>
 
+            <div class="sp-reminder" id="spBackupCard">
+              <div class="sp-reminder-head">💾 Cadangkan &amp; pindahkan progres</div>
+              <p class="sp-reminder-desc">
+                Simpan seluruh progresmu jadi satu berkas. Dipakai untuk memindahkan data
+                antar-peramban — di iPhone, aplikasi Home Screen punya penyimpanan
+                <b>terpisah</b> dari Safari — sekaligus sebagai cadangan.
+              </p>
+
+              <div class="sp-backup-state" id="spBackupState"></div>
+
+              <div class="sp-reminder-row">
+                <button class="primary" id="spExportBtn">Unduh cadangan</button>
+                <button class="ghost" id="spImportBtn">Pulihkan dari berkas</button>
+                <input type="file" id="spImportFile" accept="application/json,.json" hidden>
+              </div>
+              <div class="sp-reminder-note" id="spBackupNote"></div>
+            </div>
+
             <div id="spExamHistoryWrap">
               <h3 class="sp-history-title">Riwayat Ujian</h3>
               <div class="vocab-table-wrap">
@@ -517,6 +535,6 @@
     </div>
   </div>
 
-<script src="app.js?v=21"></script>
+<script src="app.js?v=22"></script>
 </body>
 </html>

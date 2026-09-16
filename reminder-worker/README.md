@@ -40,6 +40,18 @@ Seluruh proses sekitar 10–15 menit, sekali saja.
 
 ---
 
+## Langkah 0 — Masuk ke folder ini dulu
+
+**Semua** perintah di bawah dijalankan dari dalam folder `reminder-worker`, bukan dari
+root proyek — di sinilah `wrangler.toml` dan `generate-keys.mjs` berada.
+
+```bash
+cd reminder-worker
+```
+
+Kalau muncul `Cannot find module ...generate-keys.mjs` atau wrangler mengeluh tidak
+menemukan konfigurasi, hampir pasti penyebabnya langkah ini terlewat.
+
 ## Langkah 1 — Login ke Cloudflare
 
 ```bash

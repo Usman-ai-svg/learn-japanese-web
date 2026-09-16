@@ -205,6 +205,11 @@ const el = {
   spReminderTime: document.getElementById("spReminderTime"),
   spReminderBtn: document.getElementById("spReminderBtn"),
   spReminderNote: document.getElementById("spReminderNote"),
+  spBackupState: document.getElementById("spBackupState"),
+  spBackupNote: document.getElementById("spBackupNote"),
+  spExportBtn: document.getElementById("spExportBtn"),
+  spImportBtn: document.getElementById("spImportBtn"),
+  spImportFile: document.getElementById("spImportFile"),
   spPushBtn: document.getElementById("spPushBtn"),
   spPushNote: document.getElementById("spPushNote"),
   spPushSetup: document.getElementById("spPushSetup"),
@@ -1005,6 +1010,7 @@ function spRenderStreak() {
 
   if (sp.reminderTime) el.spReminderTime.value = sp.reminderTime;
   spRenderPushState();
+  spRenderBackupState();
 
   el.spHeatmap.textContent = "";
   const frag = document.createDocumentFragment();
@@ -1095,6 +1101,139 @@ function spDownloadReminder() {
   sp.reminderTime = time;
   spSave();
   el.spReminderNote.textContent = `✓ Pengingat pukul ${time} terunduh. Buka berkasnya, lalu pilih “Tambahkan” di aplikasi Kalender.`;
+}
+
+// --- Cadangkan & pulihkan progres ---
+//
+// Di iOS, aplikasi yang dibuka dari Home Screen memakai wadah penyimpanan yang TERPISAH
+// dari Safari -- localStorage keduanya tidak pernah berbagi isi, dan tidak ada API yang
+// bisa menyambungkannya. Satu-satunya jalan memindahkan progres adalah mengekspornya
+// jadi berkas lalu memulihkannya di sisi satunya.
+//
+// Berguna juga sebagai cadangan sungguhan: Safari menghapus localStorage situs yang tidak
+// dibuka selama 7 hari, dan tanpa cadangan progres berbulan-bulan bisa lenyap begitu saja.
+
+const SP_BACKUP_VERSION = 1;
+
+// Sengaja fungsi, bukan const: daftar ini memakai SP_PUSH_KEYS yang dideklarasikan di
+// bawah, dan const yang saling merujuk saat skrip dimuat akan melempar ReferenceError
+// yang mematikan SELURUH app.js, bukan cuma fitur ini.
+function spBackupKeys() {
+  return [
+    SP_STORAGE_KEY,
+    "n5-flashcards-progress-v1",
+    "n4-flashcards-progress-v1",
+    SP_PUSH_KEYS.worker,
+    // reminder-client-id sengaja TIDAK ikut: kalau dua peramban memakai id yang sama,
+    // langganan push yang satu akan menimpa yang lain di worker.
+  ];
+}
+
+function spBuildBackup() {
+  const data = {};
+  spBackupKeys().forEach(key => {
+    const value = localStorage.getItem(key);
+    if (value !== null) data[key] = value;
+  });
+
+  const sudah = (() => {
+    try { return JSON.parse(data[SP_STORAGE_KEY] || "{}"); } catch { return {}; }
+  })();
+
+  return {
+    format: "learn-japanese-backup",
+    version: SP_BACKUP_VERSION,
+    dibuat: new Date().toISOString(),
+    ringkasan: {
+      hari: sudah.day || 0,
+      hariSelesai: Array.isArray(sudah.history) ? sudah.history.length : 0,
+      ujian: Array.isArray(sudah.examHistory) ? sudah.examHistory.length : 0,
+      streakTerpanjang: sudah.streakLongest || 0,
+    },
+    data,
+  };
+}
+
+// Baris ini membaca sp yang sedang hidup, bukan localStorage: di peramban yang belum
+// pernah dipakai localStorage masih kosong dan akan tertulis "hari ke-0", padahal di
+// layar tertera "Hari ke-1".
+function spRenderBackupState() {
+  el.spBackupState.textContent =
+    `Di peramban ini: hari ke-${sp.day} · ${sp.history.length} hari selesai · `
+    + `${sp.examHistory.length} ujian · streak terpanjang ${sp.streakLongest || 0}`;
+}
+
+function spExportBackup() {
+  const backup = spBuildBackup();
+  const blob = new Blob([JSON.stringify(backup, null, 1)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const tgl = spToday();
+  a.href = url;
+  a.download = `learn-japanese-cadangan-${tgl}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+  const r = backup.ringkasan;
+  el.spBackupNote.textContent =
+    `✓ Cadangan terunduh (hari ke-${r.hari}, ${r.hariSelesai} hari selesai). Di iPhone berkasnya masuk ke aplikasi Files.`;
+}
+
+function spImportBackup(file) {
+  const reader = new FileReader();
+  reader.onerror = () => { el.spBackupNote.textContent = "⚠ Berkas gagal dibaca."; };
+  reader.onload = () => {
+    let backup;
+    try {
+      backup = JSON.parse(reader.result);
+    } catch {
+      el.spBackupNote.textContent = "⚠ Berkas ini bukan JSON yang sah.";
+      return;
+    }
+
+    if (backup?.format !== "learn-japanese-backup" || !backup.data) {
+      el.spBackupNote.textContent = "⚠ Bukan berkas cadangan Learn Japanese.";
+      return;
+    }
+    if (backup.version > SP_BACKUP_VERSION) {
+      el.spBackupNote.textContent = "⚠ Cadangan ini dari versi aplikasi yang lebih baru.";
+      return;
+    }
+    if (!backup.data[SP_STORAGE_KEY]) {
+      el.spBackupNote.textContent = "⚠ Cadangan tidak memuat data Rencana Belajar.";
+      return;
+    }
+
+    // Selalu tanya dulu: memulihkan berarti MENIMPA, dan progres yang tertimpa tidak
+    // bisa dikembalikan. Angka kedua belah pihak ditampilkan supaya tidak salah arah.
+    const sekarang = spBuildBackup().ringkasan;
+    const masuk = backup.ringkasan || {};
+    const setuju = confirm(
+      `Timpa progres di peramban ini?\n\n` +
+      `Sekarang : hari ke-${sekarang.hari}, ${sekarang.hariSelesai} hari selesai\n` +
+      `Cadangan : hari ke-${masuk.hari ?? "?"}, ${masuk.hariSelesai ?? "?"} hari selesai\n\n` +
+      `Data yang sekarang akan hilang dan tidak bisa dikembalikan.`
+    );
+    if (!setuju) {
+      el.spBackupNote.textContent = "Pemulihan dibatalkan. Tidak ada yang berubah.";
+      return;
+    }
+
+    try {
+      Object.keys(backup.data).forEach(key => {
+        if (spBackupKeys().includes(key)) localStorage.setItem(key, backup.data[key]);
+      });
+    } catch (err) {
+      el.spBackupNote.textContent = `⚠ Gagal menyimpan: ${err.message}`;
+      return;
+    }
+
+    el.spBackupNote.textContent = "✓ Progres dipulihkan. Memuat ulang…";
+    setTimeout(() => location.reload(), 600);
+  };
+  reader.readAsText(file);
 }
 
 // --- Notifikasi pintar (Web Push) ---
@@ -2670,6 +2809,13 @@ function init() {
   });
   el.spReminderBtn.addEventListener("click", spDownloadReminder);
   el.spWorkerSaveBtn.addEventListener("click", spSaveWorkerUrl);
+  el.spExportBtn.addEventListener("click", spExportBackup);
+  el.spImportBtn.addEventListener("click", () => el.spImportFile.click());
+  el.spImportFile.addEventListener("change", () => {
+    const file = el.spImportFile.files && el.spImportFile.files[0];
+    if (file) spImportBackup(file);
+    el.spImportFile.value = ""; // supaya berkas yang sama bisa dipilih lagi
+  });
   el.spPushBtn.addEventListener("click", () => {
     if (sp.pushEnabled) spDisablePush(); else spEnablePush();
   });
