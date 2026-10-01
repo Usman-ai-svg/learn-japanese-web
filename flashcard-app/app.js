@@ -1008,7 +1008,7 @@ function spRenderStreak() {
       : "Mulai streak-mu hari ini — cukup 1 sesi, tidak harus semuanya.";
   }
 
-  if (sp.reminderTime) el.spReminderTime.value = sp.reminderTime;
+  el.spReminderTime.value = spReminderTime();
   spRenderPushState();
   spRenderBackupState();
 
@@ -1098,7 +1098,7 @@ function spDownloadReminder() {
   document.body.removeChild(a);
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-  sp.reminderTime = time;
+  localStorage.setItem(SP_PUSH_KEYS.time, time);
   spSave();
   el.spReminderNote.textContent = `✓ Pengingat pukul ${time} terunduh. Buka berkasnya, lalu pilih “Tambahkan” di aplikasi Kalender.`;
 }
@@ -1243,7 +1243,47 @@ function spImportBackup(file) {
 // mendaftarkan langganan, dan melapor "hari ini sudah ada sesi" tiap sesi selesai.
 // Yang dikirim keluar hanya tanggal; isi belajar dan skor tidak pernah meninggalkan HP.
 
-const SP_PUSH_KEYS = { worker: "reminder-worker-url", client: "reminder-client-id" };
+const SP_PUSH_KEYS = {
+  worker: "reminder-worker-url",
+  client: "reminder-client-id",
+  time: "reminder-time",
+};
+
+// Status "notifikasi aktif" sengaja TIDAK disimpan sebagai bendera di dalam sp. Versi
+// awal melakukannya (sp.pushEnabled), dan karena sp ikut ditimpa saat memulihkan
+// cadangan, pengguna yang mengaktifkan notifikasi lalu memulihkan cadangan dari Safari
+// kehilangan benderanya: pelaporan aktivitas berhenti diam-diam sementara langganan di
+// worker tetap hidup -- hasilnya notifikasi berbunyi tiap hari walau sudah belajar.
+// Sumber kebenarannya sekarang langganan push milik peramban itu sendiri, yang memang
+// tidak mungkin ikut tertimpa oleh berkas cadangan.
+let spPushSub = null;
+
+async function spCurrentPushSub() {
+  if (!spPushSupported()) return null;
+  try {
+    const reg = await navigator.serviceWorker.getRegistration();
+    return reg ? await reg.pushManager.getSubscription() : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function spReminderTime() {
+  return localStorage.getItem(SP_PUSH_KEYS.time) || sp.reminderTime || "19:00";
+}
+
+// Permintaan "sederhana" (text/plain) tidak memicu preflight CORS, jadi tidak ada
+// permintaan OPTIONS yang bisa gagal di tengah jalan -- termasuk saat dikirim dengan
+// keepalive ketika halaman sedang ditutup. Worker membaca badannya sebagai JSON apa pun
+// Content-Type-nya.
+function spWorkerPost(path, body, extra = {}) {
+  return fetch(`${spWorkerUrl()}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+    body: JSON.stringify(body),
+    ...extra,
+  });
+}
 
 function spWorkerUrl() {
   const raw = localStorage.getItem(SP_PUSH_KEYS.worker) || "";
@@ -1315,27 +1355,23 @@ async function spEnablePush() {
       applicationServerKey: b64urlToUint8(publicKey),
     });
 
-    const [hh, mm] = (el.spReminderTime.value || "19:00").split(":").map(Number);
+    const waktu = el.spReminderTime.value || "19:00";
+    const [hh, mm] = waktu.split(":").map(Number);
     const info = spStreakInfo();
-    const daftar = await fetch(`${base}/subscribe`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        clientId: spClientId(),
-        subscription: sub.toJSON(),
-        reminderMinutes: hh * 60 + mm,
-        tzOffset: new Date().getTimezoneOffset(),
-        lastActive: info.doneToday ? spToday() : null,
-        streak: info.current,
-      }),
+    const daftar = await spWorkerPost("/subscribe", {
+      clientId: spClientId(),
+      subscription: sub.toJSON(),
+      reminderMinutes: hh * 60 + mm,
+      tzOffset: new Date().getTimezoneOffset(),
+      lastActive: info.doneToday ? spToday() : null,
+      streak: info.current,
     });
     if (!daftar.ok) throw new Error(`worker /subscribe -> ${daftar.status}`);
 
-    sp.pushEnabled = true;
-    sp.reminderTime = el.spReminderTime.value;
-    spSave();
+    localStorage.setItem(SP_PUSH_KEYS.time, waktu);
+    spPushSub = sub;
     spRenderPushState();
-    el.spPushNote.textContent = `✓ Aktif. Pengingat pukul ${sp.reminderTime}, hanya kalau hari itu belum ada sesi.`;
+    el.spPushNote.textContent = `✓ Aktif. Pengingat pukul ${waktu}, hanya kalau hari itu belum ada sesi.`;
   } catch (err) {
     console.error("Gagal mengaktifkan push:", err);
     el.spPushNote.textContent = `⚠ Gagal: ${err.message}`;
@@ -1348,21 +1384,13 @@ async function spDisablePush() {
   const base = spWorkerUrl();
   el.spPushBtn.disabled = true;
   try {
-    if (spPushSupported()) {
-      const reg = await navigator.serviceWorker.getRegistration();
-      const sub = reg && (await reg.pushManager.getSubscription());
-      if (sub) await sub.unsubscribe();
-    }
+    const sub = await spCurrentPushSub();
+    if (sub) await sub.unsubscribe();
     if (base) {
-      await fetch(`${base}/unsubscribe`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ clientId: spClientId() }),
-      }).catch(() => {});
+      await spWorkerPost("/unsubscribe", { clientId: spClientId() }).catch(() => {});
     }
   } finally {
-    sp.pushEnabled = false;
-    spSave();
+    spPushSub = null;
     spRenderPushState();
     el.spPushNote.textContent = "Notifikasi pintar dimatikan.";
     el.spPushBtn.disabled = false;
@@ -1372,23 +1400,29 @@ async function spDisablePush() {
 // Lapor "hari ini sudah ada sesi" -- sengaja tanpa await dan menelan error: kalau sedang
 // offline atau worker mati, itu tidak boleh sampai mengganggu sesi belajar yang berjalan.
 function spReportActivity() {
-  if (!sp.pushEnabled) return;
-  const base = spWorkerUrl();
-  if (!base) return;
-  fetch(`${base}/activity`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+  if (!spWorkerUrl()) return;
+  spCurrentPushSub().then(sub => {
+    if (!sub) return; // peramban ini memang tidak berlangganan -- tidak ada yang perlu dilapor
+    return spWorkerPost("/activity", {
       clientId: spClientId(),
       date: spToday(),
       streak: spStreakInfo().current,
-    }),
-    keepalive: true,
+    }, { keepalive: true });
   }).catch(() => {});
 }
 
+// Dijalankan sekali tiap aplikasi dibuka: menyegarkan tampilan tombol dari langganan yang
+// sebenarnya, dan kalau hari ini sudah ada sesi, melapor ulang ke worker. Yang kedua ini
+// yang memulihkan pengguna yang sempat terkena bug bendera di atas -- catatan mereka di
+// worker langsung terkoreksi begitu aplikasi versi baru dibuka, tanpa perlu langkah apa pun.
+async function spSyncPushOnOpen() {
+  spPushSub = await spCurrentPushSub();
+  spRenderPushState();
+  if (spPushSub && spWorkerUrl() && spStreakInfo().doneToday) spReportActivity();
+}
+
 function spRenderPushState() {
-  const aktif = !!sp.pushEnabled;
+  const aktif = !!spPushSub;
   el.spPushBtn.textContent = aktif ? "Matikan notifikasi pintar" : "Aktifkan notifikasi pintar";
   el.spWorkerUrl.value = spWorkerUrl();
   el.spPushSetup.open = !spWorkerUrl() && !aktif;
@@ -1437,6 +1471,8 @@ function spLoad() {
   // sebelumnya tidak hilang dari layar.
   if (!sp.activity) sp.activity = {};
   if (sp.streakLongest === undefined) sp.streakLongest = 0;
+  // Bendera lama yang bisa basi setelah pemulihan cadangan; lihat catatan di spPushSub.
+  delete sp.pushEnabled;
   if (sp.examNumber === undefined) sp.examNumber = 0;
   if (!sp.examHistory) sp.examHistory = [];
   if (!sp.semesterHistory) sp.semesterHistory = [];
@@ -2647,6 +2683,7 @@ function init() {
   loadAllProgress();
   renderVocabLevelToggles();
   spLoad();
+  spSyncPushOnOpen();
 
   // vocab.json is the N5 dataset (kept at its original path); vocab-n4.json is N4.
   Promise.all([
@@ -2817,7 +2854,7 @@ function init() {
     el.spImportFile.value = ""; // supaya berkas yang sama bisa dipilih lagi
   });
   el.spPushBtn.addEventListener("click", () => {
-    if (sp.pushEnabled) spDisablePush(); else spEnablePush();
+    if (spPushSub) spDisablePush(); else spEnablePush();
   });
   el.grReveal.addEventListener("click", grAdvance);
   el.grRestartBtn.addEventListener("click", grBuildQuiz);
